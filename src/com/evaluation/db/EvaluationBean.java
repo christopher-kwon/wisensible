@@ -1,5 +1,5 @@
 package com.evaluation.db;
 
-public class EvalutaionBean {
+public class EvaluationBean {
 
 }

@@ -1,14 +1,17 @@
 package com.board.db;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 public class BoardDAO {
-	
+
 	private DataSource ds;
 
-	// 생성자에서 JNDI 리소스를 참조하여 Connection 개체를 얻어옵니다.
 	public BoardDAO() {
 		try {
 			Context init = new InitialContext();
@@ -19,4 +22,108 @@ public class BoardDAO {
 		}
 	}
 
+	public void setReadCountUpdate(int board_num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "update board set board_read = board_read + 1 where board_num = ?";
+
+		try {
+
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, board_num);
+			pstmt.executeUpdate();
+		} catch (Exception ex) {
+			System.out.println("setReadCountUpdate() 에러 : " + ex);
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (Exception ce) {
+					ce.printStackTrace();
+				}
+		}
+	}
+
+	public BoardBean getDetail(int board_num) {
+		
+		BoardBean boardBean = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from board where board_num = ?";
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, board_num);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				boardBean = new BoardBean();
+				boardBean.setBoard_category(rs.getString(1));
+				boardBean.setBoard_num(rs.getInt(2));
+				boardBean.setBoard_subject(rs.getString(3));
+				boardBean.setBoard_name(rs.getString(4));
+				boardBean.setBoard_pass(rs.getString(5));
+				boardBean.setBoard_content(rs.getString(6));
+				boardBean.setBoard_date(rs.getString(7));
+				boardBean.setBoard_file(rs.getString(8));
+				boardBean.setBoard_read(rs.getInt(9));
+				boardBean.setBoard_price(rs.getInt(10));
+				boardBean.setBoard_bank(rs.getString(11));
+				boardBean.setBoard_account(rs.getInt(12));
+				boardBean.setBoard_tel(rs.getInt(13));
+				boardBean.setBoard_storage(rs.getString(14));
+				boardBean.setBoard_delivery(rs.getString(15));
+				boardBean.setBoard_product(rs.getString(16));
+				boardBean.setBoard_amount(rs.getString(17));
+				boardBean.setBoard_producer(rs.getString(18));
+				boardBean.setBoard_origin(rs.getString(19));
+				boardBean.setBoard_deliverycost(rs.getInt(20));
+				boardBean.setBoard_expirydate(rs.getString(21));
+				boardBean.setBoard_sort(rs.getString(22));
+				boardBean.setBoard_domestic(rs.getString(23));
+			}
+			
+		} catch(Exception e) {
+			System.out.println("getDetail() 에러 : " + e);
+			e.printStackTrace();
+		} finally {
+			if(rs != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			
+			if(pstmt != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			
+			if(conn != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		}
+		
+		return boardBean;
+		
+	}
+	
 }
+	
+		
+		
+	
