@@ -14,8 +14,12 @@ public class MemberJoinAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("여기는 join");
+
+		ActionForward forward = new ActionForward();
+		forward.setRedirect(false);// 주소변경없이 jsp페이지의 내용을 보여준다.
+		forward.setPath("member/joinform.jsp");
+		return forward;
 	}
 
 }
