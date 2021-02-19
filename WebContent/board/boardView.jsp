@@ -12,7 +12,7 @@
 
 <!-- image -->
 <div class="board_view_image">
-  <img src="cinqueterre.jpg" class="view_thumbnail" alt="Cinque Terre" width="304" height="236"> 
+  <img src="boardupload/"+${boardBean_name } class="view_thumbnail" alt="thumbnail" width="304" height="236"> 
 </div>
 
 
