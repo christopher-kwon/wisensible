@@ -1,7 +1,11 @@
+
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 <%@ include file="header.jsp"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
  <link href="../css/board/boardView.css" rel="stylesheet">
@@ -14,9 +18,11 @@ request.setCharacterEncoding("utf-8");
 
 
 
+
 <div class="container">
 
 
+<<<<<<< HEAD
 <!-- table -->
 <div class="board_view_table">
   <h2>${boardBean.board_product }</h2>
@@ -126,3 +132,4 @@ request.setCharacterEncoding("utf-8");
 
 
 <%@ include file="footer.jsp"%>
+
