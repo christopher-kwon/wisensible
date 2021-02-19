@@ -1,6 +1,6 @@
 drop table board;
 
---Å×ÀÌºí »ı¼º
+--í…Œì´ë¸” ìƒì„±
 create table board(
 board_category varchar2(4) not null,
 board_num number(10) primary key,
@@ -27,14 +27,14 @@ board_origin varchar2(30) not null,
 board_deliverycost number(10) not null,
 board_expirydate varchar2(30) not null,
 board_sort varchar2(30) not null,
-board_domestic varchar2(10) not null,
+board_domestic varchar2(10) not null
 );
 
 select * from board;
 
 drop sequence board_seq;
 
---½ÃÄö½º »ı¼º
+--ì‹œí€€ìŠ¤ ìƒì„±
 create sequence board_seq; 
 
 
