@@ -15,7 +15,8 @@ import com.ActionForward;
 import com.comment.action.CommentAdd;
 import com.comment.action.CommentList;
 
-//@WebServlet("*.bo")
+
+@WebServlet("*.ev")
 public class EvaluationFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -48,11 +49,11 @@ public class EvaluationFrontController extends HttpServlet {
 		switch (command) {
 		
 		
-		case "/EvalutaionAdd.bo" :
+		case "/EvalutaionAdd.ev" :
 			action = new EvalutaionAdd();
 			break;
 			
-		case "/EvalutaionGet.bo" :
+		case "/EvalutaionGet.ev" :
 			action = new EvalutaionGet();
 			break;
 		

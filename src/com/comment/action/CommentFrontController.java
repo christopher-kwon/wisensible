@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.Action;
 import com.ActionForward;
 
-//@WebServlet("*.bo")
+
+@WebServlet("*.co")
+
 public class CommentFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -44,23 +46,23 @@ public class CommentFrontController extends HttpServlet {
 		Action action = null;
 
 		switch (command) {
-		case "/CommentAdd.bo" :
+		case "/CommentAdd.co" :
 			action = new CommentAdd();
 			break;
 			
-		case "/CommentList.bo" :
+		case "/CommentList.co" :
 			action = new CommentList();
 			break;
 			
-		case "/CommentDelete.bo" :
+		case "/CommentDelete.co" :
 			action = new CommentDelete();
 			break;
 			
-		case "/CommentUpdate.bo" :
+		case "/CommentUpdate.co" :
 			action = new CommentUpdate();
 			break;
 			
-		case "/CommentReply.bo" :
+		case "/CommentReply.co" :
 			action = new CommentReply();
 			break;
 

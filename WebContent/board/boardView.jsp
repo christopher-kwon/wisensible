@@ -10,7 +10,10 @@
 <div class="container">
 
 
-
+<!-- image -->
+<div class="board_view_image">
+  <img src="cinqueterre.jpg" class="view_thumbnail" alt="Cinque Terre" width="304" height="236"> 
+</div>
 
 
 </div>
