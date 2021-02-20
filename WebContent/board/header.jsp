@@ -17,14 +17,14 @@
     <title>Shop Homepage - Start Bootstrap Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/css/bootstrap/css/shop-homepage.css" rel="stylesheet">
+    <link href="css/bootstrap/css/shop-homepage.css" rel="stylesheet">
 
     <!-- Bootstrap core JavaScript -->
-    <script src="/css/bootstrap/vendor/jquery/jquery.min.js"></script>
-    <script src="/css/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="css/bootstrap/vendor/jquery/jquery.min.js"></script>
+    <script src="css/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </head>
 
