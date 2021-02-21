@@ -27,10 +27,10 @@ public class BoardDetailAction implements Action {
 		boardBean = boardDAO.getDetail(board_num);
 
 		if (boardBean == null) {
-			System.out.println("ê¸€ ë¶ˆëŸ¬ì˜¤ê¸° ì‹¤íŒ¨");
+			System.out.println("±Û ºÒ·¯¿À±â ½ÇÆĞ");
 			ActionForward forward = new ActionForward();
 			forward.setRedirect(false);
-			request.setAttribute("message", "ê¸€ë³´ê¸°ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤. ");
+			request.setAttribute("message", "±Ûº¸±â¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù. ");
 			forward.setPath("error/error.jsp");
 			return forward;
 		}

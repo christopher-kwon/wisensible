@@ -162,7 +162,7 @@ $(function() {
 		}
 	}) //form
 	
-	
+
 
 	$('.CommentBox').on('keyup','.comment_inbox_text', function() {
 		var length=$(this).val().length;
