@@ -24,7 +24,7 @@ public class MemberDAO {
 		}
 	}
 
-	public int isId(String member_id, String member_pass) {
+	public int isId(String id, String member_pass) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -32,9 +32,9 @@ public class MemberDAO {
 		try {
 			con = ds.getConnection();
 			
-			String sql = "select member_id, member_password from member where member_id = ?";
+			String sql = "select member_id, member_pass from member where member_id = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, member_id);
+			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {

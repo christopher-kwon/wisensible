@@ -20,8 +20,8 @@ public class MemberLoginProcessAction implements Action {
 			throws ServletException, IOException {
 		
 		ActionForward forward = new ActionForward();
-		String member_id = request.getParameter("member_id");
-		String member_password = request.getParameter("member_password");
+		String member_id = request.getParameter("id");
+		String member_password = request.getParameter("pass");
 
 		MemberDAO memberdao = new MemberDAO();
 		int result = memberdao.isId(member_id, member_password);
@@ -30,7 +30,7 @@ public class MemberLoginProcessAction implements Action {
 		// 로그인 성공
 		if (result == 1) {
 			HttpSession session = request.getSession();
-			session.setAttribute("member_id", member_id);
+			session.setAttribute("id", member_id);
 
 			forward.setRedirect(true);
 			forward.setPath("BoardList.bo");
