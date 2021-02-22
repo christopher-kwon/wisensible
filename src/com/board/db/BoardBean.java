@@ -13,11 +13,12 @@ public class BoardBean {
 	private String board_file2;
 	private String board_file3;
 	private String board_file4;
+	private String board_thumbnail;
 	private int board_read;
 	private int board_price;
 	private String board_bank;
 	private int board_account;
-	private int board_tel;
+	private String board_tel;
 	private String board_storage;
 	private String board_delivery;
 	private String board_product;
@@ -26,8 +27,7 @@ public class BoardBean {
 	private String board_origin;
 	private int board_deliverycost;
 	private String board_expirydate;
-	private String board_sort;
-	private String board_domestic;
+
 
 	public String getBoard_file1() {
 		return board_file1;
@@ -149,11 +149,11 @@ public class BoardBean {
 		this.board_account = board_account;
 	}
 
-	public int getBoard_tel() {
+	public String getBoard_tel() {
 		return board_tel;
 	}
 
-	public void setBoard_tel(int board_tel) {
+	public void setBoard_tel(String board_tel) {
 		this.board_tel = board_tel;
 	}
 
@@ -220,21 +220,12 @@ public class BoardBean {
 	public void setBoard_expirydate(String board_epirydate) {
 		this.board_expirydate = board_epirydate;
 	}
-
-	public String getBoard_sort() {
-		return board_sort;
+	public String getBoard_thumbnail() {
+		return board_thumbnail;
 	}
 
-	public void setBoard_sort(String board_sort) {
-		this.board_sort = board_sort;
-	}
-
-	public String getBoard_domestic() {
-		return board_domestic;
-	}
-
-	public void setBoard_domestic(String board_domestic) {
-		this.board_domestic = board_domestic;
+	public void setBoard_thumbnail(String board_thumbnail) {
+		this.board_thumbnail = board_thumbnail;
 	}
 
 }
