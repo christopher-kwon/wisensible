@@ -1,0 +1,83 @@
+[33mcommit 7ddcc07882e0edfcbad3d01d6003141a0e1d6a7f[m[33m ([m[1;36mHEAD -> [m[1;32mkpk[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/kpk[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 7c184a1 44595f8
+Author: qkralsrl11 <77973029+qkralsrl11@users.noreply.github.com>
+Date:   Thu Feb 18 12:22:27 2021 +0900
+
+    Merge pull request #4 from christopher-kwon/kjs2
+    
+    kjs.java
+
+[33mcommit 7c184a1d7aba3f278ba0a57bbdfda634e47c1bbc[m
+Merge: 7526ba5 61cf68d
+Author: christopher-kwon <76832305+christopher-kwon@users.noreply.github.com>
+Date:   Thu Feb 18 12:20:58 2021 +0900
+
+    Merge pull request #3 from christopher-kwon/pjh
+    
+    test-pjh
+
+[33mcommit 7526ba53823b426ace04e2ddfb466c48d71100ab[m
+Merge: a4d41ea 39214e2
+Author: moonpeter <57426244+moonpeter@users.noreply.github.com>
+Date:   Thu Feb 18 12:18:48 2021 +0900
+
+    Merge pull request #2 from christopher-kwon/kpk
+    
+    branch test of kwon
+
+[33mcommit a4d41ea85ba39b184f2b765467f2bd2ac148486c[m
+Merge: 2423337 c9240d9
+Author: moonpeter <57426244+moonpeter@users.noreply.github.com>
+Date:   Thu Feb 18 12:15:40 2021 +0900
+
+    Merge pull request #1 from christopher-kwon/mkh
+    
+    mkh.java 파일 생성
+
+[33mcommit 44595f8e3d4b9594574463319c079a9beaa00052[m[33m ([m[1;31morigin/kjs2[m[33m)[m
+Author: WITNUS <ehldkwl123@naver.com>
+Date:   Thu Feb 18 12:07:09 2021 +0900
+
+    kjs.java
+
+[33mcommit 61cf68d7a21f8a450dcab3edc360d57cf01486c9[m[33m ([m[1;31morigin/pjh[m[33m)[m
+Author: unknown <qkralsrl11@naver.com>
+Date:   Thu Feb 18 11:33:34 2021 +0900
+
+    test-pjh
+
+[33mcommit 39214e2de4b15434622fa73bf45be5e984307f00[m
+Author: kpk <kc9917@hanmail.net>
+Date:   Thu Feb 18 11:32:21 2021 +0900
+
+    branch test of kwon
+
+[33mcommit c9240d99b915d286f64d77150bedfc149cc37e40[m[33m ([m[1;31morigin/mkh[m[33m)[m
+Author: moonpeter <moonpeter@kakao.com>
+Date:   Thu Feb 18 11:31:38 2021 +0900
+
+    mkh.java 파일 생성
+
+[33mcommit 24233374dafca1b02d0b7a9e95cad86476928274[m
+Author: moonpeter <moonpeter@kakao.com>
+Date:   Thu Feb 18 11:22:21 2021 +0900
+
+    git setting Test_2
+
+[33mcommit 1ed006a0a9ebac8c2d44296d028ab897ec3aecb3[m
+Author: unknown <qkralsrl11@naver.com>
+Date:   Thu Feb 18 11:17:04 2021 +0900
+
+    git test_2
+
+[33mcommit 50a95b135f9094f096279279764dfd0c5ab93084[m
+Author: moonpeter <moonpeter@kakao.com>
+Date:   Thu Feb 18 10:53:45 2021 +0900
+
+    git setting Test
+
+[33mcommit f8cdd09aaa1a3e8a61b8bd116025e4d5a03d7873[m
+Author: kpk <kc9917@hanmail.net>
+Date:   Thu Feb 18 10:43:16 2021 +0900
+
+    초기화 설정 완료

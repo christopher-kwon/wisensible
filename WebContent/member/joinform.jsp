@@ -6,7 +6,7 @@
 <head>
 <title>회원 가입</title>
 <jsp:include page="/board/header.jsp"/>
-<link href="css/join.css" type="text/css" rel="stylesheet">
+<link href="../css/join.css" type="text/css" rel="stylesheet">
 <script src="js/jquery-3.5.1.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>

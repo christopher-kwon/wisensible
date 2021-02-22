@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.Action;
 import com.ActionForward;
 
+
 @WebServlet("*.co")
+
 public class CommentFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
