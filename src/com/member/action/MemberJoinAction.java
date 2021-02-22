@@ -10,7 +10,7 @@ import com.Action;
 import com.ActionForward;
 
 public class MemberJoinAction implements Action {
-
+//2021.02.22 finish
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

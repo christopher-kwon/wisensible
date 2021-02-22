@@ -14,23 +14,23 @@ import com.member.db.MemberDAO;
 
 
 public class MemberLoginProcessAction implements Action {
-
+	//2021.2.22 finish
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		ActionForward forward = new ActionForward();
-		String id = request.getParameter("id");
-		String password = request.getParameter("password");
+		String member_id = request.getParameter("member_id");
+		String member_password = request.getParameter("member_password");
 
 		MemberDAO memberdao = new MemberDAO();
-		int result = memberdao.isId(id, password);
+		int result = memberdao.isId(member_id, member_password);
 		System.out.println("결과는" + result);
 
 		// 로그인 성공
 		if (result == 1) {
 			HttpSession session = request.getSession();
-			session.setAttribute("id", id);
+			session.setAttribute("member_id", member_id);
 
 			forward.setRedirect(true);
 			forward.setPath("BoardList.bo");

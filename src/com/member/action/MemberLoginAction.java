@@ -10,7 +10,7 @@ import com.Action;
 import com.ActionForward;
 
 public class MemberLoginAction implements Action {
-
+//2021.2.22 finish
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
