@@ -36,7 +36,7 @@ $(function(){
 			alert('확장자는 gif, jpg, jpeg, png가 가능합니다.');
 		}
 	
-	
+	})
 });
 </script>
 </head>
