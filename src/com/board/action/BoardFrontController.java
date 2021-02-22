@@ -75,6 +75,7 @@ public class BoardFrontController extends HttpServlet {
 				response.sendRedirect(forward.getPath());
 			} else { 
 				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
+				System.out.println(forward.getPath());
 				dispatcher.forward(request, response);
 			}
 		}
