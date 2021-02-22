@@ -7,10 +7,12 @@
 
 $(document).ready(
 		function() {
+			
+
 
 			$("#board_price").change(function() {
 				if ($.isNumeric($("#board_price").val())) {
-					$("#board_account").focus();
+					$("#board_bank").focus();
 
 				} else {
 					alert("가격 정보는 숫자로 입력해주세요")
@@ -22,7 +24,7 @@ $(document).ready(
 			$("#board_tel").change(function() {
 				pattern = /^\d{2,3}-\d{3,4}-\d{3,4}$/;
 				if (pattern.test($("#board_tel").val())) {
-					$("#board_storage").focus();
+					$("#board_delivery").focus();
 
 				} else {
 					alert("전화번호를 확인하세요(000-0000-0000)")
@@ -34,6 +36,28 @@ $(document).ready(
 
 			$("form").submit(
 					function() {
+						
+					      var formData = new FormData();
+					      for(var i = 0; i < $fileListArr.length ; i++){
+					         formData.append("uploadFile" , $fileListArr[i]);
+					      }
+					      
+					      $.ajax({
+					         url:"/file/fileUpload.do",
+					         processData : false,
+					         contentType : false,
+					         data: formData ,
+					         type : 'POST',
+					         success : function(res){
+					            location.href = '/file/List.do';
+					         },
+					         error: function(){
+					            alert('에러');
+					         }
+					      });
+					         
+					         
+
 
 						if ($('select').eq(0).val() == "----") {
 							alert("카테고리를 선택해주세요");

@@ -27,7 +27,6 @@ public class BoardBean {
 	private String board_origin;
 	private int board_deliverycost;
 	private String board_expirydate;
-	
 	public String getBoard_category() {
 		return board_category;
 	}
@@ -97,8 +96,8 @@ public class BoardBean {
 	public String getBoard_thumbnail() {
 		return board_thumbnail;
 	}
-	public void setBoard_thumbnail(String board_file5) {
-		this.board_thumbnail = board_file5;
+	public void setBoard_thumbnail(String board_thumbnail) {
+		this.board_thumbnail = board_thumbnail;
 	}
 	public int getBoard_read() {
 		return board_read;
@@ -178,6 +177,10 @@ public class BoardBean {
 	public void setBoard_expirydate(String board_expirydate) {
 		this.board_expirydate = board_expirydate;
 	}
+	
+	
+
+
 
 
 }
