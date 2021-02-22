@@ -1,8 +1,8 @@
 drop table board;
 
---í…Œì´ë¸” ìƒì„±
+--Å×ÀÌºí »ı¼º
 create table board(
-board_category varchar2(4) not null,
+board_category varchar2(8) not null,
 board_num number(10) primary key,
 board_subject varchar2(60) not null ,
 board_name varchar2(30) not null, 
@@ -13,11 +13,12 @@ board_file1 varchar2(30) not null,
 board_file2 varchar2(30) not null,
 board_file3 varchar2(30) not null,
 board_file4 varchar2(30) not null,
+board_thumbnail varchar2(30) not null,
 board_read number(10),
 board_price number(10) not null,
 board_bank varchar2(20),
 board_account number(20),
-board_tel number(20) not null,
+board_tel varchar2(20) not null,
 board_storage varchar2(50) not null,
 board_delivery varchar2(50) not null,
 board_product varchar2(30) not null,
@@ -25,17 +26,22 @@ board_amount varchar2(30) not null,
 board_producer varchar2(30) not null,
 board_origin varchar2(30) not null,
 board_deliverycost number(10) not null,
-board_expirydate varchar2(30) not null,
-board_sort varchar2(30) not null,
-board_domestic varchar2(10) not null
+board_expirydate varchar2(30) not null
+);
+
+insert into board values(
+'¾ßÃ¤', 1, '¾ßÃ¤Å×½ºÆ®', 'master', '1234', '¾ßÃ¤´Â ¸ÀÀÖ¾î', SYSDATE, 'a.png', 'b.png', 'c.png', 
+'d.png', 'e.png', 0, 1000, '½ÅÇÑ', 123456789, '010-2390-7250', '½Ç¿Â', 'Á÷¹è¼Û',
+'°ß°ú·ù', '1¹Ú½º', '(ÁÖ)¾÷µå¸²ÄÚ¸®¾Æ', '°­¿øµµ', 3000, '1ÁÖÀÏÀÌ³»'
 );
 
 select * from board;
 
 drop sequence board_seq;
 
---ì‹œí€€ìŠ¤ ìƒì„±
+--½ÃÄö½º »ı¼º
 create sequence board_seq; 
+
 
 
 )

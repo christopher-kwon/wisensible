@@ -7,7 +7,7 @@ function getList(state) {
 		data : {"page" : 1, "comment_board_ref" : $("#board_num").val(), state : state},
 		dataType : "json",
 		success : function(rdata) {
-			$('#count').text(rdata.listcount).css('font-family', 'arial, sans-serif')
+			$('#count').text(rdata.listCount).css('font-family', 'arial, sans-serif')
 			var red1 = 'red';
 			var red2 = 'red';
 			if(option == 1) {
@@ -18,7 +18,7 @@ function getList(state) {
 			}
 			var output = "";
 			
-			if(rdata.boardlist.length > 0) {
+			if(rdata.boardList.length > 0) {
 				output += '<li class="comment_tab_item ' + red1 + '" >'
 						+ ' <a href="javascript:getList(1)" class="comment_tab_button">등록순</a>'
 						+ '</li>'
@@ -27,7 +27,7 @@ function getList(state) {
 				$('.comment_tab_list').html(output);
 				
 				output = '';
-				$(rdata.boardlist).each(function() {
+				$(rdata.boardList).each(function() {
 					var lev = this.comment_re_lev;
 					var comment_reply = '';
 					if(lev == 1) {
@@ -90,7 +90,7 @@ function getList(state) {
 			}) //each
 			$('.comment_list').html(output);
 			
-		} //if(rdata.boardlist.length>0)
+		} //if(rdata.boardList.length>0)
 			
 		} //success end
 	}); //ajax end
