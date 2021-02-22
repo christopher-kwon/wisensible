@@ -66,11 +66,11 @@
 
             <h4 class="my-4">Wisensible-Farm</h4>
             <div class="list-group" style="text-align: center">
-                <a href="#" class="list-group-item">과일</a>
-                <a href="#" class="list-group-item">채소</a>
-                <a href="#" class="list-group-item">곡물</a>
-                <a href="#" class="list-group-item">축산물</a>
-                <a href="#" class="list-group-item">해산물</a>
+                <a href="/board/categoriList.jsp" class="list-group-item">과일</a>
+                <a href="/board/categoriList.jsp" class="list-group-item">채소</a>
+                <a href="/board/categoriList.jsp" class="list-group-item">곡물</a>
+                <a href="/board/categoriList.jsp" class="list-group-item">축산물</a>
+                <a href="/board/categoriList.jsp" class="list-group-item">해산물</a>
             </div>
 
         </div>
