@@ -1,6 +1,14 @@
 td{width:50%}
 
-.pager{float:right}
+.btn-group{float:right; margin:20px;}
+
+.btn-primary{
+	background-color:#fff;
+	color:black;
+	border-color:orange;
+}
+
+.btn-primary:hover{background-color:orange;}
 
 /* comment style */
 textarea.form-control {
@@ -348,9 +356,6 @@ a:hover {
 }
 
 /* modal */
-.btn-primary {
-	background-color: #4f97e5
-}
 
 #myModal {
 	display: none
@@ -358,3 +363,14 @@ a:hover {
 
 #Modify, #Delete{color:red}
 
+/* well */
+.well {  border-style: solid;
+  border-width: 1px;
+  background-color:#e9ecef;
+  height:60px;
+  }
+  
+.label{
+	margin:10px;
+	text-align:center;
+}

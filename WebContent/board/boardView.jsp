@@ -1,10 +1,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
-<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+
 
 <%@ include file="header.jsp"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
@@ -29,12 +25,12 @@ request.setCharacterEncoding("utf-8");
   <h2>${boardBean.board_product }</h2>
   <table class="table">
 
-      <tr><td rowspan="6">  <img src="boardupload/${boardBean.board_file1 }" class="view_thumbnail" alt="thumbnail" width="304" height="236"> 
+      <tr><td rowspan="6">  <img src="boardupload/${boardBean.board_thumbnail }" class="view_thumbnail" alt="thumbnail" width="304" height="236"> 
       </td>
         <td>가격 ${boardBean.board_price}원 </td>
       </tr>
       <tr>
-        <td>계좌번호 ${boardBean.board_acoount}</td>
+        <td>계좌번호 ${boardBean.board_account}</td>
       </tr>
       <tr>
         <td>연락처 ${boardBean.board_tel}</td>
@@ -47,22 +43,14 @@ request.setCharacterEncoding("utf-8");
       </tr>
       
                   <tr>
-        <td><strong>평점</strong> ${evaluationBean.evaluation_avg} /</td>
+        <td><strong>평점</strong> ${evaluationBean.evaluation_avg} / <div class="rating"> 
+			<input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label> 
+			</div>
+        			</td>
       </tr>
   </table>
 </div>
 
-
-
-
-<!-- sort -->
-<div class="well">
-  <div class="label">
-   <span class="label label-success">소분 판매</span>
-   <span class="label label-warning">직배송</span>
-   <span class="label label-danger">국내산</span>
-  </div>
-</div>
 
 
 <!-- content -->
@@ -100,20 +88,26 @@ request.setCharacterEncoding("utf-8");
 </div>
 
 <div class="board_content">
-<div class="board_view_image2">
-  <img src="boardupload/${boardBean.board_file2 }" class="상품이미지1" alt="thumbnail" width="795" height="500"> 
+<div class="board_view_image1">
+  <img src="boardupload/${boardBean.board_file1 }" class="board_file1" alt="상품이미지1" width="795" height="500"> 
   <h1>국내산 과일</h1>
   <p>대한민국에서 가장 맛있는 과일입니다.</p>
 </div>
 
-<div class="board_view_image3">
-  <img src="boardupload/${boardBean.board_file2 }" class="상품이미지1" alt="thumbnail" width="795" height="500"> 
+<div class="board_view_image2">
+  <img src="boardupload/${boardBean.board_file2 }" class="board_file2" alt="상품이미지2" width="795" height="500"> 
   <h1>국내산 채소</h1>
   <p>대한민국에서 가장 맛있는 채소입니다.</p>
 </div>
 
 <div class="board_view_image3">
-  <img src="boardupload/${boardBean.board_file2 }" class="상품이미지1" alt="thumbnail" width="795" height="500"> 
+  <img src="boardupload/${boardBean.board_file3 }" class="board_file3" alt="상품이미지3" width="795" height="500"> 
+  <h1>국내산 곡물</h1>
+  <p>대한민국에서 가장 맛있는 곡물입니다.</p>
+</div>
+
+<div class="board_view_image4">
+  <img src="boardupload/${boardBean.board_file4 }" class="board_file4" alt="상품이미지4" width="795" height="500"> 
   <h1>국내산 곡물</h1>
   <p>대한민국에서 가장 맛있는 곡물입니다.</p>
 </div>
@@ -126,9 +120,7 @@ request.setCharacterEncoding("utf-8");
 				<h3 class="comment_title">
 					댓글 <sup id="count"></sup>
 				</h3> 
-			<div class="rating"> 
-			<input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label> 
-			</div>
+
 				
 				<div class="comment_tab">
 					<ul class="comment_tab_list">
@@ -159,21 +151,23 @@ request.setCharacterEncoding("utf-8");
 
 <!-- pager -->
 <div class="board_pager">
-  <ul class="pager">
+    <div class="btn-group">
   <c:choose>
   <c:when test="${boardBean.board_name == id  || id=='admin'}">
-     <li><a href="BoardModifyView.bo?num=${boardBean.board_num }" id="Modify">Modify</a></li>
-     <li><a href="#" id="Delete" data-toggle="modal" data-target="#myModal">Delete</a></li>
-     <li><a href="BoardList.bo">List</a></li>
+  <button type="button" class="btn btn-primary" onclick="location.href='BoardModifyView.bo?num=${boardBean.board_num}'" id="Modify">Modify</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="Delete">Delete</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='BoardList.bo'">List</button>
+
    </c:when>
    
    <c:otherwise>
-    <li><a href="#">Previous</a></li>
-    <li><a href="BoardList.bo">List</a></li>
-    <li><a href="#">Next</a></li>
+   
+  <button type="button" class="btn btn-primary">Previous</button>
+  <button type="button" class="btn btn-primary">List</button>
+  <button type="button" class="btn btn-primary">Next</button>
 </c:otherwise>
 </c:choose>
-  </ul>
+</div>
 </div>
 
 	<%--modal --%>
