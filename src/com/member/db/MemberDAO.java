@@ -18,5 +18,15 @@ public class MemberDAO {
 			return;
 		}
 	}
+
+	public int isId(String id, String pass) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int insert(MemberBean m) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }

@@ -14,8 +14,12 @@ public class BoardModifyView implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		return null;
+		ActionForward actionforward = new ActionForward();
+		actionforward.setRedirect(false);
+		actionforward.setPath("board/BoardModify.jsp");
+		return actionforward;
+		
+		
 	}
 
 }
