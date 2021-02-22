@@ -9,6 +9,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 public class CommentDAO {
 
@@ -76,7 +77,7 @@ public class CommentDAO {
 			sort="desc";
 		}
 
-		String sql = "select * from ( select b.*, rownum rnum from(select num, comm.comment_id, comment_content, comment_date, "
+		String sql = "select * from ( select b.*, rownum rnum from(select comment_num, comm.comment_id, comment_content, comment_date, "
 				+ "comment_re_lev, comment_re_seq, comment_re_ref, member.memberfile from comm join member "
 				+ "on comm.comment_id=member.id where comment_board_ref = ? order by comment_re_ref " + sort + ", " 
 				+ "comment_re_seq asc)b"
@@ -84,7 +85,6 @@ public class CommentDAO {
 		
 		JsonArray array = new JsonArray();
 		
-		// 한 페이지당 10개씩 목록인 경우 1페이지, 2페이지, 3페이지, 4페이지...
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -95,14 +95,15 @@ public class CommentDAO {
 			// DB에서 가져온 데이터를 VO 개체에 담습니다.
 			while (rs.next()) {
 				JsonObject object = new JsonObject();
-				object.addProperty("num", rs.getInt(1));
-				object.addProperty("id", rs.getString(2));
-				object.addProperty("content", rs.getString(3));
-				object.addProperty("reg_date", rs.getString(4));
-				object.addProperty("comment_re_lev", rs.getInt(5));
-				object.addProperty("comment_re_seq", rs.getInt(6));
-				object.addProperty("comment_re_ref", rs.getInt(7));
-				object.addProperty("memberfile", rs.getString(8));
+				object.addProperty("comment_num", rs.getInt(1));
+				object.addProperty("comment_board_ref", rs.getInt(2));
+				object.addProperty("comment_id", rs.getString(3));
+				object.addProperty("comment_content", rs.getString(4));
+				object.addProperty("comment_date", rs.getString(5));
+				object.addProperty("comment_re_ref", rs.getInt(6));
+				object.addProperty("comment_re_lev", rs.getInt(7));
+				object.addProperty("comment_re_seq", rs.getInt(8));
+				object.addProperty("memberfile", rs.getString(9));
 				array.add(object);
 			}
 

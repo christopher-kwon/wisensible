@@ -9,7 +9,8 @@ public class CommentBean {
 	private String comment_date;
 	private int comment_re_ref;
 	private int comment_re_lev;
-	
+	private int comment_re_seq;
+
 	public int getComment_num() {
 		return comment_num;
 	}
@@ -58,7 +59,6 @@ public class CommentBean {
 	public void setComment_re_seq(int comment_re_seq) {
 		this.comment_re_seq = comment_re_seq;
 	}
-	private int comment_re_seq;
 	
 
 }
