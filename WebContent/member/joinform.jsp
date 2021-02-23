@@ -6,7 +6,7 @@
 <head>
 <title>회원 가입</title>
 <jsp:include page="/board/header.jsp"/>
-<link href="../css/join.css" type="text/css" rel="stylesheet">
+<link href="css/join.css" type="text/css" rel="stylesheet">
 <script src="js/jquery-3.5.1.js"></script>
 <script src="js/join.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,7 +44,7 @@ $(function(){
 <h1>회원가입</h1>
 <form name="joinform" action="joinProcess.com" method="post">
 	
-	<div class="container">
+	<div class="container3">
 	  <fieldset>
 	  
 	   <b>이름</b>

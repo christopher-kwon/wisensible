@@ -9,7 +9,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-
 public class MemberDAO {
 	//2021.2.22 1차 완료
 	private DataSource ds;
@@ -38,6 +37,8 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
+				System.out.println(rs.getString(2));
+				System.out.println(member_pass);
 				if(rs.getString(2).equals(member_pass)) {
 					result= 1;//아이디와 비밀번호가 일치하는 경우
 				}else {
@@ -194,6 +195,61 @@ public class MemberDAO {
 				}
 		}
 		return result;
+	}
+
+	//2021.2.23
+	public MemberBean member_info(String id) {
+		MemberBean memberbean = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = ds.getConnection();
+			
+			String sql = "select * from member where member_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				memberbean = new MemberBean();
+				memberbean.setMember_name(rs.getString(1));
+				memberbean.setMember_id(rs.getString(2));
+				memberbean.setMember_password(rs.getString(3));
+				memberbean.setMember_birth(rs.getString(4));
+				memberbean.setMember_gender(rs.getString(5));
+				memberbean.setMember_email(rs.getString(6));
+				memberbean.setMember_tel(rs.getString(7));
+				memberbean.setMember_bank(rs.getString(8));
+				memberbean.setMember_account(rs.getString(9));
+				memberbean.setMember_address(rs.getString(10));
+				memberbean.setMember_interest(rs.getString(11));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Member_info()에러");
+		}finally {
+			if(rs !=null)
+				try {
+					rs.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			if(pstmt !=null)
+				try {
+					pstmt.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			if(con !=null)
+				try {
+					con.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+		}
+		return memberbean;
 	}
 	
 }

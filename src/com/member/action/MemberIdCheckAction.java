@@ -16,7 +16,7 @@ public class MemberIdCheckAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		MemberDAO memberdao = new MemberDAO();
-		int result = memberdao.isId(request.getParameter("member_id"));
+		int result = memberdao.isId(request.getParameter("id"));
 		response.getWriter().append(Integer.toString(result));
 		System.out.println(result);
 		return null;
