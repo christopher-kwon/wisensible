@@ -57,16 +57,15 @@ public class BoardAddAction implements Action {
 			boardbean.setBoard_origin(multi.getParameter("board_origin"));
 			boardbean.setBoard_expirydate(multi.getParameter("board_expirydate"));
 			boardbean.setBoard_deliverycost(Integer.parseInt(multi.getParameter("board_deliverycost")));
-
-			String filename = multi.getFilesystemName("board_thumbnail");
-			boardbean.setBoard_thumbnail(filename);
+			boardbean.setBoard_thumbnail(multi.getFilesystemName("board_thumbnail"));
+			
 			// 파일추가 1-4
 
 			result = boarddao.boardInsert(boardbean);
 
 			if (result == false) {
 				System.out.println("판매글 등록실패");
-				forward.setPath("error.error.jsp");
+				forward.setPath("error/error.jsp");
 				request.setAttribute("message", "게시판 등록 실패입니다.");
 				forward.setRedirect(false);
 				return forward;

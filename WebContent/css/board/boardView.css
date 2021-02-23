@@ -374,3 +374,7 @@ a:hover {
 	margin:10px;
 	text-align:center;
 }
+
+.view_thumbnail{
+	object-fit: cover;
+}

@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
-
-
-
-
-
 <jsp:include page="header.jsp" />
 <script src="js/writeform.js"></script>
 <link href="css/write.css" type="text/css" rel="stylesheet">
@@ -37,10 +31,10 @@
 			
 
 				<label for="board_file"></label> <label for="board_thumbnail"> <img
-					src="image/mainadd.jpg" width="400px" height="400px">
+					src="image/mainadd.jpg" width="400px" height="400px" id="board_thumbnail_view">
 
 				</label> <input type="file" id="board_thumbnail" name="board_thumbnail"
-					style="display: none">
+					style="display: none">  <span id="board_thumbnail_name"></span>
 
 		
 
@@ -158,16 +152,21 @@
 
 			</div>
 
-			<div class="form-group">
+<div class="form-group">
+<label for="board_file">파일첨부</label><br>
+<label for="upfile">
+</label>
+<input type="file" id="upfile1" name="board_file1">
+<span id="filevalue1"></span><br>
+<input type="file" id="upfile2" name="board_file2">
+<span id="filevalue2"></span><br>
+<input type="file" id="upfile3" name="board_file3">
+<span id="filevalue3"></span><br>
+<input type="file" id="upfile4" name="board_file4">
+<span id="filevalue4"></span><br>
+</div>
 
-				<label for="board_file"></label> <label for="upfile"> </label>
-				 <input type="file"  id="upfile" class="btn-add" multiple style="display:none"
-					 name="board_file"> 
-					 <button type = "button"class="btn-add" id="file_add">파일업로드</button>
-					 <span
-					id="filevalue"></span>
 
-			</div>
 <div class="form-group">
 
 				<label for="board_pass">Passward : </label> <input name="board_passward"
