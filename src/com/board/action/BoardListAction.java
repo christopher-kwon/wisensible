@@ -11,11 +11,14 @@ import com.ActionForward;
 
 public class BoardListAction implements Action {
 
-	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    	ActionForward actionForward = new ActionForward();
+    	actionForward.setRedirect(false);
+    	actionForward.setPath("/board/mainPage.jsp");
+
+        return actionForward;
+    }
 
 }
