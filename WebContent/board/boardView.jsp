@@ -8,14 +8,6 @@
 <link href="css/board/boardView.css" rel="stylesheet">
 <script src="js/board/boardView.js"></script>
 
-<%
-request.setCharacterEncoding("utf-8");
-%>
-
-
-
-
-
 <div class="container">
 <input type="hidden" id="loginid" value="${member_id}" name="loginid">
 
