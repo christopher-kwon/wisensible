@@ -140,7 +140,7 @@ hr {
 
 h1 {
 	text-align: center;
-	padding-top: 3%; 
+	padding-top: 5%; 
 }
 
 b {
@@ -150,7 +150,7 @@ b {
 
 span {
 	display: inline-block;
-	margin-top: -20px;
+	margin-top: -10px;
 	font-size: 10px
 }
 h3{text-align: center; color: #1a92b9}
