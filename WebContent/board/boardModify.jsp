@@ -25,7 +25,8 @@
 				<option value="해산물">해산물</option>
 			</select> &emsp;Subject : <input type="text" name="board_subject"  value="${boardBean.board_subject }"
 				id="board_subject" maxlength="30" class="form-input">
-
+<input name="board_num" type="text" value="${boardBean.board_num}"
+					style="display:none">
 		</div>
 		<hr>
 			
@@ -98,7 +99,7 @@
 
 				<label for="board_delivery">배 송 방 법&emsp; :&emsp;</label> <input
 					name="board_delivery" id="board_delivery" type="text"
-					maxlength="100" class="form-input" vale="${boardBean.board_delivery }">
+					maxlength="100" class="form-input" value="${boardBean.board_delivery }">
 
 
 			</div>

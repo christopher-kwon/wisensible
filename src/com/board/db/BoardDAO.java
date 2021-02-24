@@ -131,12 +131,12 @@ public class BoardDAO {
 	public boolean boardModify(BoardBean boardBean) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "update board set board_subject = ?, board_price= ?, board_bank = ? "
+		String sql = "update board set board_subject = ?, board_price= ?, board_bank = ?, "
 				+ "board_acoount = ?, board_tel = ?, board_delivery = ?,"
 				+ "board_product = ?, board_amount = ?, board_producer = ?,"
 				+ "board_expirydate = ?, board_origin = ?, board_storage = ?,"
 				+ "board_deliverycost = ?, board_content = ?, board_file1 = ?,"
-				+ "board_file2 = ?, board_file3 = ?, board_file4 = ?, board_file5 = ? where board_num = ?";
+				+ "board_file2 = ?, board_file3 = ?, board_file4 = ?, board_thumbnail = ? where board_num = ?";
 
 		try {
 			conn = ds.getConnection();

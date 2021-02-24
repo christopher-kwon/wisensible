@@ -19,7 +19,7 @@ public class BoardDeleteAction implements Action {
 		boolean result = false;
 		boolean userCheck = false;
 
-		int board_num = Integer.parseInt(request.getParameter("num"));
+		int board_num = Integer.parseInt(request.getParameter("board_num"));
 		String board_pass = request.getParameter("board_pass");
 
 		BoardDAO boardDAO = new BoardDAO();
