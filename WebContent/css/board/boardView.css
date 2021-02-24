@@ -386,7 +386,7 @@ a:hover {
 	text-align:center;
 }
 
-.star_result a {
+.star_result > label  {
 	color: #e3e3df;
 	font-size: 3em;
 		text-decoration: none;
@@ -400,11 +400,11 @@ a:hover {
 		text-align:center;
 }
 
-}
 
-.star_result on {
+
+.star_result > label.on{
 	text-decoration: none;
 	color: #ffa630;
-	font-size: 2em;
+	font-size: 3em;
 		text-align:center;
 }

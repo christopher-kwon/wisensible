@@ -43,12 +43,12 @@
       </tr>
       
                   <tr>
-<td><strong>평점</strong> ${eb.evaluation_avg}
+<td><strong>평점</strong> 
 
 	<div class="star_result">
-		<a href="#">★</a> <a href="#">★</a> <a href="#">★</a> <a href="#">★</a>
-		<a href="#">★</a>
-
+	<label for="1">★</label><label for="2">★</label><label for="3">★</label><label for="4">★</label>
+	<label for="5">★</label>
+	<p id="res" style="text-align:;"></p>
 	</div>	<hr>
 
 	<div class="star_box">
