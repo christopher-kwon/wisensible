@@ -44,7 +44,7 @@ $(function(){
 <h1>회원가입</h1>
 <form name="joinform" action="joinProcess.com" method="post">
 	
-	<div class="container">
+	<div class="container3">
 	  <fieldset>
 	  
 	   <b>이름</b>

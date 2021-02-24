@@ -240,9 +240,9 @@ $(function() {
 		$.ajax({
 			url : 'CommentReply.bo', //원문 등록
 			data : {
-				id : $("#loginid").val(),
+				comment_id : $("#loginid").val(),
 				comment_content : content,
-				comment_board_num : $("#board_re_ref").val(),
+				comment_board_ref : $("#board_re_ref").val(),
 				comment_re_lev : lev,
 				comment_re_ref : ref,
 				comment_re_seq : seq

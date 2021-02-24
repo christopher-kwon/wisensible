@@ -33,7 +33,7 @@ public class MemberLoginProcessAction implements Action {
 			session.setAttribute("id", member_id);
 
 			forward.setRedirect(true);
-			forward.setPath("BoardList.bo");
+			forward.setPath("memberInfo.com");
 			//forward.setPath("BoardWrite.bo");
 			return forward;
 		} else {
@@ -43,7 +43,7 @@ public class MemberLoginProcessAction implements Action {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('" + message + "');'");
+			out.println("alert('" + message + "');");
 			out.println("location.href='login.com';");
 			out.println("</script>");
 			out.close();
