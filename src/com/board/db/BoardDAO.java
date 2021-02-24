@@ -8,22 +8,127 @@ import java.sql.SQLException;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BoardDAO {
+    private DataSource ds;
 
-	private DataSource ds;
+    // å ì™ì˜™å ì™ì˜™å ìŒ˜ìš¸ì˜™å ì™ì˜™ JNDI å ì™ì˜™å ìŒ€ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì‹¹ìš¸ì˜™ Connection å ì™ì˜™ì²´å ì™ì˜™ å ì™ì˜™å ì‹¬ë‹ˆëŒì˜™.
+    public BoardDAO() {
+        try {
+            Context init = new InitialContext();
+            ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
+        } catch (Exception e) {
+            System.out.println("DBå ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™ : " + e);
+            return;
+        }
+    }
 
-	public BoardDAO() {
-		try {
-			Context init = new InitialContext();
-			ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
-		} catch (Exception e) {
+    public int getListcount() {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
 
-			System.out.println("DB ¿¬°á ½ÇÆĞ: " + e);
-			return;
-		}
-	}
+        int result = 0;
 
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement("select count(*) from BOARD");
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                result = resultSet.getInt(1);
+            }
+        } catch (Exception ex) {
+            System.out.println("getListcount() Â—ÂÂŸ : " + ex);
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return result;
+    }
+
+
+    public List<BoardBean> getBoardList(int page, int limit) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+//        String board_list_sql = "select * from (select * from board order by ROWNUM desc) where ROWNUM <= 12";
+        String board_list_sql = "select * from BOARD";
+
+        List<BoardBean> list = new ArrayList<BoardBean>();
+        int startRow = (page -1) * limit +1;
+        int endRow = startRow + limit -1;
+
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(board_list_sql);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                BoardBean boardBean = new BoardBean();
+                boardBean.setBoard_num(resultSet.getInt("board_num"));
+                boardBean.setBoard_name(resultSet.getString("board_name"));
+                boardBean.setBoard_subject(resultSet.getString("board_subject"));
+                boardBean.setBoard_content(resultSet.getString("board_content"));
+                boardBean.setBoard_price(resultSet.getInt("board_price"));
+                list.add(boardBean);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("getBoardList() Â—ÂÂŸ : " + ex);
+        } finally {
+            if(resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            if(preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            if(connection != null) {
+                try {
+                    connection.close();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return list;
+    }
+  
 	public void setReadCountUpdate(int board_num) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -36,7 +141,7 @@ public class BoardDAO {
 			pstmt.setInt(1, board_num);
 			pstmt.executeUpdate();
 		} catch (Exception ex) {
-			System.out.println("setReadCountUpdate() ¿¡·¯ : " + ex);
+			System.out.println("setReadCountUpdate() ì—ëŸ¬ : " + ex);
 		} finally {
 			if (pstmt != null)
 				try {
@@ -98,7 +203,7 @@ public class BoardDAO {
 			}
 
 		} catch (Exception e) {
-			System.out.println("getDetail() ¿¡·¯ : " + e);
+			System.out.println("getDetail() ì—ëŸ¬ : " + e);
 
 			e.printStackTrace();
 		} finally {
@@ -131,12 +236,12 @@ public class BoardDAO {
 	public boolean boardModify(BoardBean boardBean) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "update board set board_subject = ?, board_price= ?, board_bank = ? "
-				+ "board_acoount = ?, board_tel = ?, board_delivery = ?,"
+		String sql = "update board set board_subject = ?, board_price= ?, board_bank = ?, "
+				+ "board_account = ?, board_tel = ?, board_delivery = ?,"
 				+ "board_product = ?, board_amount = ?, board_producer = ?,"
 				+ "board_expirydate = ?, board_origin = ?, board_storage = ?,"
 				+ "board_deliverycost = ?, board_content = ?, board_file1 = ?,"
-				+ "board_file2 = ?, board_file3 = ?, board_file4 = ?, board_file5 = ? where board_num = ?";
+				+ "board_file2 = ?, board_file3 = ?, board_file4 = ?, board_thumbnail = ? where board_num = ?";
 
 		try {
 			conn = ds.getConnection();
@@ -165,13 +270,13 @@ public class BoardDAO {
 			int result = pstmt.executeUpdate();
 
 			if (result == 1) {
-				System.out.println("¼º°ø ¾÷µ¥ÀÌÆ®");
+				System.out.println("ì„±ê³µ ì—…ë°ì´íŠ¸");
 				return true;
 			}
 
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-			System.out.println("boardModify() ¿¡·¯ : " + ex);
+			System.out.println("boardModify() ì—ëŸ¬ : " + ex);
 
 		} finally {
 
@@ -214,7 +319,7 @@ public class BoardDAO {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("isBoardWriter() ¿¡·¯ : " + e);
+			System.out.println("isBoardWriter() ì—ëŸ¬ : " + e);
 		} finally {
 			try {
 				if (rs != null)
@@ -257,13 +362,13 @@ public class BoardDAO {
 			int result = pstmt.executeUpdate();
 
 			if (result == 1) {
-				System.out.println("¼º°ø ¾÷µ¥ÀÌÆ®");
+				System.out.println("ì„±ê³µ ì—…ë°ì´íŠ¸");
 				return true;
 			}
 
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-			System.out.println("boardDelete() ¿¡·¯ : " + ex);
+			System.out.println("boardDelete() ì—ëŸ¬ : " + ex);
 
 		} finally {
 
@@ -325,12 +430,12 @@ public class BoardDAO {
 			pstmt.setString(23, boardbean.getBoard_expirydate());
 			result = pstmt.executeUpdate();
 			if (result == 1) {
-				System.out.println("µ¥ÀÌÅÍ »ğÀÔÀÌ ¸ğµÎ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+				System.out.println("ë°ì´í„° ì‚½ì…ì´ ëª¨ë‘ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
 				return true;
 			}
 
 		} catch (Exception se) {
-			System.out.println("Insert() ¿¡¼­ : " + se);
+			System.out.println("Insert() ì—ì„œ : " + se);
 			se.printStackTrace();
 		} finally {
 
@@ -343,7 +448,7 @@ public class BoardDAO {
 			}
 			try {
 				if (conn != null)
-					conn.close();// 4´Ü°è Db¿¬°á²÷±â
+					conn.close();// 4ë‹¨ê³„ Dbì—°ê²°ëŠê¸°
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 
@@ -352,5 +457,4 @@ public class BoardDAO {
 		return false;
 
 	}
-
 }
