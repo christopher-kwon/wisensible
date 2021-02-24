@@ -1,7 +1,11 @@
 package com.board.db;
 
 public class BoardBean {
-
+    private int board_num;
+    private String board_name;
+    private String board_subject;
+    private String board_content;
+    private String board_price;
 	private String board_category;
 	private int board_num;
 	private String board_subject;
@@ -177,10 +181,3 @@ public class BoardBean {
 	public void setBoard_expirydate(String board_expirydate) {
 		this.board_expirydate = board_expirydate;
 	}
-	
-	
-
-
-
-
-}
