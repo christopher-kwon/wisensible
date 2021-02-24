@@ -38,7 +38,7 @@ public class BoardDAO {
 
         try {
             connection = ds.getConnection();
-            preparedStatement = connection.prepareStatement("select count(*) from BOARD_TEST");
+            preparedStatement = connection.prepareStatement("select count(*) from BOARD");
             resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
@@ -79,8 +79,8 @@ public class BoardDAO {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
-        String board_list_sql = "select * from (select * from board_test order by ROWNUM desc) where ROWNUM <= 12";
-//        String board_list_sql = "select * from BOARD_TEST";
+//        String board_list_sql = "select * from (select * from board order by ROWNUM desc) where ROWNUM <= 12";
+        String board_list_sql = "select * from BOARD";
 
         List<BoardBean> list = new ArrayList<BoardBean>();
         int startRow = (page -1) * limit +1;
@@ -97,7 +97,7 @@ public class BoardDAO {
                 boardBean.setBoard_name(resultSet.getString("board_name"));
                 boardBean.setBoard_subject(resultSet.getString("board_subject"));
                 boardBean.setBoard_content(resultSet.getString("board_content"));
-                boardBean.setBoard_price(resultSet.getString("board_price"));
+                boardBean.setBoard_price(resultSet.getInt("board_price"));
                 list.add(boardBean);
             }
         } catch (Exception ex) {
@@ -236,12 +236,12 @@ public class BoardDAO {
 	public boolean boardModify(BoardBean boardBean) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "update board set board_subject = ?, board_price= ?, board_bank = ? "
-				+ "board_acoount = ?, board_tel = ?, board_delivery = ?,"
+		String sql = "update board set board_subject = ?, board_price= ?, board_bank = ?, "
+				+ "board_account = ?, board_tel = ?, board_delivery = ?,"
 				+ "board_product = ?, board_amount = ?, board_producer = ?,"
 				+ "board_expirydate = ?, board_origin = ?, board_storage = ?,"
 				+ "board_deliverycost = ?, board_content = ?, board_file1 = ?,"
-				+ "board_file2 = ?, board_file3 = ?, board_file4 = ?, board_file5 = ? where board_num = ?";
+				+ "board_file2 = ?, board_file3 = ?, board_file4 = ?, board_thumbnail = ? where board_num = ?";
 
 		try {
 			conn = ds.getConnection();
