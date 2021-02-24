@@ -38,8 +38,6 @@ public class BoardAddAction implements Action {
 			MultipartRequest multi = null;
 			multi = new MultipartRequest(request, realFolder, fileSize, "utf-8", new DefaultFileRenamePolicy());
 
-		
-
 			boardbean.setBoard_name(multi.getParameter("id"));
 			boardbean.setBoard_pass(multi.getParameter("board_passward"));
 			boardbean.setBoard_subject(multi.getParameter("board_subject"));
@@ -58,7 +56,11 @@ public class BoardAddAction implements Action {
 			boardbean.setBoard_expirydate(multi.getParameter("board_expirydate"));
 			boardbean.setBoard_deliverycost(Integer.parseInt(multi.getParameter("board_deliverycost")));
 			boardbean.setBoard_thumbnail(multi.getFilesystemName("board_thumbnail"));
-			
+			boardbean.setBoard_file1(multi.getFilesystemName("board_file1"));
+			boardbean.setBoard_file2(multi.getFilesystemName("board_file2"));
+			boardbean.setBoard_file3(multi.getFilesystemName("board_file3"));
+			boardbean.setBoard_file4(multi.getFilesystemName("board_file4"));
+
 			// 파일추가 1-4
 
 			result = boarddao.boardInsert(boardbean);

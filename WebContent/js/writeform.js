@@ -41,7 +41,7 @@ $(document).ready(
 	 });
 	 				$("#upfile1").change(function() {
 		var inputfile1 = $(this).val().split('\\');
-		$('#filevalue1').text(inputfile1[inputfile1.length - 1]).css("display","none");
+		$('#filevalue1').text(inputfile1[0][inputfile1.length - 1]).css("display","none");
 		var filename1 = $('#filevalue1').text();
 		console.log(filename1);
 	});
