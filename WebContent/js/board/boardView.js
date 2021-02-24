@@ -11,26 +11,27 @@
 				console.log(rdata)
 				switch (rdata) {
 				case "1" :
-					$("div.star_result > a:nth-child(1)").prevAll("a").addClass("on")
+					$(".star_result > label:nth-child(2)").prevAll("label").addClass("on")
 					break;
 				case "2" :
-					$("div.star_result > a:nth-child(2)").prevAll("a").addClass("on")
+					$(".star_result > label:nth-child(3)").prevAll("label").addClass("on")
 					break;
 
 				case "3":
-					$("div.star_result > a:nth-child(3)").prevAll("a").addClass("on")
+					$(".star_result > label:nth-child(4)").prevAll("label").addClass("on")
 					break;
 
 				case "4":
-					$("div.star_result > a:nth-child(4)").prevAll("a").addClass("on")
+					$(".star_result > label:nth-child(5)").prevAll("label").addClass("on")
 					break;
 
 				case "5":
-					$("div.star_result > a:nth-child(5)").prevAll("a").addClass("on")
+					$(".star_result > label:nth-child(6)").prevAll("label").addClass("on")
 					break;
 
 				
-				} // switch end
+				} 
+				$("#res").text(rdata+ " 점 / 5 점");
 
 				
 				
@@ -199,6 +200,7 @@ function replyform(comment_num, lev, seq, ref){
 } //function(replyform) end
 
 $(function() {
+	getListev();
 	option=1;
 	getList(option); //처음 로드 될때는 등록순 정렬
 	
