@@ -5,8 +5,8 @@
 <%@ include file="header.jsp"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link href="../css/board/boardView.css" rel="stylesheet">
-<script src="../js/board/boardView.js"></script>
+<link href="css/board/boardView.css" rel="stylesheet">
+<script src="js/board/boardView.js"></script>
 
 <div class="container">
 <input type="hidden" id="loginid" value="${member_id}" name="loginid">
