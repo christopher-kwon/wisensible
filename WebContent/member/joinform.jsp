@@ -51,11 +51,8 @@ $(function(){
 		<input type="text" name="name" placeholder="Enter name" required maxlength="15">
 	  
        <b>아이디</b>
-		<div>
-       		<input type="text" placeholder="Enter id" name="id" id="id">
-       		<input type="button" value="ID중복검사	" id="idcheck">
-       		<span id="message"></span>
-       	</div>
+		<input type="text" name="id" placeholder="Enter id" required maxlength="12">
+		<span id="message"></span>
 		
 		
 	   <b>비밀번호</b>
@@ -63,7 +60,7 @@ $(function(){
 		
 	   <b>비밀번호 확인</b>
        	<input type="password" placeholder="Enter Password Check" 
-       		name="passck" onblur="passck()" required>
+       		name="passck" required>
        	<span id="pass_message"></span>
 	
 	

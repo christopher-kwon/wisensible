@@ -17,7 +17,7 @@ public class MemberDeleteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		MemberDAO memberdao = new MemberDAO();
-		String member_id = request.getParameter("member_id");
+		String member_id = request.getParameter("id");
 		response.setContentType("text/html;charset=utf-8");
 
 		PrintWriter out = response.getWriter();
@@ -25,7 +25,7 @@ public class MemberDeleteAction implements Action {
 		if (result == 1) {
 			out.println("<script>");
 			out.println("alert('삭제 성공입니다.');");
-			out.println("location.href='BoardCategoryListAction.bo'");
+			out.println("location.href='login.com'");
 			out.println("</script>");
 		} else {
 			out.println("<script>");

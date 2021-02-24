@@ -51,7 +51,7 @@ $(document).ready(function(){
 		var passck = $("input[name=passck]").val();
 		if(pass != passck){
 			$("#pass_message").css('color', 'red').html("비밀번호가 서로 일치하지 않습니다.");
-			checkid=false;
+			checkpass=false;
 			return;
 		}
 	});
