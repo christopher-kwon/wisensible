@@ -1,19 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
-
-
-
-
-
 <jsp:include page="header.jsp" />
 <script src="js/writeform.js"></script>
 <link href="css/write.css" type="text/css" rel="stylesheet">
 
 <div class="container">
 
-	<form action="BoardAddaction.bo" method="post"
+	<form action="BoardAddAction.bo" method="post"
 		enctype="multipart/form-data" name=board-form>
 
 		<h2>판매 글 작성</h2>
@@ -27,8 +21,8 @@
 				<option>과 일</option>
 				<option>채 소</option>
 				<option>곡 물</option>
-				<option>축 산</option>
-				<option>해 산</option>
+				<option>축 산 물</option>
+				<option>해 산 물</option>
 			</select> &emsp;Subject : <input type="text" name="board_subject"  placeholder="제목을 입력하세요"
 				id="board_subject" maxlength="30" class="form-input">
 
@@ -36,16 +30,20 @@
 		<hr>
 			
 
-				<label for="board_file"></label> <label for="main_file"> <img
-					src="image/mainadd.jpg" width="400px" height="400px">
+				<label for="board_file"></label> <label for="board_thumbnail"> <img
+					src="image/mainadd.jpg" width="400px" height="400px" id="board_thumbnail_view">
 
-				</label> <input type="file" id="main_file" name="board_file"
-					style="display: none">
+				</label> <input type="file" id="board_thumbnail" name="board_thumbnail"
+					style="display: none">  <span id="board_thumbnail_name"></span>
 
 		
 
 
 <div class="form-info">
+				<label for ="board_name"><input name="board_name" type="text" value="${id}"
+					style="display:none"></label>
+
+
 			<div class="form-group">
 			
 				<label for="board_ price">가&emsp; &nbsp;&emsp;격 &emsp;:&emsp; </label> <input name="board_price"
@@ -118,50 +116,64 @@
 				<table class="table table-borderd">
 					<tr>
 						<th>상 품 명</th>
-						<td><input type="text" id="board_product" required placeholder="Enter Product"></td>
+						<td><input type="text" name="board_product" id="board_product" required placeholder="Enter Product"></td>
 					</tr>
 					<tr>
 						<th>수 량</th>
-						<td><input type="text" id="board_amount" placeholder="Enter Amount" required></td>
+						<td><input type="text" name= "board_amount"id="board_amount" placeholder="Enter Amount" required></td>
 					</tr>
 					<tr>
 						<th>생 산 자</th>
-						<td><input type="text" id="board_producer" placeholder="Enter Producer" required></td>
+						<td><input type="text" name="board_producer" id="board_producer" placeholder="Enter Producer" required></td>
 					</tr>
 					<tr>
 						<th>유 통 기 한</th>
-						<td><input type="text" id="board_epirydate" placeholder="Enter epirydate" required></td>
+						<td><input type="text" name="board_expirydate" id="board_expirydate" placeholder="Enter epirydate" required></td>
 					</tr>
 					<tr>
 						<th>원 산 지</th>
-						<td><input type="text" id="board_origin" placeholder="Enter Origin" required></td>
+						<td><input type="text" name="board_origin" id="board_origin" placeholder="Enter Origin" required></td>
 					</tr>
 					<tr>
 						<th>보 관 방 법</th>
-						<td><input type="text" id="board_storage"  placeholder="Enter Storage" required></td>
+						<td><input type="text" name="board_storage" id="board_storage"  placeholder="Enter Storage" required></td>
 					</tr>
 					<tr>
 						<th>배 송 비 용</th>
-						<td><input type="text" id="board_deliverycost"  placeholder="Enter 배송비용" required></td>
+						<td><input type="text" name="board_deliverycost" id="board_deliverycost"  placeholder="Enter 배송비용" required></td>
 					</tr>
 				</table>
 			</div>
 			<hr>
 			<h2>Content </h2>
 			<div class="form-group">
-				<textarea class="form-control"></textarea>
+				<textarea class="form-control" id="board_content" name="board_content"></textarea>
 
 
 			</div>
 
-			<div class="form-group">
+<div class="form-group">
+<label for="board_file">파일첨부</label><br>
+<label for="upfile">
+</label>
+<input multiple="multiple" type="file" id="upfile1" name="board_file1">
+<span id="filevalue1"></span><br>
+<input type="file" id="upfile2" name="board_file2">
+<span id="filevalue2"></span><br>
+<input type="file" id="upfile3" name="board_file3">
+<span id="filevalue3"></span><br>
+<input type="file" id="upfile4" name="board_file4">
+<span id="filevalue4"></span><br>
+</div>
 
-				<label for="board_file">파일첨부</label> <label for="upfile"> </label> <input
-					type="file" multiple id="upfile" name="board_file"> <span
-					id="filevalue"></span>
+
+<div class="form-group">
+
+				<label for="board_pass">Passward : </label> <input name="board_passward"
+					id="board_passward" type="text" maxlength="100" class="form-input"
+					placeholder="Enter passward">
 
 			</div>
-
 
 
 		<div class="form-group">
