@@ -37,7 +37,6 @@ public class BoardListAction implements Action {
         int listCount = boardDAO.getListcount();
 
         boardList = boardDAO.getBoardList(page, limit);
-        System.out.println("********* boardList = " + boardList);
 
         int maxPage = (listCount + limit -1) / limit;
         System.out.println("총 페이지 수 = " + maxPage);
@@ -61,7 +60,6 @@ public class BoardListAction implements Action {
 
         ActionForward actionForward = new ActionForward();
         actionForward.setRedirect(false);
-        System.out.println("메인 페이지로 이동");
         actionForward.setPath("/board/mainPage.jsp");
 
         return actionForward;
