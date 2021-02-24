@@ -11,7 +11,7 @@ import com.ActionForward;
 import com.evaluation.db.EvaluationBean;
 import com.evaluation.db.EvaluationDAO;
 
-public class EvalutaionGet implements Action {
+public class EvaluationGet implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -20,11 +20,18 @@ public class EvalutaionGet implements Action {
 		EvaluationDAO edao = new EvaluationDAO();
 		
 		int board_num = Integer.parseInt(request.getParameter("board_num"));
-		System.out.println(board_num);
+		System.out.println("board_num="+board_num);
 		
 		int avg = edao.getAvg(board_num);
-		System.out.println(avg);
+		System.out.println("avg = "+avg);
+		EvaluationBean eb= new EvaluationBean();
+		eb.setEvaluation_avg(avg);
+		
+		
+		response.getWriter().append(Integer.toString(avg));
 		return null;
+		
+		
 		
 		
 		

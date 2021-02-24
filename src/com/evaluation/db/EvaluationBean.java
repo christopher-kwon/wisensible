@@ -6,7 +6,7 @@ public class EvaluationBean {
 	private String evalueation_name;
 	private int evaluation;
 	private String reply_date;
-	
+	private int evaluation_avg;
 	
 	
 	
@@ -40,6 +40,12 @@ public class EvaluationBean {
 	}
 	public void setReply_date(String reply_date) {
 		this.reply_date = reply_date;
+	}
+	public int getEvaluation_avg() {
+		return evaluation_avg;
+	}
+	public void setEvaluation_avg(int evaluation_avg) {
+		this.evaluation_avg = evaluation_avg;
 	}
 
 	

@@ -50,7 +50,7 @@
 
 
 <script>
-	function getList(state) {
+	function getList() {
 		$.ajax({
 			type : "post",
 			url : "EvaluationGet.ev",

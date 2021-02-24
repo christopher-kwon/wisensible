@@ -1,3 +1,51 @@
+		function getListev() {
+		$.ajax({
+			type : "post",
+			url : "EvaluationGet.ev",
+			data : {
+				"board_num" : $("#board_num").val(),
+				
+			},
+			
+			success : function(rdata) {
+				console.log(rdata)
+				switch (rdata) {
+				case "1" :
+					$("div.star_result > a:nth-child(1)").prevAll("a").addClass("on")
+					break;
+				case "2" :
+					$("div.star_result > a:nth-child(2)").prevAll("a").addClass("on")
+					break;
+
+				case "3":
+					$("div.star_result > a:nth-child(3)").prevAll("a").addClass("on")
+					break;
+
+				case "4":
+					$("div.star_result > a:nth-child(4)").prevAll("a").addClass("on")
+					break;
+
+				case "5":
+					$("div.star_result > a:nth-child(5)").prevAll("a").addClass("on")
+					break;
+
+				
+				} // switch end
+
+				
+				
+				
+				
+				
+
+			}
+		})
+	}
+
+
+
+
+
 function getList(state) {
 	option = state; 
 	
@@ -259,6 +307,57 @@ $(function() {
 	//답변 달기 후 취소 버튼을 클릭한 경우
 	$('.CommentBox').on('click', '.reply_cancel', function() {
 		$(this).parent().parent().parent().remove();
+	})
+	
+
+
+	ind = -1;
+	$(".star_box a").on('click', function() {
+
+		$(this).parent().children("a").removeClass("on");
+		$(this).addClass("on").prevAll("a").addClass("on")
+
+		ind = $(this).index() + 1
+		console.log(ind);
+		$("#lev").text(ind + " 점 / 5 점");
+
+	})
+
+	$("body > div > div > div.col-lg-9 > div.container > div.board_view_table > table > tbody > tr:nth-child(6) > td > div.star_box > div > button.btn.btn-info").click(function() {
+		if (ind == -1) {
+			alert("평점을 선택해주세요")
+			return;
+		}
+
+		$.ajax({
+			url : "EvaluationAdd.ev",
+			data : {
+				evaluation_name : "admin",//$("#loginid").val(),
+				evaluation : ind ,
+				board_num : 5//$('#board_re_ref').val()
+			},
+			type : "post",
+			success : function(rdata) {
+				if (rdata.length > 0) {
+					alert("평점등록완료");
+					$("star_box > a").text("")
+					$(".on").removeClass("on")
+					$("#lev").text("");
+					
+					getListev();
+				}
+			},
+			error :function(request, status, error){
+	            $("body").append("<div id ='error'>code : " + request.status + "<br>" +"받은데이터 : " + request.responseText + "<br>"
+	                    +"error status :" +status +"<br>"
+	                    +"error 메시지 : " + error +"</div>");
+	           },
+	           complete :function(){//요청의 실패, 성공과 상관없이 완료될 경우 호출
+	              $("body").append("<div id='com'>Ajax가 완료되었습니다.</div>");
+	           }
+
+		})
+
 	})
 	
 }) //function 

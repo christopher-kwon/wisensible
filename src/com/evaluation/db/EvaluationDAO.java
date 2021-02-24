@@ -27,10 +27,10 @@ public class EvaluationDAO {
 		 Connection conn = null;
 	     PreparedStatement pstmt = null;
 	      int result = 0;
-
+	      String max_sql = "(select nvl(max(evaluation_id),0)+1 from evaluation)";
 	      String sql = "insert into evaluation " 
 	            + "    values ("
-	            + " , ?, ?, ?, sysdate )";
+	            + max_sql +", ?, ?, ?, sysdate )";
 	      try {
 
 	         // context.xml에 리소스를 생성해놓은 (JNDI에 설정해놓은) jdbc/OracleDB를
@@ -45,7 +45,7 @@ public class EvaluationDAO {
 	         pstmt = conn.prepareStatement(sql);
 	         pstmt.setInt(1, evaluationbean.getBoard_num());
 	         pstmt.setString(2, evaluationbean.getEvalueation_name());
-	         pstmt.setInt(3,evaluationbean.getEvaluation_id());
+	         pstmt.setInt(3,evaluationbean.getEvaluation());
 	      
 	         
 	      

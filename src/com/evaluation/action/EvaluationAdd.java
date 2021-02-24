@@ -11,7 +11,7 @@ import com.ActionForward;
 import com.evaluation.db.EvaluationBean;
 import com.evaluation.db.EvaluationDAO;
 
-public class EvalutaionAdd implements Action {
+public class EvaluationAdd implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -22,7 +22,7 @@ public class EvalutaionAdd implements Action {
 		int evaluation =Integer.parseInt(request.getParameter("evaluation"));
 		int board_num =  Integer.parseInt(request.getParameter("board_num"));
 		
-		System.out.println("evaluation= " + evaluationbean.getEvaluation());
+
 		
 		evaluationbean.setEvalueation_name(evaluation_name);
 		evaluationbean.setEvaluation(evaluation);
