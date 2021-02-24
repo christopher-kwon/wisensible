@@ -14,17 +14,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Shop Homepage - Start Bootstrap Template</title>
+    <title>Wisensible-Farm</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/bootstrap/css/shop-homepage.css" rel="stylesheet">
+    <link href="../css/bootstrap/css/shop-homepage.css" rel="stylesheet">
 
     <!-- Bootstrap core JavaScript -->
-    <script src="css/bootstrap/vendor/jquery/jquery.min.js"></script>
-    <script src="css/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../css/bootstrap/vendor/jquery/jquery.min.js"></script>
+    <script src="../css/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </head>
 
@@ -44,10 +44,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
+                    <a class="nav-link" href="/login.com">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Join</a>
+                    <a class="nav-link" href="/logout.com">LogOut</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/join.com">Join</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
@@ -65,12 +68,12 @@
         <div class="col-lg-3">
 
             <h4 class="my-4">Wisensible-Farm</h4>
-            <div class="list-group" style="text-align: center">
-                <a href="/board/categoriList.jsp" class="list-group-item">과일</a>
-                <a href="/board/categoriList.jsp" class="list-group-item">채소</a>
-                <a href="/board/categoriList.jsp" class="list-group-item">곡물</a>
-                <a href="/board/categoriList.jsp" class="list-group-item">축산물</a>
-                <a href="/board/categoriList.jsp" class="list-group-item">해산물</a>
+            <div class="list-group" style="text-align: center;">
+                <a href="/board/categoryList.jsp" class="list-group-item">과일</a>
+                <a href="/board/categoryList.jsp" class="list-group-item">채소</a>
+                <a href="/board/categoryList.jsp" class="list-group-item">곡물</a>
+                <a href="/board/categoryList.jsp" class="list-group-item">축산물</a>
+                <a href="/board/categoryList.jsp" class="list-group-item">해산물</a>
             </div>
 
         </div>
@@ -79,5 +82,5 @@
         <div class="col-lg-9">
 
             <div class="row float-right">
-                <button type="button" class="btn btn-primary float-right">글 쓰 기</button>
+                <button type="button" class="btn btn-primary float-right" onclick="location.href='/BoardWrite.bo'">글 쓰 기</button>
             </div>
