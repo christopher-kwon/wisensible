@@ -21,7 +21,7 @@ public class MemberLoginProcessAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		String member_id = request.getParameter("id");
-		String member_password = request.getParameter("password");
+		String member_password = request.getParameter("pass");
 
 		MemberDAO memberdao = new MemberDAO();
 		int result = memberdao.isId(member_id, member_password);
