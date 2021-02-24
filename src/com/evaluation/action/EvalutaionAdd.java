@@ -8,14 +8,32 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.Action;
 import com.ActionForward;
+import com.evaluation.db.EvaluationBean;
+import com.evaluation.db.EvaluationDAO;
 
 public class EvalutaionAdd implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		EvaluationBean evaluationbean = new EvaluationBean();
+		
+		String evaluation_name =  request.getParameter("evaluation_name");
+		int evaluation =Integer.parseInt(request.getParameter("evaluation"));
+		int board_num =  Integer.parseInt(request.getParameter("board_num"));
+		
+		System.out.println("evaluation= " + evaluationbean.getEvaluation());
+		
+		evaluationbean.setEvalueation_name(evaluation_name);
+		evaluationbean.setEvaluation(evaluation);
+		evaluationbean.setBoard_num(board_num);
+		
+		EvaluationDAO edao = new EvaluationDAO();
+		int ok = edao.insert(evaluationbean);
+		response.getWriter().print(ok);
+		
 		return null;
+		
 	}
 
 }
