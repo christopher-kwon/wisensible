@@ -214,17 +214,17 @@ public class MemberDAO {
 			
 			if(rs.next()) {
 				memberbean = new MemberBean();
-				memberbean.setMember_name(rs.getString(1));
-				memberbean.setMember_id(rs.getString(2));
+				memberbean.setMember_id(rs.getString(1));
+				memberbean.setMember_name(rs.getString(2));
 				memberbean.setMember_password(rs.getString(3));
 				memberbean.setMember_birth(rs.getString(4));
-				memberbean.setMember_gender(rs.getString(5));
-				memberbean.setMember_email(rs.getString(6));
+				memberbean.setMember_email(rs.getString(5));
+				memberbean.setMember_gender(rs.getString(6));
 				memberbean.setMember_tel(rs.getString(7));
-				memberbean.setMember_bank(rs.getString(8));
-				memberbean.setMember_account(rs.getString(9));
-				memberbean.setMember_address(rs.getString(10));
-				memberbean.setMember_interest(rs.getString(11));
+				memberbean.setMember_address(rs.getString(8));
+				memberbean.setMember_interest(rs.getString(9));
+				memberbean.setMember_account(rs.getString(10));
+				memberbean.setMember_bank(rs.getString(11));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -250,6 +250,47 @@ public class MemberDAO {
 				}
 		}
 		return memberbean;
+	}
+
+	public int update(MemberBean memberbean) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			con = ds.getConnection();
+			
+			String sql = "update member set member_pass = ?, member_email = ?, "
+						+ " member_tel = ?, member_bank = ? , member_account = ?"
+						+ " member_address =? , member_interest = ? "
+						+ " where id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, memberbean.getMember_password());
+			pstmt.setString(2, memberbean.getMember_email());
+			pstmt.setString(3, memberbean.getMember_tel());
+			pstmt.setString(4, memberbean.getMember_bank());
+			pstmt.setString(5, memberbean.getMember_account());
+			pstmt.setString(6, memberbean.getMember_address());
+			pstmt.setString(6, memberbean.getMember_interest());
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(pstmt !=null)
+				try {
+					pstmt.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			if(con !=null)
+				try {
+					con.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+		}
+		return result;
 	}
 	
 }

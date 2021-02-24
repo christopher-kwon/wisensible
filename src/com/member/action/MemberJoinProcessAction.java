@@ -25,14 +25,18 @@ public class MemberJoinProcessAction implements Action {
 		String birth1 = request.getParameter("birth1");
 		String birth2 = request.getParameter("birth2");
 		String birth3 = request.getParameter("birth3");
-		String member_email = request.getParameter("email");
+		String member_email = request.getParameter("email") + "@"
+				+ request.getParameter("domain");
 		String member_gender = request.getParameter("gender");
-		int tel1 = Integer.parseInt(request.getParameter("tel1"));
-		int tel2 = Integer.parseInt(request.getParameter("tel2"));
-		int tel3 = Integer.parseInt(request.getParameter("tel3"));
-		String post1 = request.getParameter("post1");
+		String tel1 = request.getParameter("tel1");
+		String tel2 = request.getParameter("tel2");
+		String tel3 = request.getParameter("tel3");
 		String address = request.getParameter("address");
-		String member_interest = request.getParameter("member_interest");
+		String[] member_interest = request.getParameterValues("interest");
+		String member_interests = member_interest[0];
+		for(int num = 1; num<member_interest.length; num++) {
+			member_interests += "," + member_interest[num];
+		}
 		String member_account = request.getParameter("account_num");
 		String member_bank = request.getParameter("account_name");
 		
@@ -44,9 +48,9 @@ public class MemberJoinProcessAction implements Action {
 		memberbean.setMember_birth(birth1 + birth2 + birth3);
 		memberbean.setMember_email(member_email);
 		memberbean.setMember_gender(member_gender);
-		memberbean.setMember_tel("" + tel1 + tel2 + tel3);
-		memberbean.setMember_address(post1 + address);
-		memberbean.setMember_interest(member_interest);
+		memberbean.setMember_tel(tel1 + tel2 + tel3);
+		memberbean.setMember_address(address);
+		memberbean.setMember_interest(member_interests);
 		memberbean.setMember_account(member_account);
 		memberbean.setMember_bank(member_bank);
 		
