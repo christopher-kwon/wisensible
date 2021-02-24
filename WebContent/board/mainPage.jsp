@@ -19,7 +19,7 @@
                 <a href="/BoardDetailAction.bo?board_num=${board.board_num}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a href="/BoardDetailAction.bo?board_num=${board.board_num}">${board.board_name}</a>
+                        <a href="/BoardDetailAction.bo?board_num=${board.board_num}">${board.board_subject}</a>
                     </h4>
                     <h5>${board.board_price}</h5>
                     <p class="card-text">${board.board_content}</p>
