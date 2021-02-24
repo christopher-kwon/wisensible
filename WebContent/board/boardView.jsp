@@ -5,8 +5,16 @@
 <%@ include file="header.jsp"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
+
+
+
+
+
 <link href="css/board/boardView.css" rel="stylesheet">
 <script src="js/board/boardView.js"></script>
+
 
 <div class="container">
 <input type="hidden" id="loginid" value="${id}" name="loginid">
@@ -35,11 +43,36 @@
       </tr>
       
                   <tr>
-        <td><strong>평점</strong> ${evaluationBean.evaluation_avg} / <div class="rating"> 
-			<input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label> 
-			</div>
-        			</td>
+<td><strong>평점</strong> ${eb.evaluation_avg}
+
+	<div class="star_result">
+		<a href="#">★</a> <a href="#">★</a> <a href="#">★</a> <a href="#">★</a>
+		<a href="#">★</a>
+
+	</div>	<hr>
+
+	<div class="star_box">
+		<a href="#">★</a> <a href="#">★</a> <a href="#">★</a> <a href="#">★</a>
+		<a href="#">★</a>
+
+	
+	<p id="lev" style="text-align:;"></p>
+
+<div class="register_box2">
+
+	<button type=submit class="btn btn-info">평점등록</button>
+
+	<button type=reset class="btn btn-warning">초기화</button>
+
+</div>
+</div>
+
+      
+      </td>
+      
+      
       </tr>
+      
   </table>
 </div>
 

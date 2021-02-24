@@ -169,7 +169,7 @@
 
 <div class="form-group">
 
-				<label for="board_pass">Passward : </label> <input name="board_passward"
+				<label for="board_pass">Password : </label> <input name="board_passward"
 					id="board_passward" type="text" maxlength="100" class="form-input"
 					placeholder="Enter passward">
 
