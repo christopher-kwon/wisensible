@@ -17,12 +17,12 @@
 
 
 <div class="container">
-<input type="hidden" id="loginid" value="${member_id}" name="loginid">
+<input type="hidden" id="loginid" value="${id}" name="loginid">
 
 
 <!-- table -->
 <div class="board_view_table">
-  <h2>${boardBean.board_product }</h2>
+  <h2>${boardBean.board_subject }</h2>
   <table class="table">
 
       <tr><td rowspan="6">  <img src="boardupload/${boardBean.board_thumbnail }" class="view_thumbnail" alt="thumbnail" width="304" height="236"> 
@@ -112,30 +112,23 @@
   </table>
 </div>
 
-<div class="board_content">
+<div class="board_content_view">
+<div class="board_content">${boardBean.board_content } </div>
 <div class="board_view_image1">
   <img src="boardupload/${boardBean.board_file1 }" class="board_file1" alt="상품이미지1" width="795" height="500"> 
-  <h1>국내산 과일</h1>
-  <p>대한민국에서 가장 맛있는 과일입니다.</p>
-</div>
+</div><br>
 
 <div class="board_view_image2">
   <img src="boardupload/${boardBean.board_file2 }" class="board_file2" alt="상품이미지2" width="795" height="500"> 
-  <h1>국내산 채소</h1>
-  <p>대한민국에서 가장 맛있는 채소입니다.</p>
-</div>
+</div><br>
 
 <div class="board_view_image3">
   <img src="boardupload/${boardBean.board_file3 }" class="board_file3" alt="상품이미지3" width="795" height="500"> 
-  <h1>국내산 곡물</h1>
-  <p>대한민국에서 가장 맛있는 곡물입니다.</p>
-</div>
+</div><br>
 
 <div class="board_view_image4">
   <img src="boardupload/${boardBean.board_file4 }" class="board_file4" alt="상품이미지4" width="795" height="500"> 
-  <h1>국내산 곡물</h1>
-  <p>대한민국에서 가장 맛있는 곡물입니다.</p>
-</div>
+</div><br>
 </div>
 <input type="hidden" name="board_num" value="${boardBean.board_num }" id="board_num">
 
@@ -179,14 +172,17 @@
     <div class="btn-group">
   <c:choose>
   <c:when test="${boardBean.board_name == id  || id=='admin'}">
-  <button type="button" class="btn btn-primary" onclick="location.href='BoardModifyView.bo?num=${boardBean.board_num}'" id="Modify">Modify</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='BoardModifyView.bo?board_num=${boardBean.board_num}'" id="Modify">Modify</button>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="Delete">Delete</button>
   <button type="button" class="btn btn-primary" onclick="location.href='BoardList.bo'">List</button>
 
    </c:when>
    
    <c:otherwise>
-   
+  <button type="button" class="btn btn-primary" onclick="location.href='BoardModifyView.bo?board_num=${boardBean.board_num}'" id="Modify">Modify</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="Delete">Delete</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='BoardList.bo'">List</button>
+
   <button type="button" class="btn btn-primary">Previous</button>
   <button type="button" class="btn btn-primary">List</button>
   <button type="button" class="btn btn-primary">Next</button>
@@ -208,6 +204,7 @@
 								<label for="pwd">비밀번호</label> <input type="password"
 									class="form-control" placeholder="Enter password"
 									name="board_pass" id="board_pass">
+<input type="hidden" name="board_num" value="${boardBean.board_num }" id="board_num">
 
 							</div>
 							<button type="submit" class="btn btn-primary">전송</button>

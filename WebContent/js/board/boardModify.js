@@ -1,9 +1,7 @@
 
-$('#board_category').val('${boardBean.board_category}').prop("selected", true);
-$('#board_bank').val('${boardBean.board_bank}').prop("selected", true);
-
-
 $(document).ready(function() {
+var bank = $(boardBean.board_bank)
+$('#board_bank').val('bank').prop("selected", true);
 
 	var check = 0;
 	
@@ -53,6 +51,9 @@ $(document).ready(function() {
 		$('#filevalue').text('');
 		$(this).css('display', 'none')
 	})
+
+
+
 
 
 }); // ready() end

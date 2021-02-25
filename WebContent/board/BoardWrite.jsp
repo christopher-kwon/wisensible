@@ -186,6 +186,7 @@
 
 			</div>
 
+
 			<div class="form-file">
 				<label for="board_file"></label><br> <label for="upfile">
 				</label> <input type="file" id="upfile1" name="board_file1"> <span
@@ -193,6 +194,8 @@
 					name="board_file2"> <span id="filevalue2"></span>
 				<button id="file_add" value="파일창추가" class="btn btn-link">업로드추가</button>
 			</div>
+
+
 
 
 		</div>

@@ -77,15 +77,29 @@ $(document).ready(
 	 });
 	 				$("#upfile1").change(function() {
 		var inputfile1 = $(this).val().split('\\');
-		$('#filevalue1').text(inputfile1[0][inputfile1.length - 1]).css("display","none");
+		$('#filevalue1').text(inputfile1[inputfile1.length - 1]).css("display","none");
 		var filename1 = $('#filevalue1').text();
 		console.log(filename1);
+		
+		if(!(filename1.endsWith('.png') || filename1.endsWith('.PNG') ||
+		filename1.endsWith('.jpg') || filename1.endsWith('.JPG')))
+		 {
+		 					alert("파일은 jpg, png파일만 업로드 가능합니다.")
+		 }
+		 
+		 
 	});
  				$("#upfile2").change(function() {
 		var inputfile2 = $(this).val().split('\\');
 		$('#filevalue2').text(inputfile2[inputfile2.length - 1]).css("display","none");
 		var filename2 = $('#filevalue2').text();
 		console.log(filename2);
+		
+				if(!(filename2.endsWith('.png') || filename2.endsWith('.PNG') ||
+		filename2.endsWith('.jpg') || filename2.endsWith('.JPG')))
+		 {
+		 					alert("파일은 jpg, png파일만 업로드 가능합니다.")
+		 }
 			});
 			
 		 				$("#upfile3").change(function() {
@@ -93,12 +107,27 @@ $(document).ready(
 		$('#filevalue3').text(inputfile3[inputfile3.length - 1]).css("display","none");
 		var filename3 = $('#filevalue3').text();
 		console.log(filename3);
+		
+				if(!(filename3.endsWith('.png') || filename3.endsWith('.PNG') ||
+		filename3.endsWith('.jpg') || filename3.endsWith('.JPG')))
+		 {
+		 					alert("파일은 jpg, png파일만 업로드 가능합니다.")
+		 }
+		 
+		 
 		});
 		 				$("#upfile4").change(function() {
 		var inputfile4 = $(this).val().split('\\');
 		$('#filevalue4').text(inputfile4[inputfile4.length - 1]).css("display","none");
 		var filename4 = $('#filevalue4').text();
 		console.log(filename4);
+		
+				if(!(filename4.endsWith('.png') || filename4.endsWith('.PNG') ||
+		filename4.endsWith('.jpg') || filename4.endsWith('.JPG')))
+		 {
+		 					alert("파일은 jpg, png파일만 업로드 가능합니다.")
+		 }
+		 
 				});
 	
 			
