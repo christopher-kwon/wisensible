@@ -3,7 +3,8 @@
 <html>
 <head>
 <title>회원 정보</title>
-<jsp:include page="/board/header.jsp" />
+<jsp:include page="../board/header.jsp" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <link href="css/info.css" type="text/css" rel="stylesheet">
 <script>
 </script>

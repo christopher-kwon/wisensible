@@ -26,7 +26,7 @@ public class MemberUpdateAction implements Action {
 
 		forward.setPath("member/memberupdate.jsp");
 		forward.setRedirect(false);
-		request.setAttribute("memberinfo", memberbean);
+		request.setAttribute("member_info", memberbean);
 		return forward;
 
 	}
