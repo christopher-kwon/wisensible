@@ -14,48 +14,20 @@
 <style>
 .col-lg-3{display: none}
 </style>
-<script>
-$(function(){
-	$('input[type=file]').change(function(event){
-		var inputfile = $(this).val().split('\\');
-		var filename = inputfile[inputfile.length - 1];
-		var pattern = /(gif|jpg|jpeg|png)$/i;
-		if(pattern.test(filename)){
-			$("#filename").text(filename);//inputfile.length - 1 = 2
-			
-			var reader = new FileReader();//파일을 읽기 위한 객체 생성
-			//DataURL 형식으로 파일을 읽어온다.
-			//읽어온 결과는 reader 객체의 result 속성에 저장된다.
-			//event.target.files[0] : 선택한 그림의 파일 객체에서 첫 번째 객체를 가져온다.
-			reader.readAsDataURL(event.target.files[0]);
-			
-			reader.onload = function(event){//읽기에 성공했을 때 실행되는 이벤트 핸들러
-				$('#showImage').html('<img width="40px" src="' + event.target.result + '">')
-			};
-		}else{
-			alert('확장자는 gif, jpg, jpeg, png가 가능합니다.');
-		}
-	
-	})
-});
-</script>
 </head>
 <body>
 <h1>회원가입</h1>
-<form name="joinform" action="joinProcess.com" method="post">
+<form name="joinform" action="joinProcess.com" method="post" enctype="multipart/form-data">
 	
 	<div class="container3">
 	  <fieldset>
-	  
+	  <br>
 	   <b>이름</b>
 		<input type="text" name="name" placeholder="Enter name" required maxlength="15">
 	  
        <b>아이디</b>
-		<div>
-       		<input type="text" placeholder="Enter id" name="id" id="id">
-       		<input type="button" value="ID중복검사	" id="idcheck">
-       		<span id="message"></span>
-       	</div>
+		<input type="text" name="id" placeholder="Enter id" required maxlength="12">
+		<span id="message"></span>
 		
 		
 	   <b>비밀번호</b>
@@ -63,7 +35,7 @@ $(function(){
 		
 	   <b>비밀번호 확인</b>
        	<input type="password" placeholder="Enter Password Check" 
-       		name="passck" onblur="passck()" required>
+       		name="passck" required>
        	<span id="pass_message"></span>
 	
 	
@@ -112,9 +84,13 @@ $(function(){
         
         <label for="account"><b>계좌번호</b></label><br>
         <select name="account_name" id="sel">
+        	<option value="신한은행">신한은행</option>
+        	<option value="국민은행">국민은행</option>
         	<option value="농협">농협</option>
         	<option value="우리은행">우리은행</option>
-        	<option value="국민은행">국민은행</option>
+        	<option value="하나은행">하나은행</option>
+        	<option value="카카오뱅크">카카오뱅크</option>
+        	<option value="케이뱅크">케이뱅크</option>
         </select>
         <input type="text" name="account_num"	id="account_num"
         		placeholder="계좌번호 입력"><br>
@@ -135,6 +111,13 @@ $(function(){
         	<input type="checkbox" name="interest" id="hobby5" value="축산물">축산물&nbsp;&nbsp;&nbsp;
         </div>
         <br>
+        
+        <b>프로필 사진</b>
+		<label>
+			<img src="image/attach.png" width="10px">
+			<span id="filename"></span>
+			<input type="file" name="memberfile" accept="image/*">
+		</label>
         
 	<div class="clearfix">
 		<button type="reset" class="cancelbtn">다시작성</button>
