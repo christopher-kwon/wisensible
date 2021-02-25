@@ -27,7 +27,7 @@ public class BoardDAO {
 			ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
 		} catch (Exception e) {
 
-			System.out.println("DB ¿¬°á ½ÇÆÐ: " + e);
+			System.out.println("DB ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½: " + e);
 			return;
 		}
 	}
@@ -48,7 +48,7 @@ public class BoardDAO {
                 result = resultSet.getInt(1);
             }
         } catch (Exception ex) {
-            System.out.println("getListcount() ¿¡¼­ : " + ex);
+            System.out.println("getListcount() ï¿½ï¿½ï¿½ï¿½ : " + ex);
         } finally {
             if (resultSet != null) {
                 try {
@@ -108,7 +108,7 @@ public class BoardDAO {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-            System.out.println("getBoardList() ¿¡¼­ : " + ex);
+            System.out.println("getBoardList() ï¿½ï¿½ï¿½ï¿½ : " + ex);
         } finally {
             if (resultSet != null) {
                 try {
@@ -146,7 +146,7 @@ public class BoardDAO {
 			pstmt.setInt(1, board_num);
 			pstmt.executeUpdate();
 		} catch (Exception ex) {
-			System.out.println("setReadCountUpdate() ¿¡·¯ : " + ex);
+			System.out.println("setReadCountUpdate() ï¿½ï¿½ï¿½ï¿½ : " + ex);
 		} finally {
 			if (pstmt != null)
 				try {
@@ -207,7 +207,7 @@ public class BoardDAO {
             }
             
 		} catch (Exception e) {
-			System.out.println("getDetail() ¿¡·¯ : " + e);
+			System.out.println("getDetail() ï¿½ï¿½ï¿½ï¿½ : " + e);
 			e.printStackTrace();
             
         } finally {
@@ -275,13 +275,13 @@ public class BoardDAO {
             int result = pstmt.executeUpdate();
 
             if (result == 1) {
-                System.out.println("¼º°ø ¾÷µ¥ÀÌÆ®");
+                System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®");
                 return true;
             }
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            System.out.println("boardModify() ¿¡·¯ : " + ex);
+            System.out.println("boardModify() ï¿½ï¿½ï¿½ï¿½ : " + ex);
 
         } finally {
 
@@ -325,7 +325,7 @@ public class BoardDAO {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("isBoardWriter() ¿¡·¯ : " + e);
+            System.out.println("isBoardWriter() ï¿½ï¿½ï¿½ï¿½ : " + e);
         } finally {
             try {
                 if (rs != null)
@@ -369,13 +369,13 @@ public class BoardDAO {
             int result = pstmt.executeUpdate();
 
             if (result == 1) {
-                System.out.println("¼º°ø ¾÷µ¥ÀÌÆ®");
+                System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®");
                 return true;
             }
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            System.out.println("boardDelete() ¿¡·¯ : " + ex);
+            System.out.println("boardDelete() ï¿½ï¿½ï¿½ï¿½ : " + ex);
 
         } finally {
 
@@ -437,12 +437,12 @@ public class BoardDAO {
 			pstmt.setString(23, boardbean.getBoard_expirydate());
 			result = pstmt.executeUpdate();
 			if (result == 1) {
-				System.out.println("µ¥ÀÌÅÍ »ðÀÔÀÌ ¸ðµÎ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+				System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 				return true;
 			}
 
 		} catch (Exception se) {
-			System.out.println("Insert() ¿¡¼­ : " + se);
+			System.out.println("Insert() ï¿½ï¿½ï¿½ï¿½ : " + se);
 			se.printStackTrace();
 		} finally {
 
@@ -471,7 +471,7 @@ public class BoardDAO {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 
-		String board_category_list_sql = "select * from BOARD where board_category = ?";
+		String board_category_list_sql = "select * from BOARD where board_category = ? order by BOARD_NUM desc ";
 
 		List<BoardBean> list = new ArrayList<BoardBean>();
 
@@ -492,7 +492,7 @@ public class BoardDAO {
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.out.println("getBoardCategoryList() ¿¡·¯ : " + ex);
+			System.out.println("getBoardCategoryList() ï¿½ï¿½ï¿½ï¿½ : " + ex);
 		} finally {
 			if(resultSet != null) {
 				try {
