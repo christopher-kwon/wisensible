@@ -1,6 +1,9 @@
 
 $(document).ready(
 		function() {
+		
+			
+			
 			
 
 
@@ -128,21 +131,89 @@ $(document).ready(
 
 						}
 
-						if ($.trim($("#board_storage").val()) == "") {
-							alert("보관방법을 입력해주세요")
-							$("#board_storage").focus();
-							return false;
-
-						}
-
-						if ($.trim($("#board_delivery").val()) == "") {
-							alert("배송방법을 입력해주세요")
-							$("#board_delivery").focus();
+					
+						cnt =$("#board_delivery input:checkbox:checked").length;
+						if (cnt<1) {
+							alert("배송방법을 선택해주세요")
+						
 							return false;
 						}
 
+						if ($.trim($("#board_product").val()) == "") {
+							alert("상품명을 입력해주세요")
+							$("#board_ptoduct").focus();
+							return false;
 
+						}
+						if ($.trim($("#board_amount").val()) == "") {
+							alert("수량을 입력해주세요")
+							$("#board_mount").focus();
+							return false;
+
+						}
+						if ($.trim($("#board_producer").val()) == "") {
+							alert("생산자를 입력해주세요")
+							$("#board_producer").focus();
+							return false;
+
+						}
+						if ($.trim($("#board_expirydate").val()) == "") {
+							alert("유통기간을 입력해주세요")
+							$("#board_expirydate").focus();
+							return false;
+
+						}
+						if ($.trim($("#board_origin").val()) == "") {
+							alert("원산지 항목을 입력해주세요")
+							$("#board_origin").focus();
+							return false;
+
+						}
+						cnt =$("#board_storage input:checkbox:checked").length;
+						if (cnt<1) {
+							alert("보관방법 항목을 선택해주세요")
+						
+							return false;
+						
+
+						}
+						if ($.trim($("#board_deliverycost").val()) == "") {
+							alert("배송비용을 입력해주세요")
+							$("#board_deliverycost").focus();
+							return false;
+
+						}
+						
+						
+						
+						
+						
 					}) //end form.submit
 
+
+					 function show() {
+        
+         if($('#filevalue').text() == '') {
+            $(".remove").css('display', 'none');
+         } else {
+            $(".remove").css({'display':'inline-block', 'position':'relative', 'top':'-5px'});
+         }
+      }
+      
+      show();
+      
+      $("#upfile").change(function() {
+         check++;
+         var inputfile = $(this).val().split('\\');
+         $('#filevalue').text(inputfile[inputfile.length - 1]);
+         show();
+         console.log(check);
+      });
+      
+         //remove 이미지를 클릭하면 파일명을 ''로 변경하고 remove 이미지를 보이지 않게 합니다.
+         $(".remove").click(function() {
+         $('#filevalue').text('');
+         $(this).css('display', 'none')
+      })
 		});
 		

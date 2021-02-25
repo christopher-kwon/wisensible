@@ -251,5 +251,10 @@ public class MemberDAO {
 		}
 		return memberbean;
 	}
+
+	public String getTel(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
