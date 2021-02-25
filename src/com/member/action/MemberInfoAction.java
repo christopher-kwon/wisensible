@@ -32,7 +32,7 @@ public class MemberInfoAction implements Action {
 		}
 		forward.setPath("member/memberinfo.jsp");
 		forward.setRedirect(false);
-		request.setAttribute("memberinfo", memberbean);
+		request.setAttribute("member_info", memberbean);
 		return forward;
 	}
 
