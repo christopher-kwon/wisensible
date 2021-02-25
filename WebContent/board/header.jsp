@@ -72,11 +72,11 @@
 
             <div class="list-group" style="text-align: center;">
                 <a href="BoardCategoryListAction.bo?category=과일" class="list-group-item">과일</a>
-                <a href="BoardCategoryListAction.bo" class="list-group-item">채소</a>
-                <a href="BoardCategoryListAction.bo" class="list-group-item">곡물</a>
-                <a href="BoardCategoryListAction.bo" class="list-group-item">축산물</a>
-                <a href="BoardCategoryListAction.bo" class="list-group-item">해산물</a>
 
+                <a href="BoardCategoryListAction.bo?category=채소" class="list-group-item">채소</a>
+                <a href="BoardCategoryListAction.bo?category=곡물" class="list-group-item">곡물</a>
+                <a href="BoardCategoryListAction.bo?category=축산물" class="list-group-item">축산물</a>
+                <a href="BoardCategoryListAction.bo?category=해산물" class="list-group-item">해산물</a>
             </div>
 
         </div>

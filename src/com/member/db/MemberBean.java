@@ -6,6 +6,7 @@ public class MemberBean {
 	private String member_password;
 	private String member_birth;
 	private String member_email;
+	private String member_domain;
 	private String member_gender;
 	private String member_tel;
 	private String member_address;
@@ -14,7 +15,12 @@ public class MemberBean {
 	private String member_bank;
 	private String member_file;
 	
-	
+	public String getMember_domain() {
+		return member_domain;
+	}
+	public void setMember_domain(String member_domain) {
+		this.member_domain = member_domain;
+	}
 	public String getMember_id() {
 		return member_id;
 	}
