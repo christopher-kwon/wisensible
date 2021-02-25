@@ -235,7 +235,7 @@ public class BoardDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "update board set board_subject = ?, board_price= ?, board_bank = ?, "
-				+ "board_acoount = ?, board_tel = ?, board_delivery = ?,"
+				+ "board_account = ?, board_tel = ?, board_delivery = ?,"
 				+ "board_product = ?, board_amount = ?, board_producer = ?,"
 				+ "board_expirydate = ?, board_origin = ?, board_storage = ?,"
 				+ "board_deliverycost = ?, board_content = ?, board_file1 = ?,"

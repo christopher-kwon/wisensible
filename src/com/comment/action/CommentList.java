@@ -24,9 +24,10 @@ public class CommentList implements Action {
 		CommentDAO commentDAO = new CommentDAO();
 		
 		int comment_board_ref = Integer.parseInt(request.getParameter("comment_board_ref"));
+		System.out.println(comment_board_ref);
 		int state = Integer.parseInt(request.getParameter("state"));
 		int listCount = commentDAO.getListCount(comment_board_ref);
-		
+		System.out.println(listCount + "listcount");
 		JsonObject object = new JsonObject();
 		JsonArray jarray = commentDAO.getCommentList(comment_board_ref, state);
 		object.addProperty("listCount", listCount);

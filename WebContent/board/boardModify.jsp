@@ -1,8 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
-<script src="../js/board/boardModify.js"></script>
-<link href="../css/board/boardModify.css" rel="stylesheet">
+<script src="js/board/boardModify.js"></script>
+<link href="css/board/boardModify.css" rel="stylesheet">
 
 <div class="container">
 
@@ -16,7 +15,7 @@
 		<div class="form-group">
 			<label for="board_title"> Category : </label> <select
 				name="board_category" id="board_category" disabled>
-				<option>----</option>
+				<option>${boardBean.board_category }</option>
 				<option value="과일">과일</option>
 				<option value="채소">채소</option>
 				<option value="곡물">곡물</option>
@@ -52,21 +51,21 @@
 
 			<div class="form-group">
 
-				<label for="board_account" id="board_bank"> 은 행 정 보&emsp;:&emsp; </label> <select name="board_bank" disabled>
+				<label for="board_account"> 은 행 정 보&emsp;:&emsp; </label> <select name="board_bank" id="board_bank">
 
 					<option>----</option>
 
-					<option value="신한">신한</option>
+					<option value="신 한">신한</option>
 
-					<option value="국민">국민</option>
+					<option value="국 민">국민</option>
 
-					<option value="농협">농협</option>
+					<option value="농 협">농협</option>
 
-					<option value="하나">하나</option>
+					<option value="하 나">하나</option>
 
-					<option value="카카오뱅크">카카오뱅크</option>
+					<option value="카 카 오 뱅 크">카카오뱅크</option>
 
-					<option value="케이뱅크">케이뱅크</option>
+					<option value="케 이 뱅 크">케이뱅크</option>
 
 				</select> <br>
 				계 좌 번 호&emsp;:&emsp; <input name="board_account" id="board_account" type="text"
@@ -112,38 +111,38 @@
 				<table class="table table-borderd">
 					<tr>
 						<th>상 품 명</th>
-						<td><input type="text" id="board_product" required value="${boardBean.board_product }"></td>
+						<td><input type="text" name="board_product" id="board_product" required value="${boardBean.board_product }"></td>
 					</tr>
 					<tr>
 						<th>수 량</th>
-						<td><input type="text" id="board_amount" value="${boardBean.board_amount }" required></td>
+						<td><input type="text" name="board_amount" id="board_amount" value="${boardBean.board_amount }" required></td>
 					</tr>
 					<tr>
 						<th>생 산 자</th>
-						<td><input type="text" id="board_producer" value="${boardBean.board_producer }" required></td>
+						<td><input type="text" name="board_producer" id="board_producer" value="${boardBean.board_producer }" required></td>
 					</tr>
 					<tr>
 						<th>유 통 기 한</th>
-						<td><input type="text" id="board_epirydate" value="${boardBean.board_expirydate }" required></td>
+						<td><input type="text" name="board_epirydate" id="board_epirydate" value="${boardBean.board_expirydate }" required></td>
 					</tr>
 					<tr>
 						<th>원 산 지</th>
-						<td><input type="text" id="board_origin" value="${boardBean.board_origin }" required></td>
+						<td><input type="text" name="board_origin" id="board_origin" value="${boardBean.board_origin }" required></td>
 					</tr>
 					<tr>
 						<th>보 관 방 법</th>
-						<td><input type="text" id="board_storage"  value="${boardBean.board_storage }" required></td>
+						<td><input type="text" name="board_storage" id="board_storage"  value="${boardBean.board_storage }" required></td>
 					</tr>
 					<tr>
 						<th>배 송 비 용</th>
-						<td><input type="text" id="board_deliverycost"  value="${boardBean.board_deliverycost }" required></td>
+						<td><input type="text" name="board_deliverycost" id="board_deliverycost"  value="${boardBean.board_deliverycost }" required></td>
 					</tr>
 				</table>
 			</div>
 			<hr>
 			<h2>Content </h2>
 			<div class="form-group">
-				<textarea class="form-control" id="board_content">${boardBean.board_content }</textarea>
+				<textarea class="form-control" name="board_content" id="board_content">${boardBean.board_content }</textarea>
 
 
 			</div>
@@ -157,13 +156,18 @@
 					<img src="../image/remove.png" alt="파일삭제" width="10px" class="remove">
 
 			</div>
+			
+			<div class="form-group">
+				<label for="board_pass">Password : </label> <input name="board_pass"
+					id="board_pass" type="text" maxlength="100" class="form-input"
+					placeholder="Enter passward">
 
+			</div>
 
 
 		<div class="form-group">
 
 			<button type=submit class="btn btn-info">수정</button>
-
 			<button type=reset class="btn btn-danger">취소</button>
 
 		</div>

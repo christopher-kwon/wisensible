@@ -172,16 +172,17 @@
     <div class="btn-group">
   <c:choose>
   <c:when test="${boardBean.board_name == id  || id=='admin'}">
-  <button type="button" class="btn btn-primary" onclick="location.href='BoardModifyView.bo?num=${boardBean.board_num}'" id="Modify">Modify</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='BoardModifyView.bo?board_num=${boardBean.board_num}'" id="Modify">Modify</button>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="Delete">Delete</button>
   <button type="button" class="btn btn-primary" onclick="location.href='BoardList.bo'">List</button>
 
    </c:when>
    
    <c:otherwise>
-     <button type="button" class="btn btn-primary" onclick="location.href='BoardModifyView.bo?num=${boardBean.board_num}'" id="Modify">Modify</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='BoardModifyView.bo?board_num=${boardBean.board_num}'" id="Modify">Modify</button>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="Delete">Delete</button>
   <button type="button" class="btn btn-primary" onclick="location.href='BoardList.bo'">List</button>
+
   <button type="button" class="btn btn-primary">Previous</button>
   <button type="button" class="btn btn-primary">List</button>
   <button type="button" class="btn btn-primary">Next</button>
@@ -203,6 +204,7 @@
 								<label for="pwd">비밀번호</label> <input type="password"
 									class="form-control" placeholder="Enter password"
 									name="board_pass" id="board_pass">
+<input type="hidden" name="board_num" value="${boardBean.board_num }" id="board_num">
 
 							</div>
 							<button type="submit" class="btn btn-primary">전송</button>
