@@ -6,6 +6,7 @@
 <title>회원관리 시스템 회원수정 페이지</title>
 <jsp:include page="/board/header.jsp"/>
 <link href="css/join.css" type="text/css" rel="stylesheet">
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
 $(function(){
 
