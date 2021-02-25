@@ -16,14 +16,14 @@
     <title>Wisensible-Farm</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../css/bootstrap/css/shop-homepage.css" rel="stylesheet">
+    <link href="css/bootstrap/css/shop-homepage.css" rel="stylesheet">
 
     <!-- Bootstrap core JavaScript -->
-    <script src="../css/bootstrap/vendor/jquery/jquery.min.js"></script>
-    <script src="../css/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="css/bootstrap/vendor/jquery/jquery.min.js"></script>
+    <script src="css/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </head>
 
@@ -69,10 +69,10 @@
             <h4 class="my-4">Wisensible-Farm</h4>
             <div class="list-group" style="text-align: center;">
                 <a href="BoardCategoryListAction.bo?category=과일" class="list-group-item">과일</a>
-                <a href="BoardCategoryListAction.bo" class="list-group-item">채소</a>
-                <a href="BoardCategoryListAction.bo" class="list-group-item">곡물</a>
-                <a href="BoardCategoryListAction.bo" class="list-group-item">축산물</a>
-                <a href="BoardCategoryListAction.bo" class="list-group-item">해산물</a>
+                <a href="BoardCategoryListAction.bo?category=채소" class="list-group-item">채소</a>
+                <a href="BoardCategoryListAction.bo?category=곡물" class="list-group-item">곡물</a>
+                <a href="BoardCategoryListAction.bo?category=축산물" class="list-group-item">축산물</a>
+                <a href="BoardCategoryListAction.bo?category=해산물" class="list-group-item">해산물</a>
             </div>
 
         </div>

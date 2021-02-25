@@ -1,19 +1,20 @@
 package com.board.action;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.Action;
 import com.ActionForward;
 import com.board.db.BoardBean;
 import com.board.db.BoardDAO;
 
-public class BoardListAction implements Action {
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+@WebServlet("/BoardListAjax")
+public class BoardListAjax implements Action {
 
     @Override
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -61,7 +62,7 @@ public class BoardListAction implements Action {
 
         ActionForward actionForward = new ActionForward();
         actionForward.setRedirect(false);
-        actionForward.setPath("/board/mainPage.jsp");
+        actionForward.setPath("/board/boardListAjax.jsp");
 
         return actionForward;
     }
