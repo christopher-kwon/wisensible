@@ -256,6 +256,9 @@ public class MemberDAO {
 		return memberbean;
 	}
 
+
+	
+
 	public int update(MemberBean memberbean) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -297,6 +300,7 @@ public class MemberDAO {
 				}
 		}
 		return result;
+
 	}
 
 	public int getListCount() {

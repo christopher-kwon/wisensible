@@ -46,8 +46,24 @@ public class BoardAddAction implements Action {
 			boardbean.setBoard_bank(multi.getParameter("board_bank"));
 			boardbean.setBoard_tel(multi.getParameter("board_tel"));
 			boardbean.setBoard_account(Integer.parseInt(multi.getParameter("board_account")));
-			boardbean.setBoard_storage(multi.getParameter("board_storage"));
-			boardbean.setBoard_delivery(multi.getParameter("board_delivery"));
+			
+			String[] board_storages = multi.getParameterValues("board_storage");
+			String storage_result="";
+			for(int i = 0; i < board_storages.length; i++){
+				storage_result += board_storages[i]+ "   ";
+			}
+			
+			boardbean.setBoard_storage(storage_result);
+		
+			String[] board_deliverys = multi.getParameterValues("board_delivery");
+			String delivery_result="";
+			for(int num = 0; num < board_deliverys.length; num++){
+				delivery_result += board_deliverys[num]+ "   ";
+			}
+			
+			
+			boardbean.setBoard_delivery(delivery_result);
+			
 			boardbean.setBoard_product(multi.getParameter("board_product"));
 			boardbean.setBoard_amount(multi.getParameter("board_amount"));
 			boardbean.setBoard_producer(multi.getParameter("board_producer"));
