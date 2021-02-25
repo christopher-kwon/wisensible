@@ -2,7 +2,30 @@
 $(document).ready(
 		function() {
 		
+			if($("#board_bankt").val() == "신한은행" ){
+				$("#board_bank").val("신한은행").prop("selected",true);
+			}
+			if($("#board_bankt").val() == "하나은행" ){
+				$("#board_bank").val("하나은행").prop("selected",true);
+			}
+			if($("#board_bankt").val() == "우리은행" ){
+				$("#board_bank").val("우리은행").prop("selected",true);
+			}
+			if($("#board_bankt").val() == "국민은행" ){
+				$("#board_bank").val("국민은행").prop("selected",true);
+			}
+			if($("#board_bankt").val() == "농협" ){
+				$("#board_bank").val("농협").prop("selected",true);
+			}
+			if($("#board_bankt").val() == "카카오뱅크" ){
+				$("#board_bank").val("카카오뱅크").prop("selected",true);
+			}
+			if($("#board_bankt").val() == "케이뱅크" ){
+				$("#board_bank").val("케이뱅크").prop("selected",true);
+			}
 			
+			
+				
 			
 			
 
@@ -26,6 +49,16 @@ $(document).ready(
 					alert("계좌 번호는 숫자로 입력해주세요")
 					$("#board_account").val('')
 					$("#board_account").focus();
+				}
+			})	
+			$("#board_deliverycost").change(function() {
+				if ($.isNumeric($("#board_deliverycost").val())) {
+					$("#board_bank").focus();
+
+				} else {
+					alert("배송비 정보는 숫자로 입력해주세요")
+					$("#board_deliverycost").val('')
+					$("#board_deliverycost").focus();
 				}
 			})
 			
@@ -87,6 +120,12 @@ $(document).ready(
 				}
 
 			}); 
+			$("#file_add").click(function(){
+				var output ="<input type='file' id='upfile3' name='board_file3'>"
+				output + "<span id='filevalue2'></span>"
+				$("#filevalue2").html(output);
+			})
+			
 
 			$("form").submit(
 					function() {
@@ -132,8 +171,8 @@ $(document).ready(
 						}
 
 					
-						cnt =$("#board_delivery input:checkbox:checked").length;
-						if (cnt<1) {
+					
+						if ($("#board_delivery").is(":checked")==false) {
 							alert("배송방법을 선택해주세요")
 						
 							return false;
@@ -169,11 +208,11 @@ $(document).ready(
 							return false;
 
 						}
-						cnt =$("#board_storage input:checkbox:checked").length;
-						if (cnt<1) {
-							alert("보관방법 항목을 선택해주세요")
+						if ($("#board_storage").is(":checked")==false) {
+							alert("보관방법을 선택해주세요")
 						
 							return false;
+						
 						
 
 						}
@@ -184,8 +223,23 @@ $(document).ready(
 
 						}
 						
+						if ($.trim($("#upfile1").val()) == "") {
+							alert("파일은 최소 2개이상 업로드필수입니다. 1번파일을 업로드해주세요")
 						
+							return false;
+
+						}
+						if ($.trim($("#upfile2").val()) == "") {
+							alert("파일은 최소 2개이상 업로드필수입니다. 2번파일을 업로드해주세요")
 						
+							return false;
+
+						}
+						if ($.trim($("#board_passward").val()) == "") {
+							alert("게시물 비밀번호를 입력해주세요")
+							$("#board_pass").focus();
+							return false;
+						}
 						
 						
 					}) //end form.submit
