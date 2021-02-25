@@ -156,7 +156,7 @@
 <label for="board_file">파일첨부</label><br>
 <label for="upfile">
 </label>
-<input multiple="multiple" type="file" id="upfile1" name="board_file1">
+<input  type="file" id="upfile1" name="board_file1">
 <span id="filevalue1"></span><br>
 <input type="file" id="upfile2" name="board_file2">
 <span id="filevalue2"></span><br>

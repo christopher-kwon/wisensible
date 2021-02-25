@@ -21,7 +21,7 @@ public class BoardModifyView implements Action {
 		BoardDAO boardDAO = new BoardDAO();
 		BoardBean boardBean = new BoardBean();
 		
-		int board_num = Integer.parseInt(request.getParameter("num"));
+		int board_num = Integer.parseInt(request.getParameter("board_num"));
 		
 		boardBean = boardDAO.getDetail(board_num);
 		
