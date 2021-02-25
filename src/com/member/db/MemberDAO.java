@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -299,6 +301,233 @@ public class MemberDAO {
 		}
 		return result;
 
+	}
+
+	public int getListCount() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int x = 0;
+		
+		try {
+			con = ds.getConnection();
+			
+			pstmt = con.prepareStatement("select count(*) from member where member_id != 'admin'");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				x = rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("getListCount() 에러: " + e);
+		}finally {
+			if(rs !=null)
+				try {
+					rs.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			if(pstmt !=null)
+				try {
+					pstmt.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			if(con !=null)
+				try {
+					con.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+		}
+		return x;
+	}
+
+	public List<MemberBean> getList(int page, int limit) {
+		List<MemberBean> list = new ArrayList<MemberBean>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ds.getConnection();
+			
+			String sql = "select * "
+						+ " from (select b.*, rownum rnum "
+						+ "			from(select * from member "
+						+ "					where member_id != 'admin' "
+						+ "					order by member_id) b "
+						+ "			)"
+						+ " where rnum>=? and rnum<=?";
+			pstmt = con.prepareStatement(sql);
+			//한 페이지 당 10개씩 목록인 경우 1페이지, 2페이지, 3페이지, 4페이지....
+			int startrow = (page-1)*limit + 1;
+							//읽기 시작할 row번호(1 11 21...
+			int endrow = startrow + limit - 1;
+							//읽을 마지막 row번호(10 20 30...
+			pstmt.setInt(1, startrow);
+			pstmt.setInt(2, endrow);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				MemberBean memberbean = new MemberBean();
+				memberbean.setMember_id(rs.getString(1));
+				memberbean.setMember_name(rs.getString(2));
+				memberbean.setMember_password(rs.getString(3));
+				memberbean.setMember_birth(rs.getString(4));
+				memberbean.setMember_email(rs.getString(5));
+				memberbean.setMember_gender(rs.getString(6));
+				memberbean.setMember_tel(rs.getString(7));
+				memberbean.setMember_address(rs.getString(8));
+				memberbean.setMember_interest(rs.getString(9));
+				memberbean.setMember_account(rs.getString(10));
+				memberbean.setMember_bank(rs.getString(11));
+				memberbean.setMember_file(rs.getString(12));
+				list.add(memberbean);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("getList() 에러: " + e);
+		}finally {
+			if(rs !=null)
+				try {
+					rs.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			if(pstmt !=null)
+				try {
+					pstmt.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			if(con !=null)
+				try {
+					con.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+		}
+		return list;
+	}
+
+	public int getListCount(String field, String value) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int x = 0;
+		try {
+			con = ds.getConnection();
+			String sql = "select count(*) from member "
+						+ " where member_id != 'admin' "
+						+ " and " + field + " like ?";
+			System.out.println(sql);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%"+value+"%");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				x = rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("getListCount() 에러: " + e);
+		}finally {
+			if(rs !=null)
+				try {
+					rs.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			if(pstmt !=null)
+				try {
+					pstmt.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			if(con !=null)
+				try {
+					con.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+		}
+		return x;
+	}
+
+	public List<MemberBean> getList(String field, String value, int page, int limit) {
+		List<MemberBean> list = new ArrayList<MemberBean>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ds.getConnection();
+			
+			String sql = "select * "
+						+ " from (select b.*, rownum rnum "
+						+ "			from(select * from member "
+						+ "					where member_id != 'admin' "
+						+ "					and " + field + " like ? "
+						+ "					order by member_id) b "
+						+ "			)"
+						+ " where rnum between ? and ?";
+			
+			System.out.println(sql);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%"+value+"%");
+			//한 페이지 당 10개씩 목록인 경우 1페이지, 2페이지, 3페이지, 4페이지....
+			int startrow = (page-1)*limit + 1;
+							//읽기 시작할 row번호(1 11 21...
+			int endrow = startrow + limit - 1;
+							//읽을 마지막 row번호(10 20 30...
+			pstmt.setInt(2, startrow);
+			pstmt.setInt(3, endrow);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				MemberBean memberbean = new MemberBean();
+				memberbean.setMember_id(rs.getString("id"));
+				memberbean.setMember_name(rs.getString(2));
+				//memberbean.setMember_password(rs.getString(3));
+				//memberbean.setMember_birth(rs.getString(4));
+				memberbean.setMember_email(rs.getString(5));
+				//memberbean.setMember_gender(rs.getString(6));
+				//memberbean.setMember_tel(rs.getString(7));
+				//memberbean.setMember_address(rs.getString(8));
+				//memberbean.setMember_interest(rs.getString(9));
+				//memberbean.setMember_account(rs.getString(10));
+				//memberbean.setMember_bank(rs.getString(11));
+				//memberbean.setMember_file(rs.getString(12));
+				list.add(memberbean);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("getList() 에러: " + e);
+		}finally {
+			if(rs !=null)
+				try {
+					rs.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			if(pstmt !=null)
+				try {
+					pstmt.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			if(con !=null)
+				try {
+					con.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+		}
+		return list;
 	}
 	
 }
