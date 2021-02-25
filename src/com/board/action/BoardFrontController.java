@@ -38,6 +38,10 @@ public class BoardFrontController extends HttpServlet {
 			action = new BoardListAction();
 			break;
 
+		case "/BoardListAjax.bo":
+			action = new BoardListAjax();
+			break;
+
 		case "/BoardAddAction.bo":
 			action = new BoardAddAction();
 			break;
