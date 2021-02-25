@@ -37,7 +37,6 @@ public class BoardAddAction implements Action {
 		try {
 			MultipartRequest multi = null;
 			multi = new MultipartRequest(request, realFolder, fileSize, "utf-8", new DefaultFileRenamePolicy());
-
 			boardbean.setBoard_name(multi.getParameter("id"));
 			boardbean.setBoard_pass(multi.getParameter("board_passward"));
 			boardbean.setBoard_subject(multi.getParameter("board_subject"));

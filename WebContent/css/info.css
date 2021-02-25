@@ -4,7 +4,7 @@ tr>td:nth-child(odd) {
 
 td {
 	text-align: center;
-	padding: 20px;
+	padding: 10px;
 }
 
 .container2 {
@@ -15,4 +15,39 @@ h1 {
 	text-align: center;
 	padding-top: 15%; 
 	padding-bottom: 5%;
+}
+button {
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer; /* 손가락 커서 모양 */
+	width: 100%;
+	opacity: 0.9;
+}
+button:focus {
+	outline: none;
+}
+
+/* 취소 버튼*/
+.cancelbtn {
+	padding: 14px 20px;
+	background-color: #f44336;
+}
+
+.cancelbtn, .submitbtn {
+	float: left;
+	width: 50%;
+}
+.clearfix::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+@media screen and (max-width: 300px) {
+	.cancelbtn, .signupbtn {
+		width: 100%;
+	}
 }

@@ -49,12 +49,12 @@ public class EvaluationFrontController extends HttpServlet {
 		switch (command) {
 		
 		
-		case "/EvalutaionAdd.ev" :
-			action = new EvalutaionAdd();
+		case "/EvaluationAdd.ev" :
+			action = new EvaluationAdd();
 			break;
 			
-		case "/EvalutaionGet.ev" :
-			action = new EvalutaionGet();
+		case "/EvaluationGet.ev" :
+			action = new EvaluationGet();
 			break;
 		
 		

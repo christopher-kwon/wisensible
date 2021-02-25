@@ -27,24 +27,26 @@ public class BoardListAction implements Action {
         if (request.getParameter("page") != null) {
             page = Integer.parseInt(request.getParameter("page"));
         }
-        System.out.println("ë„˜ì–´ì˜¨ íŽ˜ì´ì§€ = " + page);
+        System.out.println("³Ñ¾î¿Â ÆäÀÌÁö = " + page);
         if(request.getParameter("limit") != null) {
             limit = Integer.parseInt(request.getParameter("limit"));
         }
-        System.out.println("ë„˜ì–´ì˜¨ limit = " + limit);
+        System.out.println("³Ñ¾î¿Â limit = " + limit);
 
         int listCount = boardDAO.getListcount();
 
         boardList = boardDAO.getBoardList(page, limit);
 
         int maxPage = (listCount + limit -1) / limit;
-        System.out.println("ì´ íŽ˜ì´ì§€ ìˆ˜ = " + maxPage);
-//        int startPage = ((page -1) / 10) * 10 + 1;
-        int startPage = (page -1) * limit + 1;
-        System.out.println("í˜„ì œ íŽ˜ì´ì§€ì— ë³´ì—¬ì¤„ ì‹œìž‘ íŽ˜ì´ì§€ ìˆ˜ = " + startPage);
-//        int endPage = startPage + 10 - 1;
-        int endPage = startPage + limit - 1;
-        System.out.println("í˜„ì œ íŽ˜ì´ì§€ì— ë³´ì—¬ì¤„ ë§ˆì§€ë§‰ íŽ˜ì´ì§€ ìˆ˜ = " + endPage);
+        System.out.println("ÃÑ ÆäÀÌÁö ¼ö = " + maxPage);
+//      int startPage = ((page -1) / 10) * 10 + 1;
+        int startPage = ((page -1) / 10) * 10 + 1;
+        System.out.println("ÇöÁ¦ ÆäÀÌÁö¿¡ º¸¿©ÁÙ ½ÃÀÛ ÆäÀÌÁö ¼ö = " + startPage);
+//      int endPage = startPage + 10 - 1;
+        int endPage = startPage + 10 - 1;
+        System.out.println("ÇöÁ¦ ÆäÀÌÁö¿¡ º¸¿©ÁÙ ¸¶Áö¸· ÆäÀÌÁö ¼ö = " + endPage);
+        
+
 
         if(endPage > maxPage) {
             endPage = maxPage;

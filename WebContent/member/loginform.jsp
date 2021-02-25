@@ -53,7 +53,7 @@
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail1">비밀번호</label> <input
-									type="password" name="password" id="password"
+									type="password" name="pass" id="password"
 									class="form-control" aria-describedby="emailHelp"
 									placeholder="Enter Password">
 							</div>

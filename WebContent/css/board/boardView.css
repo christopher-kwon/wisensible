@@ -378,3 +378,33 @@ a:hover {
 .view_thumbnail{
 	object-fit: cover;
 }
+
+.star_box a {
+	text-decoration: none;
+	color: #e3e3df;
+	font-size: 2em;
+	text-align:center;
+}
+
+.star_result > label  {
+	color: #e3e3df;
+	font-size: 3em;
+		text-decoration: none;
+			text-align:center;
+}
+
+.star_box a.on {
+	text-decoration: none;
+	color: #ffa630;
+	font-size: 2em;
+		text-align:center;
+}
+
+
+
+.star_result > label.on{
+	text-decoration: none;
+	color: #ffa630;
+	font-size: 3em;
+		text-align:center;
+}

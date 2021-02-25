@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Wisensible-Farm</title>
+    <title>Shop Homepage - Start Bootstrap Template</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -43,6 +43,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
+
                     <a class="nav-link" href="login.com">Login</a>
                 </li>
                 <li class="nav-item">
@@ -50,6 +51,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="join.com">Join</a>
+
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
@@ -67,8 +69,10 @@
         <div class="col-lg-3">
 
             <h4 class="my-4">Wisensible-Farm</h4>
+
             <div class="list-group" style="text-align: center;">
                 <a href="BoardCategoryListAction.bo?category=과일" class="list-group-item">과일</a>
+
                 <a href="BoardCategoryListAction.bo?category=채소" class="list-group-item">채소</a>
                 <a href="BoardCategoryListAction.bo?category=곡물" class="list-group-item">곡물</a>
                 <a href="BoardCategoryListAction.bo?category=축산물" class="list-group-item">축산물</a>
@@ -81,5 +85,6 @@
         <div class="col-lg-9">
 
             <div class="row float-right">
+
                 <button type="button" class="btn btn-primary float-right" onclick="location.href='BoardWrite.bo'">글 쓰 기</button>
             </div>

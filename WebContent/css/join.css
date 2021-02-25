@@ -57,7 +57,7 @@ button:hover {
 	width: 29%;
 	background: orange;
 	line-height:10px;
-	height: 50px     
+	height: 40px     
 }
 
 #email, #domain {
@@ -112,7 +112,6 @@ form {
 	background-color: #fefefe;
 	margin: 3% auto 15% auto;
 	/* 5% from the top, 15% from the bottom and centered */
-	border: 1px solid lightgray;
 	width: 700px; /* Could be more or less, depending on screen size */
 	padding: 30px 16px 16px 16px;
 }

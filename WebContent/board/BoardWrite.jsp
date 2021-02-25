@@ -156,7 +156,7 @@
 <label for="board_file">파일첨부</label><br>
 <label for="upfile">
 </label>
-<input multiple="multiple" type="file" id="upfile1" name="board_file1">
+<input  type="file" id="upfile1" name="board_file1">
 <span id="filevalue1"></span><br>
 <input type="file" id="upfile2" name="board_file2">
 <span id="filevalue2"></span><br>
@@ -169,7 +169,7 @@
 
 <div class="form-group">
 
-				<label for="board_pass">Passward : </label> <input name="board_passward"
+				<label for="board_pass">Password : </label> <input name="board_passward"
 					id="board_passward" type="text" maxlength="100" class="form-input"
 					placeholder="Enter passward">
 
