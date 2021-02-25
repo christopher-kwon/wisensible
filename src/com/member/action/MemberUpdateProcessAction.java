@@ -41,12 +41,19 @@ public class MemberUpdateProcessAction implements Action {
 			String member_password = multi.getParameter("pass");
 			String member_birth = multi.getParameter("birth");
 			String member_gender = multi.getParameter("gender");
-			String member_email = multi.getParameter("email");
-			String member_tel = multi.getParameter("tel");
-			String member_bank = multi.getParameter("bank");
-			String member_account = multi.getParameter("account");
+			String member_email = multi.getParameter("email")+ "@"
+					+ multi.getParameter("domain");;
+			String tel1 = multi.getParameter("tel1");
+			String tel2 = multi.getParameter("tel2");
+			String tel3 = multi.getParameter("tel3");;
+			String member_bank = multi.getParameter("account_name");
+			String member_account = multi.getParameter("account_num");
 			String member_address = multi.getParameter("address");
-			String member_interest = multi.getParameter("interest");
+			String[] member_interest = multi.getParameterValues("interest");
+			String member_interests = member_interest[0];
+			for(int num = 1; num<member_interest.length; num++) {
+				member_interests += "," + member_interest[num];
+			}
 			String member_file = multi.getFilesystemName("memberfile");
 
 			MemberBean memberbean = new MemberBean();
@@ -56,11 +63,11 @@ public class MemberUpdateProcessAction implements Action {
 			memberbean.setMember_birth(member_birth);
 			memberbean.setMember_gender(member_gender);
 			memberbean.setMember_email(member_email);
-			memberbean.setMember_tel(member_tel);
+			memberbean.setMember_tel(tel1 + " - " + tel2 + " - " +  tel3);
 			memberbean.setMember_bank(member_bank);
 			memberbean.setMember_account(member_account);
 			memberbean.setMember_address(member_address);
-			memberbean.setMember_interest(member_interest);
+			memberbean.setMember_interest(member_interests);
 			memberbean.setMember_file(member_file);
 
 			response.setContentType("text/html; charset=utf-8");

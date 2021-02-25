@@ -98,4 +98,26 @@ $(document).ready(function(){
 		//window.open("post.html", "post","width=400, height=500, scrollbars=yes");
 		Postcode();
 	});
+	
+	$('input[type=file]').change(function(event){
+		var inputfile = $(this).val().split('\\');
+		var filename = inputfile[inputfile.length - 1];
+		var pattern = /(gif|jpg|jpeg|png)$/i;
+		if(pattern.test(filename)){
+			$("#filename").text(filename);//inputfile.length - 1 = 2
+			
+			var reader = new FileReader();//파일을 읽기 위한 객체 생성
+			//DataURL 형식으로 파일을 읽어온다.
+			//읽어온 결과는 reader 객체의 result 속성에 저장된다.
+			//event.target.files[0] : 선택한 그림의 파일 객체에서 첫 번째 객체를 가져온다.
+			reader.readAsDataURL(event.target.files[0]);
+			
+			reader.onload = function(event){//읽기에 성공했을 때 실행되는 이벤트 핸들러
+				$('#showImage').html('<img width="40px" src="' + event.target.result + '">')
+			};
+		}else{
+			alert('확장자는 gif, jpg, jpeg, png가 가능합니다.');
+		}
+	
+	})
 });

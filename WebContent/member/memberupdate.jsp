@@ -4,104 +4,20 @@
 <html>
 <head>
 <title>회원관리 시스템 회원수정 페이지</title>
-<link href="css/join.css" type="text/css" rel="stylesheet">
-<style>
-h3{text-align: center; color: #1a92b9}
-input[type=file]{display: none;}
-</style>
-</head>
-<body>
 <jsp:include page="/board/header.jsp"/>
-<form name="joinform" action="updateProcess.com" method="post"
-		enctype="multipart/form-data">
-	<h3>회원 정보 수정</h3>
-	<hr>
-	<b>아이디</b>
-	<input type="text" name="id" value="${memberinfo.id}" readOnly>
-	
-	<b>비밀번호</b>
-	<input type="password" name="pass" value="${memberinfo.password}">
-	
-	<b>이름</b>
-	<input type="text" name="name" value="${member_info.member_name}" placeholder="Enter name"
-			required>
-	
-	
-	<b>성별</b>
-	<div>
-		<input type="radio" name="gender" value="남"><span>남자</span>
-		<input type="radio" name="gender" value="여"><span>여자</span>
-	</div><br>
-	
-	<b>이메일 주소</b>
-	<input type="text" name="email" value="${memberinfo.email}"
-			placeholder="Enter email" required>
-	<span id="email_message"></span>
-	
-	<b>프로필 사진</b>
-	<label>
-		<img src="image/attach.png" width="10px">
-		<span id="filename">${memberinfo.memberfile}</span>
-		<span id="showImage">
-			<c:if test='${empty memberinfo.memberfile}'>
-				<c:set var='src' value='image/profile.png'/>
-			</c:if>
-			<c:if test='${!empty memberinfo.memberfile}'>
-				<c:set var='src' value='${"memberupload/"}${memberinfo.memberfile}'/>
-			</c:if>
-			<img src="${src}" width="20px" alt="profile">
-		</span>
-		<input type="file" name="memberfile" accept="image/*">
-	</label>
-	
-	<div class="clearfix">
-		<button type="submit" class="submitbtn">수정완료</button>
-		<button type="reset" class="cancelbtn">취소</button>
-	</div>
-	
-</form>
+<link href="css/join.css" type="text/css" rel="stylesheet">
 <script>
-//성별 체크
-$("input[value='${memberinfo.gender}']").prop('checked', true);
+$(function(){
 
 $(".cancelbtn").click(function(){
 	history.back();
 });
 
-//처음 화면 로드시 보여줄 이메일은 이미 체크 완료된 거이므로 기본 checkemail=true이다.
-var checkemail=true;
-$("input:eq(6)").on('keyup', function(){
-	$("#email_message").empty();
-	//[A-Za-z0-9_]의 의미가\w이다.
-	//+는 1회 이상 반복을 의미.{1,}와 동일하다.
-	//\w+는 [A-Za-z0-9_]를 1개 이상 사용하라는 의미이다.
-	var pattern = /^\w+@\w+[.]\w{3}$/;
-	var email = $("input:eq(6)").val();
-	if(!pattern.test(email)){
-		$("#email_message").css('color', 'red').html("이메일 형식이 맞지 않습니다.");
-		checkemail=false;
-	}else{
-		$("#email_message").css('color', 'green').html("이메일 형식에 맞습니다.");
-		checkemail=true;
-	}
-});//email keyup end
 
 $('form').submit(function(){
-	if(!$.isNumeric($("input[name='age']").val())){
-		alert("나이는 숫자로 입력하세요");
-		$("input[name='age']").val('').focus();
-		return false;
-	}
-	
 	if(!checkid){
 		alert("사용 가능한 id로 입력하세요");
 		$("input:eq(0)").val('').focus();
-		return false;
-	}
-	
-	if(!checkemail){
-		alert("email 형식을 확인하세요");
-		$("input:eq(6)").focus();
 		return false;
 	}
 });//submit
@@ -126,6 +42,103 @@ $('input[type=file]').change(function(event){
 		alert('확장자는 gif, jpg, jpeg, png가 가능합니다.');
 	}
 })
+})
 </script>
+<style>
+h3{text-align: center; color: #1a92b9}
+input[type=file]{display: none;}
+</style>
+</head>
+<body>
+<form name="joinform" action="updateProcess.com" method="post"
+		enctype="multipart/form-data">
+	<h3>회원 정보 수정</h3>
+	<hr>
+	<b>이름</b>
+	<input type="text" name="name" value="${member_info.member_name}" readOnly>
+			
+	<b>아이디</b>
+	<input type="text" name="id" value="${member_info.member_id}" readOnly>
+	
+	<b>비밀번호</b>
+	<input type="password" name="pass" value="${member_info.member_password}">
+	
+	
+	<b>생년월일</b>
+	<input type="text" name="birth" value="${member_info.member_birth}" readOnly>
+	
+	<b>성별</b>
+	<input type="text" name="gender" value="${member_info.member_gender}" readOnly>
+	
+	<label for="email"><b> E-Mail </b></label><br>
+      <input type="text" name="email"	id="email" value="${member_info.member_email.split('@')[0]}">@
+      <input type="text" name="domain" id="domain" value="${member_info.member_email.split('@')[1]}">
+      <select name="sel" id="sel" >
+       	<option value="">직접입력</option>
+       	<option value="naver.com">naver.com</option>
+        <option value="daum.net">daum.net</option>
+        <option value="nate.com">nate.com</option>
+        <option value="gmail.com">gmail.com</option>
+      </select>
+	
+	<b> 휴대전화 번호 </b>
+	<input type="text" name="tel1"	id="tel" value="${member_info.member_tel.split('-')[0]}">&nbsp;-&nbsp;
+    <input type="text" name="tel2" value="${member_info.member_tel.split('-')[1]}">&nbsp;-&nbsp;
+    <input type="text" name="tel3" value="${member_info.member_tel.split('-')[2]}">
+        
+	<b>계좌번호</b>
+	<select name="account_name" id="sel">
+        <option value="신한은행">신한은행</option>
+        <option value="국민은행">국민은행</option>
+        <option value="농협">농협</option>
+        <option value="우리은행">우리은행</option>
+        <option value="하나은행">하나은행</option>
+        <option value="카카오뱅크">카카오뱅크</option>
+        <option value="케이뱅크">케이뱅크</option>
+    </select>
+    <input type="text" name="account_num"	id="account_num" 
+        	value="${member_info.member_account}"	placeholder="계좌번호 입력">
+        		
+	<label><b>우편번호</b></label><br>
+    <input type="text" size="5" maxLength="5" name="post1" id="post1"> 
+    <input type="button" value="우편검색" id="postcode">
+        
+    <label><b>주소</b></label><br>
+    <input type="text" size="50" name="address" id="address" value="${member_info.member_address}"> 
+	
+	<label><b> 흥미있는 카테고리 </b></label><br>
+    <div class="container2">
+       <input type="checkbox" name="interest" id="hobby1" value="채소">채소&nbsp;&nbsp;&nbsp;
+       <input type="checkbox" name="interest" id="hobby2" value="곡물">곡물&nbsp;&nbsp;&nbsp;
+       <input type="checkbox" name="interest" id="hobby3" value="과일">과일&nbsp;&nbsp;&nbsp;
+       <input type="checkbox" name="interest" id="hobby4" value="해산물">해산물&nbsp;&nbsp;&nbsp;
+       <input type="checkbox" name="interest" id="hobby5" value="축산물">축산물&nbsp;&nbsp;&nbsp;
+    </div>
+        <br>
+	
+	<b>프로필 사진</b>
+	<label>
+		<img src="image/attach.png" width="10px">
+		<span id="filename">${member_info.member_file}</span>
+		<span id="showImage">
+			<c:if test='${empty member_info.member_file}'>
+				<c:set var='src' value='image/profile.png'/>
+			</c:if>
+			<c:if test='${!empty member_info.member_file}'>
+				<c:set var='src' value='${"memberupload/"}${member_info.member_file}'/>
+			</c:if>
+			<img src="${src}" width="20px" alt="profile">
+		</span>
+		<input type="file" name="memberfile" accept="image/*">
+	</label>
+	
+	<div class="clearfix">
+		<button type="submit" class="submitbtn">수정완료</button>
+		<button type="reset" class="cancelbtn">취소</button>
+	</div>
+	
+</form>
+
 </body>
+<jsp:include page="/board/footer.jsp"/>
 </html>

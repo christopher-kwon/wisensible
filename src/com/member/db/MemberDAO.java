@@ -81,8 +81,8 @@ public class MemberDAO {
 			String insert_sql = "INSERT INTO member"
 					+ "(MEMBER_NAME, MEMBER_ID, MEMBER_PASS, MEMBER_BIRTH, MEMBER_GENDER, "
 					+ " MEMBER_EMAIL, MEMBER_TEL, MEMBER_BANK, MEMBER_ACCOUNT,"
-					+ " MEMBER_ADDRESS, MEMBER_INTEREST) "
-					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					+ " MEMBER_ADDRESS, MEMBER_INTEREST, MEMBER_FILE) "
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			pstmt = con.prepareStatement(insert_sql);
 
@@ -97,6 +97,7 @@ public class MemberDAO {
 			pstmt.setString(9, m.getMember_account());
 			pstmt.setString(10, m.getMember_address());
 			pstmt.setString(11, m.getMember_interest());
+			pstmt.setString(12, m.getMember_file());
 			
 			result = pstmt.executeUpdate();
 
@@ -225,6 +226,7 @@ public class MemberDAO {
 				memberbean.setMember_interest(rs.getString(9));
 				memberbean.setMember_account(rs.getString(10));
 				memberbean.setMember_bank(rs.getString(11));
+				memberbean.setMember_file(rs.getString(12));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -261,9 +263,9 @@ public class MemberDAO {
 			con = ds.getConnection();
 			
 			String sql = "update member set member_pass = ?, member_email = ?, "
-						+ " member_tel = ?, member_bank = ? , member_account = ?"
-						+ " member_address =? , member_interest = ? "
-						+ " where id = ?";
+						+ " member_tel = ?, member_bank = ? , member_account = ?,"
+						+ " member_address =? , member_interest = ?, member_file =?  "
+						+ " where member_id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, memberbean.getMember_password());
 			pstmt.setString(2, memberbean.getMember_email());
@@ -271,7 +273,9 @@ public class MemberDAO {
 			pstmt.setString(4, memberbean.getMember_bank());
 			pstmt.setString(5, memberbean.getMember_account());
 			pstmt.setString(6, memberbean.getMember_address());
-			pstmt.setString(6, memberbean.getMember_interest());
+			pstmt.setString(7, memberbean.getMember_interest());
+			pstmt.setString(8, memberbean.getMember_file());
+			pstmt.setString(9, memberbean.getMember_id());
 			result = pstmt.executeUpdate();
 			
 		} catch (Exception e) {
