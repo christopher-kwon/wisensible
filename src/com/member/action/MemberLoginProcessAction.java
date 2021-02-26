@@ -33,8 +33,8 @@ public class MemberLoginProcessAction implements Action {
 			session.setAttribute("id", member_id);
 
 			forward.setRedirect(true);
-			forward.setPath("memberInfo.com");
-			//forward.setPath("BoardWrite.bo");
+			//forward.setPath("memberInfo.com");
+			forward.setPath("BoardList.bo");
 			return forward;
 		} else {
 			String message = "비밀번호가 일치하지 않습니다.";

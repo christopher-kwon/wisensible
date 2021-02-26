@@ -68,18 +68,23 @@
 	   <label for="email"><b> E-Mail </b></label><br>
         <input type="text" name="email"	id="email">@
         <input type="text" name="domain" id="domain">
-        <select name="sel" id="sel" >
+        <select name="domain" id="sel" >
         	<option value="">직접입력</option>
         	<option value="naver.com">naver.com</option>
         	<option value="daum.net">daum.net</option>
         	<option value="nate.com">nate.com</option>
         	<option value="gmail.com">gmail.com</option>
         </select>
+        <input type="button" name="btemail" id="btemail" class="btn btn-primary" value="인증번호 발송"><br>
+        <input type="text" name="writechk" class="writechk" id="writechk" placeholder="인증번호 입력">
+        <span id="explainsp">*메일로 보내드린 인증번호 6자리를 입력해 주세요</span>
+        <input type="hidden" name="emailChk" class="emailChk" id="emailChk" value="" style="background: yellow;">
+        <br>
         
         <b> 휴대전화 번호 </b>
-        <input type="text" name="tel1"	id="tel">&nbsp;-&nbsp;
-        <input type="text" name="tel2">&nbsp;-&nbsp;
-        <input type="text" name="tel3">
+        <input type="text" name="tel1"	id="tel" maxlength="3">&nbsp;-&nbsp;
+        <input type="text" name="tel2" maxlength="4">&nbsp;-&nbsp;
+        <input type="text" name="tel3" maxlength="4">
         <span id="tel_message"></span><br>
         
         <label for="account"><b>계좌번호</b></label><br>
@@ -93,7 +98,7 @@
         	<option value="케이뱅크">케이뱅크</option>
         </select>
         <input type="text" name="account_num"	id="account_num"
-        		placeholder="계좌번호 입력"><br>
+        		placeholder="계좌번호 입력(하이픈 포함)"><br>
         
         <label><b>우편번호</b></label><br>
         <input type="text" size="5" maxLength="5" name="post1" id="post1"> 
@@ -113,12 +118,22 @@
         <br>
         
         <b>프로필 사진</b>
-		<label>
-			<img src="image/attach.png" width="10px">
+        <label>
+			<img src="image/attach.png" width="20px">
 			<span id="filename"></span>
-			<input type="file" name="memberfile" accept="image/*">
+			<input type="file" name="memberfile" accept="image/*" id="memberfile">
+			<span id="showImage"></span>
 		</label>
         
+        <!-- <div class="form-group">
+				<label for="board_file">파일 첨부</label>
+				<label for="upfile">
+					<img src="image/attach.png" alt="파일첨부">
+				</label>
+				<input type="file" id="upfile" name="board_file">
+				<span id="filevalue"></span>
+			</div> -->
+         
 	<div class="clearfix">
 		<button type="reset" class="cancelbtn">다시작성</button>
 		<button type="submit" class="submitbtn">회원가입</button>

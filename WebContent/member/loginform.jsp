@@ -61,7 +61,10 @@
 							<div class="form-group">
 								<%-- join으로 가게끔 수정요망 --%>
 								<p class="text-center">
-									계정이 없나요? <a href="join.com" id="signup">회원가입 바로가기</a>
+									계정이 없나요? <a href="join.com" id="signup">회원가입 바로가기</a> /
+								</p>
+								<p class="text-center">
+									 <a href="BoardList.bo" id="signup">메인 페이지로 가기</a>
 								</p>
 							</div>
 							<div class="col-md-12 text-center ">

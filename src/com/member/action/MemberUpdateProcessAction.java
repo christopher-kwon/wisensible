@@ -50,9 +50,12 @@ public class MemberUpdateProcessAction implements Action {
 			String member_account = multi.getParameter("account_num");
 			String member_address = multi.getParameter("address");
 			String[] member_interest = multi.getParameterValues("interest");
-			String member_interests = member_interest[0];
-			for(int num = 1; num<member_interest.length; num++) {
-				member_interests += "," + member_interest[num];
+			String member_interests = null;
+			if(member_interest != null) {
+				member_interests = member_interest[0];
+				for(int num = 1; num<member_interest.length; num++) {
+					member_interests += "," + member_interest[num];
+				}
 			}
 			String member_file = multi.getFilesystemName("memberfile");
 
