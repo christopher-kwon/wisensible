@@ -27,7 +27,7 @@ public class BoardAddAction implements Action {
 
 		String realFolder = "";
 		String savaFolder = "boardupload";
-		int fileSize = 5 * 1024 * 1024;
+		int fileSize = 50 * 1024 * 1024;
 
 		ServletContext sc = request.getServletContext();
 		realFolder = sc.getRealPath(savaFolder);

@@ -75,7 +75,7 @@ function getList(state) {
 				} else if(lev==2){
 					comment_reply = ' CommentItem--reply lev2';
 				}
-				var profile=this.memberfile;
+				var profile=this.member_file;
 				var src='image/profile.png';
 				if(profile){
 					src='memberupload/'+profile;
