@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <jsp:include page="header.jsp" />
 <script src="js/writeform.js"></script>
@@ -39,14 +40,22 @@
 		<hr>
 
 		<div class="section_view">
-			<label for="board_file"></label> <label for="board_thumbnail">
-				<img src="image/mainadd.jpg" width="400px" height="400px"
-				id="board_thumbnail_view">
-
-			</label> <input type="file" id="board_thumbnail" name="board_thumbnail"
-				style="display: none"> <span id="board_thumbnail_name"></span>
-
-
+			<label >
+        
+       
+         <span id ="showImage">
+          <c:if test='${empty boardbean.board_thumbnail}'>
+         	<c:set var='src' value='image/mainadd.jpg'/>
+          </c:if>
+          
+           <c:if test='${!empty boardbean.board_thumbnail}}'>
+             <c:set var='src' value='${"boardupload/"}${boardbean.board_thumbnail}}'/>
+          </c:if>
+          <img src ="${src}" width="400px" height="400px" alt="profile" >
+          </span>
+          <input type="file" name="board_thumbnail" accept="image/*" style="display:none;">
+          
+</label>
 
 
 
@@ -107,14 +116,8 @@
 				<hr>
 
 
-				<div class="form-group">
-
-					<label for="board_storage">결 제 방 법 &emsp;:&emsp;&emsp;계 좌 이
-						체 </label>
-
-				</div>
-
-				<hr>
+			
+				
 
 				<div class="form-group">
 
@@ -124,6 +127,16 @@
 						id="board_delivery" type="checkbox" value="직거래">직거래 <input
 						name="board_delivery" id="board_delivery" type="checkbox"
 						value="퀵서비스">퀵서비스
+							<div class="form-group">
+
+					<label for="board_storage">배 송 비 용 &emsp;:&emsp;&emsp;
+					<input type="text" name="board_deliverycost"
+							id="board_deliverycost" placeholder="Enter 배송비용">원
+					
+					 </label>
+
+				</div>
+						
 
 				</div>
 				+ 버튼을 눌러 대표사진을 업로드해주세요.
@@ -169,11 +182,7 @@
 							value="냉장 보관">냉장 보관 <input name="board_storage"
 							id="board_storage" type="checkbox" value="냉동 보관">냉동 보관</td>
 					</tr>
-					<tr>
-						<th>배 송 비 용</th>
-						<td><input type="text" name="board_deliverycost"
-							id="board_deliverycost" placeholder="Enter 배송비용">원</td>
-					</tr>
+					
 				</table>
 			</div>
 
@@ -188,11 +197,12 @@
 
 
 			<div class="form-file">
-				<label for="board_file"></label><br> <label for="upfile">
-				</label> <input type="file" id="upfile1" name="board_file1"> <span
+				<label for="upfile">
+				 <input type="file" id="upfile1" name="board_file1"> <span
 					id="filevalue1"></span> <input type="file" id="upfile2"
-					name="board_file2"> <span id="filevalue2"></span>
-				<button id="file_add" value="파일창추가" class="btn btn-link">업로드추가</button>
+					name="board_file2"> <span id="filevalue2"></span><br>
+				<img src="image/add.JPG" width="20px" id="file_add"  style="" >
+				</label>
 			</div>
 
 
@@ -225,4 +235,3 @@
 
 
 <jsp:include page="footer.jsp" />
-

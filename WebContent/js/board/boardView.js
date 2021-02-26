@@ -338,7 +338,7 @@ $(function() {
 
 
 	ind = -1;
-	$(".star_box a").on('click', function() {
+	$(".star_box > a").on('click', function() {
 
 		$(this).parent().children("a").removeClass("on");
 		$(this).addClass("on").prevAll("a").addClass("on")
@@ -358,9 +358,9 @@ $(function() {
 		$.ajax({
 			url : "EvaluationAdd.ev",
 			data : {
-				evaluation_name : "admin",//$("#loginid").val(),
+				evaluation_name : $("#loginid").val(),
 				evaluation : ind ,
-				board_num : 5//$('#board_re_ref').val()
+				board_num : $('#board_re_ref').val()
 			},
 			type : "post",
 			success : function(rdata) {

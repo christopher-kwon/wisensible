@@ -94,3 +94,16 @@ input[type="radio"], input[type="checkbox"] {
     padding: 0;
     width: 25px;
 }
+#file_add{
+	padding:10 0 10 0;
+}
+#file_add:hover{
+	cursor: pointer
+}
+#showImage > img:hover{
+	cursor: pointer
+}
+
+body > div > div > div > div.col-lg-9 > div > form > div.section_view > div{
+	padding:10
+}
