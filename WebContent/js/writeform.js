@@ -1,6 +1,32 @@
 
 $(document).ready(
 		function() {
+		
+			if($("#board_bankt").val() == "신한은행" ){
+				$("#board_bank").val("신한은행").prop("selected",true);
+			}
+			if($("#board_bankt").val() == "하나은행" ){
+				$("#board_bank").val("하나은행").prop("selected",true);
+			}
+			if($("#board_bankt").val() == "우리은행" ){
+				$("#board_bank").val("우리은행").prop("selected",true);
+			}
+			if($("#board_bankt").val() == "국민은행" ){
+				$("#board_bank").val("국민은행").prop("selected",true);
+			}
+			if($("#board_bankt").val() == "농협" ){
+				$("#board_bank").val("농협").prop("selected",true);
+			}
+			if($("#board_bankt").val() == "카카오뱅크" ){
+				$("#board_bank").val("카카오뱅크").prop("selected",true);
+			}
+			if($("#board_bankt").val() == "케이뱅크" ){
+				$("#board_bank").val("케이뱅크").prop("selected",true);
+			}
+			
+			
+				
+			
 			
 
 
@@ -23,6 +49,16 @@ $(document).ready(
 					alert("계좌 번호는 숫자로 입력해주세요")
 					$("#board_account").val('')
 					$("#board_account").focus();
+				}
+			})	
+			$("#board_deliverycost").change(function() {
+				if ($.isNumeric($("#board_deliverycost").val())) {
+					$("#board_bank").focus();
+
+				} else {
+					alert("배송비 정보는 숫자로 입력해주세요")
+					$("#board_deliverycost").val('')
+					$("#board_deliverycost").focus();
 				}
 			})
 			
@@ -113,6 +149,12 @@ $(document).ready(
 				}
 
 			}); 
+			$("#file_add").click(function(){
+				var output ="<input type='file' id='upfile3' name='board_file3'>"
+				output + "<span id='filevalue2'></span>"
+				$("#filevalue2").html(output);
+			})
+			
 
 			$("form").submit(
 					function() {
@@ -157,21 +199,104 @@ $(document).ready(
 
 						}
 
-						if ($.trim($("#board_storage").val()) == "") {
-							alert("보관방법을 입력해주세요")
-							$("#board_storage").focus();
-							return false;
-
-						}
-
-						if ($.trim($("#board_delivery").val()) == "") {
-							alert("배송방법을 입력해주세요")
-							$("#board_delivery").focus();
+					
+					
+						if ($("#board_delivery").is(":checked")==false) {
+							alert("배송방법을 선택해주세요")
+						
 							return false;
 						}
 
+						if ($.trim($("#board_product").val()) == "") {
+							alert("상품명을 입력해주세요")
+							$("#board_ptoduct").focus();
+							return false;
 
+						}
+						if ($.trim($("#board_amount").val()) == "") {
+							alert("수량을 입력해주세요")
+							$("#board_mount").focus();
+							return false;
+
+						}
+						if ($.trim($("#board_producer").val()) == "") {
+							alert("생산자를 입력해주세요")
+							$("#board_producer").focus();
+							return false;
+
+						}
+						if ($.trim($("#board_expirydate").val()) == "") {
+							alert("유통기간을 입력해주세요")
+							$("#board_expirydate").focus();
+							return false;
+
+						}
+						if ($.trim($("#board_origin").val()) == "") {
+							alert("원산지 항목을 입력해주세요")
+							$("#board_origin").focus();
+							return false;
+
+						}
+						if ($("#board_storage").is(":checked")==false) {
+							alert("보관방법을 선택해주세요")
+						
+							return false;
+						
+						
+
+						}
+						if ($.trim($("#board_deliverycost").val()) == "") {
+							alert("배송비용을 입력해주세요")
+							$("#board_deliverycost").focus();
+							return false;
+
+						}
+						
+						if ($.trim($("#upfile1").val()) == "") {
+							alert("파일은 최소 2개이상 업로드필수입니다. 1번파일을 업로드해주세요")
+						
+							return false;
+
+						}
+						if ($.trim($("#upfile2").val()) == "") {
+							alert("파일은 최소 2개이상 업로드필수입니다. 2번파일을 업로드해주세요")
+						
+							return false;
+
+						}
+						if ($.trim($("#board_passward").val()) == "") {
+							alert("게시물 비밀번호를 입력해주세요")
+							$("#board_pass").focus();
+							return false;
+						}
+						
+						
 					}) //end form.submit
 
+
+					 function show() {
+        
+         if($('#filevalue').text() == '') {
+            $(".remove").css('display', 'none');
+         } else {
+            $(".remove").css({'display':'inline-block', 'position':'relative', 'top':'-5px'});
+         }
+      }
+      
+      show();
+      
+      $("#upfile").change(function() {
+         check++;
+         var inputfile = $(this).val().split('\\');
+         $('#filevalue').text(inputfile[inputfile.length - 1]);
+         show();
+         console.log(check);
+      });
+      
+         //remove 이미지를 클릭하면 파일명을 ''로 변경하고 remove 이미지를 보이지 않게 합니다.
+         $(".remove").click(function() {
+         $('#filevalue').text('');
+         $(this).css('display', 'none')
+      })
 		});
 		
