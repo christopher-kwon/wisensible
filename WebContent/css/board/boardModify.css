@@ -70,6 +70,5 @@ padding:10px;
 
 #upfile{display:none}
 
-#board_delivery{width:20px}
 
-#board_storage{width:20px}
+#board_delivery1, #board_delivery2, #board_delivery3, #board_storage1, #board_storage2,#board_storage3{width:20px}

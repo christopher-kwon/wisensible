@@ -1,14 +1,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-
 <%@ include file="header.jsp"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
-
-
 
 
 
@@ -112,6 +106,7 @@
   </table>
 </div>
 
+
 <div class="board_content_view">
 <div class="board_content">${boardBean.board_content } </div>
 <div class="board_view_image1">
@@ -122,13 +117,19 @@
   <img src="boardupload/${boardBean.board_file2 }" class="board_file2" alt="상품이미지2" width="795" height="500"> 
 </div><br>
 
+
+  <c:if test="${not empty boardBean.board_file3}">
 <div class="board_view_image3">
   <img src="boardupload/${boardBean.board_file3 }" class="board_file3" alt="상품이미지3" width="795" height="500"> 
 </div><br>
+</c:if>
 
+
+  <c:if test="${not empty boardBean.board_file4}">
 <div class="board_view_image4">
   <img src="boardupload/${boardBean.board_file4 }" class="board_file4" alt="상품이미지4" width="795" height="500"> 
 </div><br>
+</c:if>
 </div>
 <input type="hidden" name="board_num" value="${boardBean.board_num }" id="board_num">
 

@@ -27,7 +27,7 @@ public class BoardDAO {
 			ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
 		} catch (Exception e) {
 
-			System.out.println("DB ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½: " + e);
+			System.out.println("DB ¿¡·¯: " + e);
 			return;
 		}
 	}
@@ -48,7 +48,7 @@ public class BoardDAO {
                 result = resultSet.getInt(1);
             }
         } catch (Exception ex) {
-            System.out.println("getListcount() ï¿½ï¿½ï¿½ï¿½ : " + ex);
+            System.out.println("getListcount() ¿¡·¯ : " + ex);
         } finally {
             if (resultSet != null) {
                 try {
@@ -108,7 +108,7 @@ public class BoardDAO {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-            System.out.println("getBoardList() ï¿½ï¿½ï¿½ï¿½ : " + ex);
+            System.out.println("getBoardList() : " + ex);
         } finally {
             if (resultSet != null) {
                 try {
@@ -146,7 +146,7 @@ public class BoardDAO {
 			pstmt.setInt(1, board_num);
 			pstmt.executeUpdate();
 		} catch (Exception ex) {
-			System.out.println("setReadCountUpdate() ï¿½ï¿½ï¿½ï¿½ : " + ex);
+			System.out.println("setReadCountUpdate()  : " + ex);
 		} finally {
 			if (pstmt != null)
 				try {
@@ -207,7 +207,7 @@ public class BoardDAO {
             }
             
 		} catch (Exception e) {
-			System.out.println("getDetail() ï¿½ï¿½ï¿½ï¿½ : " + e);
+			System.out.println("getDetail() ¿¡·¯ : " + e);
 			e.printStackTrace();
             
         } finally {
@@ -220,14 +220,14 @@ public class BoardDAO {
 
             if (pstmt != null)
                 try {
-                    rs.close();
+                    pstmt.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
             if (conn != null)
                 try {
-                    rs.close();
+                    conn.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -275,13 +275,13 @@ public class BoardDAO {
             int result = pstmt.executeUpdate();
 
             if (result == 1) {
-                System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®");
+                System.out.println("°Ô½ÃÆÇ ¼öÁ¤ ¼º°ø");
                 return true;
             }
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            System.out.println("boardModify() ï¿½ï¿½ï¿½ï¿½ : " + ex);
+            System.out.println("boardModify() : " + ex);
 
         } finally {
 
@@ -325,7 +325,7 @@ public class BoardDAO {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("isBoardWriter() ï¿½ï¿½ï¿½ï¿½ : " + e);
+            System.out.println("isBoardWriter()  : " + e);
         } finally {
             try {
                 if (rs != null)
@@ -369,13 +369,13 @@ public class BoardDAO {
             int result = pstmt.executeUpdate();
 
             if (result == 1) {
-                System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®");
+                System.out.println("");
                 return true;
             }
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            System.out.println("boardDelete() ï¿½ï¿½ï¿½ï¿½ : " + ex);
+            System.out.println("boardDelete()  : " + ex);
 
         } finally {
 
@@ -437,12 +437,12 @@ public class BoardDAO {
 			pstmt.setString(23, boardbean.getBoard_expirydate());
 			result = pstmt.executeUpdate();
 			if (result == 1) {
-				System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+				System.out.println("°Ô½ÃÆÇ ÀÛ¼º ¼º°ø.");
 				return true;
 			}
 
 		} catch (Exception se) {
-			System.out.println("Insert() ï¿½ï¿½ï¿½ï¿½ : " + se);
+			System.out.println("Insert() ¿¡·¯ : " + se);
 			se.printStackTrace();
 		} finally {
 
@@ -492,7 +492,7 @@ public class BoardDAO {
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.out.println("getBoardCategoryList() ï¿½ï¿½ï¿½ï¿½ : " + ex);
+			System.out.println("getBoardCategoryList() : " + ex);
 		} finally {
 			if(resultSet != null) {
 				try {
