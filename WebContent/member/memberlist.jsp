@@ -4,27 +4,9 @@
 <html>
 <head>
 <jsp:include page="../board/header.jsp" />
-<title>Insert title here</title>
+<title>회원 리스트</title>
+<link href="css/memberlist.css" type="text/css" rel="stylesheet">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<style>
-	caption{text-align: center; caption-side: top;font-weight:bold; font-size: 20px}
-	h1{text-align: center}
-	li .current{background: #faf7f7; color:gray}
-	body > div > table > tbody> tr > td:last-child > a{color: red}
-	form{margin:0 auto; width: 80%; text-align: center}
-	select{
-		color: #495057;
-		background-color: #fff;
-		background-clip: padding-box;
-		border: 1px solid #ced4da;
-		border-radius: .25rem;
-		transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-		outline: none;
-	}
-	.container{width: 60%}
-	td:nth-chid(1){width: 33%}
-	.input-group{margin-bottom: 3em}
-</style>
 <script>
 	$(function(){
 		//검색 클릭 후 응답화면에는 검색시 선택한 필드가 선택되도록 한다.
@@ -95,7 +77,7 @@
 						<font size=3>회원 수 : ${listcount}</font>
 					</th>
 				</tr>
-				<tr>
+				<tr class="id_table">
 					<td>아이디</td><td>이름</td><td>삭제</td>
 				</tr>
 			</thead>
@@ -122,7 +104,7 @@
 		</c:if>
 		<c:if test="${page > 1}">
 			<li class="page-item">
-				<a href="memberList.net?page=${page-1}&search_file=${search_field}&search_word=${search_word}" 
+				<a href="memberList.com?page=${page-1}&search_file=${search_field}&search_word=${search_word}" 
 					class="page-link">이전</a>&nbsp;
 			</li>
 		</c:if>
@@ -135,7 +117,7 @@
 			</c:if>
 			<c:if test="${a != page}">
 				<li class="page-item">
-					<a href="memberList.net?page=${a}&search_file=${search_field}&search_word=${search_word}"
+					<a href="memberList.com?page=${a}&search_file=${search_field}&search_word=${search_word}"
 						class="page-link">${a}</a>
 				</li>
 			</c:if>
@@ -148,7 +130,7 @@
 		</c:if>
 		<c:if test="${page < maxpage}">
 			<li class="page-item">
-				<a href="memberList.net?page=${page+1}&search_file=${search_field}&search_word=${search_word}" 
+				<a href="memberList.com?page=${page+1}&search_file=${search_field}&search_word=${search_word}" 
 					class="page-link">&nbsp;다음</a>
 			</li>
 		</c:if>
