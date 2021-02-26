@@ -18,6 +18,7 @@ public class CommentDelete implements Action {
 		
 		CommentDAO commentDAO = new CommentDAO();
 
+		
 		int rdata = commentDAO.commentsDelete(Integer.parseInt(request.getParameter("comment_num")));
 		System.out.println(rdata);
 		response.getWriter().print(rdata);

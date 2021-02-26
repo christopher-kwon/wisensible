@@ -59,6 +59,7 @@ public class CommentBean {
 	public void setComment_re_seq(int comment_re_seq) {
 		this.comment_re_seq = comment_re_seq;
 	}
+
 	
 
 }

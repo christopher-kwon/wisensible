@@ -26,7 +26,7 @@ public class CommentDAO {
 		}
 	}
 
-	public int getListCount(int BOARD_RE_REF) {
+	public int getListCount(int comment_board_ref) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -36,7 +36,7 @@ public class CommentDAO {
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, BOARD_RE_REF);
+			pstmt.setInt(1, comment_board_ref);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -78,9 +78,9 @@ public class CommentDAO {
 			sort = "desc";
 		}
 
-		String sql = "select * from ( select b.*, rownum rnum from(select comment_num, comm.comment_id, comment_content, comment_date, "
-				+ "comment_re_lev, comment_re_seq, comment_re_ref, member.memberfile from comm join member "
-				+ "on comm.comment_id=member.id where comment_board_ref = ? order by comment_re_ref " + sort + ", "
+		String sql = "select * from ( select b.*, rownum rnum from(select comment_num, comment_id, comment_content, comment_date, "
+				+ "comment_re_lev, comment_re_seq, comment_re_ref, member_file from comm join member "
+				+ "on comment_id=member_id where comment_board_ref = ? order by comment_re_ref " + sort + ", "
 				+ "comment_re_seq asc)b" + ")";
 
 		JsonArray array = new JsonArray();
@@ -95,21 +95,20 @@ public class CommentDAO {
 			// DB에서 가져온 데이터를 VO 개체에 담습니다.
 			while (rs.next()) {
 				JsonObject object = new JsonObject();
-				object.addProperty("comment_num", rs.getInt(1));
-				object.addProperty("comment_board_ref", rs.getInt(2));
-				object.addProperty("comment_id", rs.getString(3));
-				object.addProperty("comment_content", rs.getString(4));
-				object.addProperty("comment_date", rs.getString(5));
-				object.addProperty("comment_re_ref", rs.getInt(6));
-				object.addProperty("comment_re_lev", rs.getInt(7));
-				object.addProperty("comment_re_seq", rs.getInt(8));
-				object.addProperty("memberfile", rs.getString(9));
+				object.addProperty("comment_num", rs.getInt("comment_num"));
+				object.addProperty("comment_id", rs.getString("comment_id"));
+				object.addProperty("comment_content", rs.getString("comment_content"));
+				object.addProperty("comment_date", rs.getString("comment_date"));
+				object.addProperty("comment_re_ref", rs.getInt("comment_re_ref"));
+				object.addProperty("comment_re_lev", rs.getInt("comment_re_lev"));
+				object.addProperty("comment_re_seq", rs.getInt("comment_re_seq"));
+				object.addProperty("member_file", rs.getString("member_file"));
 				array.add(object);
 			}
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.out.println("getBoardList() 에러 : " + ex);
+			System.out.println("getCommentList() 에러 : " + ex);
 		} finally {
 			if (rs != null)
 				try {

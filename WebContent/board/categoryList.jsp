@@ -9,17 +9,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="header.jsp"/>
 
-<table class="table table-warning table-striped">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Image</th>
-        <th scope="col">Subject</th>
-        <th scope="col">Price</th>
+<h1 style="margin: 20px;"><%=request.getParameter("category")%></h1>
+
+<table class="table table-hover table-borderless">
+    <thead class="table-dark">
+    <tr scope="row">
+        <th>#</th>
+        <th>Image</th>
+        <th>Subject</th>
+        <th>Price</th>
+        <th>Price</th>
     </tr>
     </thead>
     <tbody>
-    <h1> <%=request.getParameter("category")%></h1>
     <c:forEach var="board" items="${boardList}">
     <tr>
         <th scope="row">1</th>

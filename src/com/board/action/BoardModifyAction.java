@@ -66,12 +66,14 @@ public class BoardModifyAction implements Action {
 			boardBean.setBoard_deliverycost(Integer.parseInt(multi.getParameter("board_deliverycost")));
 			boardBean.setBoard_content(multi.getParameter("board_content"));
 			
-			String file_check = multi.getParameter("file_check");
-			if (file_check != null) {
-				boardBean.setBoard_file1("file_check");
+			String check = multi.getParameter("check");
+			if (check != null) {
+				boardBean.setBoard_thumbnail("check");
+				System.out.println("check = " + check);
+
 			} else {
 				String fileName = multi.getFilesystemName("board_file");
-				boardBean.setBoard_file1(fileName);
+				boardBean.setBoard_thumbnail(fileName);
 			}
 			
 			result = boardDAO.boardModify(boardBean);
@@ -88,7 +90,7 @@ public class BoardModifyAction implements Action {
 		
 		forward = new ActionForward();
 		forward.setRedirect(true);
-		forward.setPath("BoardDetailAction.bo?num=" + boardBean.getBoard_num());
+		forward.setPath("BoardDetailAction.bo?board_num=" + boardBean.getBoard_num());
 		return forward;
 		
 	} catch (IOException e) {
