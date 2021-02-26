@@ -27,7 +27,7 @@ public class BoardModifyAction implements Action {
 		String realFolder = "";
 		
 		String saveFolder = "boardupload";
-		int fileSize = 10 * 1024 * 1024;
+		int fileSize = 50 * 1024 * 1024;
 		
 		ServletContext servletContext = request.getServletContext();
 		realFolder = servletContext.getRealPath(saveFolder);
@@ -72,7 +72,7 @@ public class BoardModifyAction implements Action {
 				System.out.println("check = " + check);
 
 			} else {
-				String fileName = multi.getFilesystemName("board_file");
+				String fileName = multi.getFilesystemName("board_thumbnail");
 				boardBean.setBoard_thumbnail(fileName);
 			}
 			

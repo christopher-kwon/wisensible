@@ -22,7 +22,7 @@
 
 <!-- table -->
 <div class="board_view_table">
-  <h2>${boardBean.board_subject }</h2>
+  <h2>[${boardBean.board_category}]${boardBean.board_subject }</h2> 
   <table class="table">
 
       <tr><td rowspan="6">  <img src="boardupload/${boardBean.board_thumbnail }" class="view_thumbnail" alt="thumbnail" width="304" height="236"> 
@@ -30,7 +30,7 @@
         <td>가격 <strong>${boardBean.board_price}</strong>원 </td>
       </tr>
       <tr>
-        <td>은행 / 계좌번호 ${boardBean.board_bank} / ${boardBean.board_account}</td>
+        <td>은행 / 계좌번호 [${boardBean.board_bank} / ${boardBean.board_account}]</td>
       </tr>
       <tr>
         <td>연락처 ${boardBean.board_tel}</td>
@@ -39,7 +39,7 @@
         <td>보관방법 ${boardBean.board_storage}</td>
       </tr>
             <tr>
-        <td>배송구분 / 배송비 ${boardBean.board_delivery} / ${boardBean.board_deliverycost}</td>
+        <td>배송구분 / 배송비 [${boardBean.board_delivery} / ${boardBean.board_deliverycost}원]</td>
       </tr>
       
                   <tr>
@@ -86,7 +86,7 @@
         <td>${boardBean.board_product}</td>
       </tr>
       <tr>
-        <td>용량/수량</td>
+        <td>수량</td>
         <td>${boardBean.board_amount}</td>
       </tr>
       <tr>

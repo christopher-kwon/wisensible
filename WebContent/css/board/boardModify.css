@@ -38,11 +38,7 @@ text-align: center;
 -moz-text-align-last:center;
 }
 
-img{
-float:left;
-padding:20px 0 10px 0
 
-}
 #board_subject{
 width: 68%;
 
@@ -73,3 +69,7 @@ padding:10px;
 }
 
 #upfile{display:none}
+
+#board_delivery{width:20px}
+
+#board_storage{width:20px}
