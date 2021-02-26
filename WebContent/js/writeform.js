@@ -1,6 +1,35 @@
 
 $(document).ready(
 		function() {
+			  $('input[type=file]').change(function(event){
+			      var inputfile =$(this).val().split('\\');
+			      var filename=inputfile[inputfile.length -1];
+			      var pattern = /(gif|jpg|jpeg|png)$/i;
+			      if(pattern.test(filename)){
+			         $('#filename').text(filename);
+			         
+			         var reader =new FileReader();
+			      reader.readAsDataURL(event.target.files[0])
+			      reader.onload = function(event){
+			            $("#showImage").html('<img width="400px" height="400px" src="' + event.target.result + '">');
+			      
+			            
+			         };
+			      }else{
+			         alser('확장자는 gif, jpg, jpeg, png 가능합니다.');
+			      }
+			   })
+			
+			$("#file_add").click(function(){
+				var output ="<input type='file' id='upfile3' name='board_file3'>"
+					output += "<span id='filevalue3'></span>&nbsp;"
+					output +="<input type='file' id='upfile4' name='board_file4'>"
+					output += "<span id='filevalue4'></span><br>"	
+					output += "사진 업로드는 최대 4개까지 가능합니다."
+				$("body > div > div > div > div.col-lg-9 > div > form > div.section_content > div.form-file > label").append(output+"<br>");
+				$("#file_add").attr("style","display:none")
+				
+			})
 		
 			if($("#board_bankt").val() == "신한은행" ){
 				$("#board_bank").val("신한은행").prop("selected",true);
@@ -61,81 +90,6 @@ $(document).ready(
 					$("#board_deliverycost").focus();
 				}
 			})
-			
-				$("#board_thumbnail").change(function() {
-		var inputfile = $(this).val().split('\\');
-		$('#board_thumbnail_name').text(inputfile[inputfile.length - 1]).css("display","none");
-		var thumbnail_name = $('#board_thumbnail_name').text();
-		console.log(thumbnail_name);
-		
-		if(!(thumbnail_name.endsWith('.png') || thumbnail_name.endsWith('.PNG') ||
-		thumbnail_name.endsWith('.jpg') || thumbnail_name.endsWith('.JPG')))
-		 {
-		 					alert("파일은 jpg, png파일만 업로드 가능합니다.")
-		 }
-	 
-	 });
-	 				$("#upfile1").change(function() {
-		var inputfile1 = $(this).val().split('\\');
-		$('#filevalue1').text(inputfile1[inputfile1.length - 1]).css("display","none");
-		var filename1 = $('#filevalue1').text();
-		console.log(filename1);
-		
-		if(!(filename1.endsWith('.png') || filename1.endsWith('.PNG') ||
-		filename1.endsWith('.jpg') || filename1.endsWith('.JPG')))
-		 {
-		 					alert("파일은 jpg, png파일만 업로드 가능합니다.")
-		 }
-		 
-		 
-	});
- 				$("#upfile2").change(function() {
-		var inputfile2 = $(this).val().split('\\');
-		$('#filevalue2').text(inputfile2[inputfile2.length - 1]).css("display","none");
-		var filename2 = $('#filevalue2').text();
-		console.log(filename2);
-		
-				if(!(filename2.endsWith('.png') || filename2.endsWith('.PNG') ||
-		filename2.endsWith('.jpg') || filename2.endsWith('.JPG')))
-		 {
-		 					alert("파일은 jpg, png파일만 업로드 가능합니다.")
-		 }
-			});
-			
-		 				$("#upfile3").change(function() {
-		var inputfile3 = $(this).val().split('\\');
-		$('#filevalue3').text(inputfile3[inputfile3.length - 1]).css("display","none");
-		var filename3 = $('#filevalue3').text();
-		console.log(filename3);
-		
-				if(!(filename3.endsWith('.png') || filename3.endsWith('.PNG') ||
-		filename3.endsWith('.jpg') || filename3.endsWith('.JPG')))
-		 {
-		 					alert("파일은 jpg, png파일만 업로드 가능합니다.")
-		 }
-		 
-		 
-		});
-		 				$("#upfile4").change(function() {
-		var inputfile4 = $(this).val().split('\\');
-		$('#filevalue4').text(inputfile4[inputfile4.length - 1]).css("display","none");
-		var filename4 = $('#filevalue4').text();
-		console.log(filename4);
-		
-				if(!(filename4.endsWith('.png') || filename4.endsWith('.PNG') ||
-		filename4.endsWith('.jpg') || filename4.endsWith('.JPG')))
-		 {
-		 					alert("파일은 jpg, png파일만 업로드 가능합니다.")
-		 }
-		 
-				});
-	
-			
-				
-				
-		
-			
-			
 
 			$("#board_tel").change(function() {
 				pattern = /^\d{2,3}-\d{3,4}-\d{3,4}$/;
@@ -149,11 +103,7 @@ $(document).ready(
 				}
 
 			}); 
-			$("#file_add").click(function(){
-				var output ="<input type='file' id='upfile3' name='board_file3'>"
-				output + "<span id='filevalue2'></span>"
-				$("#filevalue2").html(output);
-			})
+		
 			
 
 			$("form").submit(
@@ -293,7 +243,6 @@ $(document).ready(
          console.log(check);
       });
       
-         //remove 이미지를 클릭하면 파일명을 ''로 변경하고 remove 이미지를 보이지 않게 합니다.
          $(".remove").click(function() {
          $('#filevalue').text('');
          $(this).css('display', 'none')
