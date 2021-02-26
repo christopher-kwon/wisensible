@@ -101,6 +101,7 @@
 
 
 			</div>
+			<div>${boardBean.board_thumbnail }</div>
 		</div>
 <hr>
 
@@ -149,11 +150,12 @@
 
 			<div class="form-group read">
 				<label for="board_file">파일첨부</label> 
-				<label for="upfile"><img src="../image/attach.png" alt="파일첨부" width="20px"> </label> 
-				<input
-					type="file" multiple id="upfile" name="board_file"> <span
-					id="filevalue">${boarddata.board_file1 }</span>
-					<img src="../image/remove.png" alt="파일삭제" width="10px" class="remove">
+				<label for="upfile"><img src="image/attach.png" alt="파일첨부" width="20px"> </label> 
+				<input type="file" id="upfile1" name="board_file1"> 
+				<input type="file" id="upfile2" name="board_file2">
+				<input type="file" id="upfile3" name="board_file3">
+				<input type="file" id="upfile4" name="board_file4">
+					<img src="image/remove.png" alt="파일삭제" width="10px" class="remove">
 
 			</div>
 			

@@ -27,10 +27,10 @@
 
       <tr><td rowspan="6">  <img src="boardupload/${boardBean.board_thumbnail }" class="view_thumbnail" alt="thumbnail" width="304" height="236"> 
       </td>
-        <td>가격 ${boardBean.board_price}원 </td>
+        <td>가격 <strong>${boardBean.board_price}</strong>원 </td>
       </tr>
       <tr>
-        <td>계좌번호 ${boardBean.board_account}</td>
+        <td>은행 / 계좌번호 ${boardBean.board_bank} / ${boardBean.board_account}</td>
       </tr>
       <tr>
         <td>연락처 ${boardBean.board_tel}</td>
