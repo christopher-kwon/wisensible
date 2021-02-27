@@ -75,7 +75,7 @@ function getList(state) {
 				} else if(lev==2){
 					comment_reply = ' CommentItem--reply lev2';
 				}
-				var profile=this.memberfile;
+				var profile=this.member_file;
 				var src='image/profile.png';
 				if(profile){
 					src='memberupload/'+profile;
@@ -213,6 +213,7 @@ function replyform(comment_num, lev, seq, ref){
 } //function(replyform) end
 
 $(function() {
+	getListev();
 	option=1;
 	getList(option); //처음 로드 될때는 등록순 정렬
 	
@@ -333,10 +334,6 @@ $(function() {
 	$('.CommentBox').on('click', '.reply_cancel', function() {
 		$(this).parent().parent().parent().remove();
 	})
-	
-}) //function 
-
-
 	ind = -1;
 	$(".star_box > a").on('click', function() {
 
@@ -349,7 +346,7 @@ $(function() {
 
 	})
 
-	$("body > div > div > div.col-lg-9 > div.container > div.board_view_table > table > tbody > tr:nth-child(6) > td > div.star_box > div > button.btn.btn-info").click(function() {
+	$("body > div > div > div > div.col-lg-9 > div > div.board_view_table > table > tbody > tr:nth-child(6) > td > div.star_box > div > button.btn.btn-info").click(function() {
 		if (ind == -1) {
 			alert("평점을 선택해주세요")
 			return;
@@ -360,12 +357,12 @@ $(function() {
 			data : {
 				evaluation_name : $("#loginid").val(),
 				evaluation : ind ,
-				board_num : $('#board_re_ref').val()
+				board_num : $("#board_num").val()
 			},
 			type : "post",
 			success : function(rdata) {
 				if (rdata.length > 0) {
-					alert("평점등록완료");
+					
 					$("star_box > a").text("")
 					$(".on").removeClass("on")
 					$("#lev").text("");
@@ -385,5 +382,13 @@ $(function() {
 		})
 
 	})
-	
+	if($("#board_writer").val() == $("#loginsession").val()){
+		$("body > div > div > div > div.col-lg-9 > div > div.board_view_table > table > tbody > tr:nth-child(6) > td > div.star_box").html("")
+		
+	}
 
+
+}) //function 
+
+
+	

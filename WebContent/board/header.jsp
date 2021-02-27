@@ -32,7 +32,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="BoardList.bo">
-            <img src="${pageContext.request.contextPath}/image/logo2.png" alt="" width="300px">
+            <img src="image/logo2.png" alt="" width="300px">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

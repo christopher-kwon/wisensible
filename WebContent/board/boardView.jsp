@@ -1,14 +1,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-
 <%@ include file="header.jsp"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
-
-
 
 
 
@@ -22,15 +16,15 @@
 
 <!-- table -->
 <div class="board_view_table">
-  <h2>${boardBean.board_subject }</h2>
+  <h2>[${boardBean.board_category}]${boardBean.board_subject }</h2> 
   <table class="table">
 
       <tr><td rowspan="6">  <img src="boardupload/${boardBean.board_thumbnail }" class="view_thumbnail" alt="thumbnail" width="304" height="236"> 
       </td>
-        <td>가격 ${boardBean.board_price}원 </td>
+        <td>가격 <strong>${boardBean.board_price}</strong>원 </td>
       </tr>
       <tr>
-        <td>계좌번호 ${boardBean.board_account}</td>
+        <td>은행 / 계좌번호 [${boardBean.board_bank} / ${boardBean.board_account}]</td>
       </tr>
       <tr>
         <td>연락처 ${boardBean.board_tel}</td>
@@ -39,12 +33,14 @@
         <td>보관방법 ${boardBean.board_storage}</td>
       </tr>
             <tr>
-        <td>배송구분 / 배송비 ${boardBean.board_delivery} / ${boardBean.board_deliverycost}</td>
+        <td>배송구분 / 배송비 [${boardBean.board_delivery} / ${boardBean.board_deliverycost}원]</td>
       </tr>
       
                   <tr>
 <td><strong>평점</strong> 
-
+<input type="hidden" id = "board_writer" value="${boardBean.board_name}">
+<input type="hidden" id= "loginsession" value="${id}">
+<input type="hidden" value="${boardBean.board_num}">
 	<div class="star_result">
 	<label for="1">★</label><label for="2">★</label><label for="3">★</label><label for="4">★</label>
 	<label for="5">★</label>
@@ -52,8 +48,8 @@
 	</div>	<hr>
 
 	<div class="star_box">
-		<a href="#">★</a> <a href="#">★</a> <a href="#">★</a> <a href="#">★</a>
-		<a href="#">★</a>
+		<a id="1">★</a> <a id="1">★</a> <a id="1">★</a> <a id="1">★</a>
+		<a id="1">★</a>
 
 	
 	<p id="lev" style="text-align:;"></p>
@@ -86,7 +82,7 @@
         <td>${boardBean.board_product}</td>
       </tr>
       <tr>
-        <td>용량/수량</td>
+        <td>수량</td>
         <td>${boardBean.board_amount}</td>
       </tr>
       <tr>
@@ -112,6 +108,7 @@
   </table>
 </div>
 
+
 <div class="board_content_view">
 <div class="board_content">${boardBean.board_content } </div>
 <div class="board_view_image1">
@@ -122,13 +119,19 @@
   <img src="boardupload/${boardBean.board_file2 }" class="board_file2" alt="상품이미지2" width="795" height="500"> 
 </div><br>
 
+
+  <c:if test="${not empty boardBean.board_file3}">
 <div class="board_view_image3">
   <img src="boardupload/${boardBean.board_file3 }" class="board_file3" alt="상품이미지3" width="795" height="500"> 
 </div><br>
+</c:if>
 
+
+  <c:if test="${not empty boardBean.board_file4}">
 <div class="board_view_image4">
   <img src="boardupload/${boardBean.board_file4 }" class="board_file4" alt="상품이미지4" width="795" height="500"> 
 </div><br>
+</c:if>
 </div>
 <input type="hidden" name="board_num" value="${boardBean.board_num }" id="board_num">
 
