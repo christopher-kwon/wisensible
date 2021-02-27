@@ -109,14 +109,17 @@
 
 <div class="board_content_view">
 <div class="board_content">${boardBean.board_content } </div>
+
+ <c:if test="${not empty boardBean.board_file1}">
 <div class="board_view_image1">
   <img src="boardupload/${boardBean.board_file1 }" class="board_file1" alt="상품이미지1" width="795" height="500"> 
 </div><br>
-
+</c:if>
+  <c:if test="${not empty boardBean.board_file2}">
 <div class="board_view_image2">
   <img src="boardupload/${boardBean.board_file2 }" class="board_file2" alt="상품이미지2" width="795" height="500"> 
 </div><br>
-
+</c:if>
 
   <c:if test="${not empty boardBean.board_file3}">
 <div class="board_view_image3">
