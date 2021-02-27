@@ -1,7 +1,7 @@
 
 $(document).ready(
 		function() {
-			  $('input[type=file]').change(function(event){
+			  $('.section_view > label > input[type=file]').change(function(event){
 			      var inputfile =$(this).val().split('\\');
 			      var filename=inputfile[inputfile.length -1];
 			      var pattern = /(gif|jpg|jpeg|png)$/i;
@@ -104,7 +104,7 @@ $(document).ready(
 
 			}); 
 		
-			
+
 
 			$("form").submit(
 					function() {

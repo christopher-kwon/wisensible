@@ -379,11 +379,12 @@ a:hover {
 	object-fit: cover;
 }
 
-.star_box a {
+#\31   {
 	text-decoration: none;
 	color: #e3e3df;
 	font-size: 2em;
 	text-align:center;
+	cursor:pointer;
 }
 
 .star_result > label  {
@@ -393,11 +394,12 @@ a:hover {
 			text-align:center;
 }
 
-.star_box a.on {
+#\31.on {
 	text-decoration: none;
 	color: #ffa630;
 	font-size: 2em;
 		text-align:center;
+		cursor:pointer;
 }
 
 

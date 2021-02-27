@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	
 
 <jsp:include page="header.jsp" />
 <script src="js/writeform.js"></script>
@@ -60,7 +61,7 @@
 
 
 			<div class="form-info">
-				<label for="board_name"><input name="board_name"
+				<label for="board_name"><input name="board_name" id="board_name"
 					type="hidden" value="${id}"></label>
 
 
@@ -129,7 +130,7 @@
 						value="퀵서비스">퀵서비스
 							<div class="form-group">
 
-					<label for="board_storage">배 송 비 용 &emsp;:&emsp;&emsp;
+					<label for="board_storage">배 송 비 용 &emsp;:&emsp;
 					<input type="text" name="board_deliverycost"
 							id="board_deliverycost" placeholder="Enter 배송비용">원
 					
@@ -146,8 +147,9 @@
 		<hr>
 		<div class="section_content">
 			<div class="section_info">
+			
 				<h4>상품 상세정보</h4>
-
+				
 				<table class="table table-borderd">
 					<tr>
 						<th>상 품 명</th>
@@ -222,8 +224,9 @@
 
 			<button type=submit class="btn btn-primary">등록</button>
 
-			<button type=reset class="btn btn-danger">취소</button>
-
+			<button type=reset class="btn btn-danger">리셋</button>
+			
+			<input type="button" class="btn btn-warning" value="목록" onclick="location.href='BoardList.bo'">
 		</div>
 
 

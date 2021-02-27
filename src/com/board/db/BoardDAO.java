@@ -194,7 +194,7 @@ public class BoardDAO {
                 boardBean.setBoard_read(rs.getInt(13));
                 boardBean.setBoard_price(rs.getInt(14));
                 boardBean.setBoard_bank(rs.getString(15));
-                boardBean.setBoard_account(rs.getInt(16));
+                boardBean.setBoard_account(rs.getString(16));
                 boardBean.setBoard_tel(rs.getString(17));
                 boardBean.setBoard_storage(rs.getString(18));
                 boardBean.setBoard_delivery(rs.getString(19));
@@ -254,7 +254,7 @@ public class BoardDAO {
             pstmt.setString(1, boardBean.getBoard_subject());
             pstmt.setInt(2, boardBean.getBoard_price());
             pstmt.setString(3, boardBean.getBoard_bank());
-            pstmt.setInt(4, boardBean.getBoard_account());
+            pstmt.setString(4, boardBean.getBoard_account());
             pstmt.setString(5, boardBean.getBoard_tel());
             pstmt.setString(6, boardBean.getBoard_delivery());
             pstmt.setString(7, boardBean.getBoard_product());
@@ -409,12 +409,12 @@ public class BoardDAO {
 			String max_sql = "(select nvl(max(board_num),0)+1 from board)";
 
 			String sql = "insert into board " + " values( ? ," + max_sql + ",?,?,?,?,sysdate,?,?,?,?,?,?,?, "
-					+ " ?,?,?,?,?,?,?,?,?,?,? )";
+					+ " ?,?,?,?,?,?,?,?,?,?,?,? )";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, boardbean.getBoard_category());
 			pstmt.setString(2, boardbean.getBoard_subject());
-			pstmt.setString(3, "admin");
+			pstmt.setString(3, boardbean.getBoard_name());
 			pstmt.setString(4, boardbean.getBoard_pass());
 			pstmt.setString(5, boardbean.getBoard_content());
 			pstmt.setString(6, boardbean.getBoard_file1());
@@ -425,7 +425,7 @@ public class BoardDAO {
 			pstmt.setInt(11, 0);
 			pstmt.setInt(12, boardbean.getBoard_price());
 			pstmt.setString(13, boardbean.getBoard_bank());
-			pstmt.setInt(14, boardbean.getBoard_account());
+			pstmt.setString(14, boardbean.getBoard_account());
 			pstmt.setString(15, boardbean.getBoard_tel());
 			pstmt.setString(16, boardbean.getBoard_storage());
 			pstmt.setString(17, boardbean.getBoard_delivery());
@@ -435,6 +435,7 @@ public class BoardDAO {
 			pstmt.setString(21, boardbean.getBoard_origin());
 			pstmt.setInt(22, boardbean.getBoard_deliverycost());
 			pstmt.setString(23, boardbean.getBoard_expirydate());
+			pstmt.setInt(24, 0);
 			result = pstmt.executeUpdate();
 			if (result == 1) {
 				System.out.println("������ ������ ��� �Ϸ�Ǿ����ϴ�.");
