@@ -334,6 +334,7 @@ $(function() {
 	$('.CommentBox').on('click', '.reply_cancel', function() {
 		$(this).parent().parent().parent().remove();
 	})
+	
 	ind = -1;
 	$(".star_box > a").on('click', function() {
 
