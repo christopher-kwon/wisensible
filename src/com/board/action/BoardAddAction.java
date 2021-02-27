@@ -37,7 +37,7 @@ public class BoardAddAction implements Action {
 		try {
 			MultipartRequest multi = null;
 			multi = new MultipartRequest(request, realFolder, fileSize, "utf-8", new DefaultFileRenamePolicy());
-			boardbean.setBoard_name(multi.getParameter("id"));
+			boardbean.setBoard_name(multi.getParameter("board_name"));
 			boardbean.setBoard_pass(multi.getParameter("board_passward"));
 			boardbean.setBoard_subject(multi.getParameter("board_subject"));
 			boardbean.setBoard_category(multi.getParameter("board_category"));
@@ -45,7 +45,7 @@ public class BoardAddAction implements Action {
 			boardbean.setBoard_price(Integer.parseInt(multi.getParameter("board_price")));
 			boardbean.setBoard_bank(multi.getParameter("board_bank"));
 			boardbean.setBoard_tel(multi.getParameter("board_tel"));
-			boardbean.setBoard_account(Integer.parseInt(multi.getParameter("board_account")));
+			boardbean.setBoard_account(multi.getParameter("board_account"));
 			
 			String[] board_storages = multi.getParameterValues("board_storage");
 			String storage_result="";

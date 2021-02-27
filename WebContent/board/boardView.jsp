@@ -38,7 +38,9 @@
       
                   <tr>
 <td><strong>평점</strong> 
-
+<input type="hidden" id = "board_writer" value="${boardBean.board_name}">
+<input type="hidden" id= "loginsession" value="${id}">
+<input type="hidden" value="${boardBean.board_num}">
 	<div class="star_result">
 	<label for="1">★</label><label for="2">★</label><label for="3">★</label><label for="4">★</label>
 	<label for="5">★</label>
@@ -46,8 +48,8 @@
 	</div>	<hr>
 
 	<div class="star_box">
-		<a href="#">★</a> <a href="#">★</a> <a href="#">★</a> <a href="#">★</a>
-		<a href="#">★</a>
+		<a id="1">★</a> <a id="1">★</a> <a id="1">★</a> <a id="1">★</a>
+		<a id="1">★</a>
 
 	
 	<p id="lev" style="text-align:;"></p>

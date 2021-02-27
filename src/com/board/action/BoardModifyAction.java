@@ -55,7 +55,7 @@ public class BoardModifyAction implements Action {
 			boardBean.setBoard_subject(multi.getParameter("board_subject").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
 			boardBean.setBoard_price(Integer.parseInt(multi.getParameter("board_price")));
 			boardBean.setBoard_bank(multi.getParameter("board_bank"));
-			boardBean.setBoard_account(Integer.parseInt(multi.getParameter("board_account")));
+			boardBean.setBoard_account(multi.getParameter("board_account"));
 			boardBean.setBoard_tel(multi.getParameter("board_tel"));
 			boardBean.setBoard_product(multi.getParameter("board_product").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
 			boardBean.setBoard_amount(multi.getParameter("board_amount").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
