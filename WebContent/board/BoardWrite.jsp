@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-   
+	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	
+
 
 <jsp:include page="header.jsp" />
 <script src="js/writeform.js"></script>
@@ -60,9 +61,13 @@
 
 
 
-         <div class="form-info">
-            <label for="board_name"><input name="board_name" id="board_name"
-               type="hidden" value="${id}"></label>
+
+			<div class="form-info">
+				<label for="board_name"><input name="board_name" id="board_name"
+					type="hidden" value="${id}"></label>
+
+      
+
 
 
             <div class="form-group">
@@ -130,11 +135,14 @@
                   value="퀵서비스">퀵서비스
                      <div class="form-group">
 
-               <label for="board_storage">배 송 비 용 &emsp;:&emsp;
-               <input type="text" name="board_deliverycost"
-                     id="board_deliverycost" placeholder="Enter 배송비용">원
-               
-                </label>
+
+					<label for="board_storage">배 송 비 용 &emsp;:&emsp;
+					<input type="text" name="board_deliverycost"
+							id="board_deliverycost" placeholder="Enter 배송비용">원
+					
+					 </label>
+
+
 
             </div>
                   
@@ -144,94 +152,96 @@
          </div>
       </div>
 
-      <hr>
-      <div class="section_content">
-         <div class="section_info">
-         
-            <h4>상품 상세정보</h4>
-            
-            <table class="table table-borderd">
-               <tr>
-                  <th>상 품 명</th>
-                  <td><input type="text" name="board_product"
-                     id="board_product" placeholder="Enter Product"></td>
-               </tr>
-               <tr>
-                  <th>수 량</th>
-                  <td><input type="text" name="board_amount" id="board_amount"
-                     placeholder="Enter Amount"></td>
-               </tr>
-               <tr>
-                  <th>생 산 자</th>
-                  <td><input type="text" name="board_producer"
-                     id="board_producer" placeholder="Enter Producer"></td>
-               </tr>
-               <tr>
-                  <th>유 통 기 한</th>
-                  <td><input type="text" name="board_expirydate"
-                     id="board_expirydate" placeholder="Enter epirydate"></td>
-               </tr>
-               <tr>
-                  <th>원 산 지</th>
-                  <td><input type="text" name="board_origin" id="board_origin"
-                     placeholder="Enter Origin"></td>
-               </tr>
-               <tr>
-                  <th>보 관 방 법</th>
-                  <td><input name="board_storage" id="board_storage"
-                     type="checkbox" value="상온">상온 <input
-                     name="board_storage" id="board_storage" type="checkbox"
-                     value="냉장">냉장 <input name="board_storage"
-                     id="board_storage" type="checkbox" value="냉동">냉동</td>
-               </tr>
-               
-            </table>
-         </div>
 
-         <hr>
-         <h2>Content</h2>
-         <div class="form-group">
-            <textarea class="form-control" id="board_content"
-               name="board_content"></textarea>
+		<hr>
+		<div class="section_content">
+			<div class="section_info">
+			
+				<h4>상품 상세정보</h4>
+				
+				<table class="table table-borderd">
+					<tr>
+						<th>상 품 명</th>
+						<td><input type="text" name="board_product"
+							id="board_product" placeholder="Enter Product"></td>
+					</tr>
+					<tr>
+						<th>수 량</th>
+						<td><input type="text" name="board_amount" id="board_amount"
+							placeholder="Enter Amount"></td>
+					</tr>
+					<tr>
+						<th>생 산 자</th>
+						<td><input type="text" name="board_producer"
+							id="board_producer" placeholder="Enter Producer"></td>
+					</tr>
+					<tr>
+						<th>유 통 기 한</th>
+						<td><input type="text" name="board_expirydate"
+							id="board_expirydate" placeholder="Enter epirydate"></td>
+					</tr>
+					<tr>
+						<th>원 산 지</th>
+						<td><input type="text" name="board_origin" id="board_origin"
+							placeholder="Enter Origin"></td>
+					</tr>
+					<tr>
+						<th>보 관 방 법</th>
+						<td><input name="board_storage" id="board_storage"
+							type="checkbox" value="상온보관">상온 보관 <input
+							name="board_storage" id="board_storage" type="checkbox"
+							value="냉장 보관">냉장 보관 <input name="board_storage"
+							id="board_storage" type="checkbox" value="냉동 보관">냉동 보관</td>
+					</tr>
+					
+				</table>
+			</div>
 
-
-         </div>
+			<hr>
+			<h2>Content</h2>
+			<div class="form-group">
+				<textarea class="form-control" id="board_content"
+					name="board_content"></textarea>
 
 
-         <div class="form-file">
-            <label for="upfile">
-             <input type="file" id="upfile1" name="board_file1"> <span
-               id="filevalue1"></span> <input type="file" id="upfile2"
-               name="board_file2"> <span id="filevalue2"></span><br>
-            <img src="image/add.JPG" width="20px" id="file_add"  style="" >
-            </label>
-         </div>
+			</div>
 
 
-
-
-      </div>
-      <div class="form-group">
-
-         <label for="board_pass">Password : </label> <input
-            name="board_passward" id="board_passward" type="text"
-            maxlength="100" class="form-input" placeholder="Enter passward">
-
-      </div>
-
-
-      <div class="form-button">
-
-         <button type=submit class="btn btn-primary">등록</button>
-
-         <button type=reset class="btn btn-danger">리셋</button>
-         
-         <input type="button" class="btn btn-warning" value="목록" onclick="location.href='BoardList.bo'">
-      </div>
+			<div class="form-file">
+				<label for="upfile">
+				 <input type="file" id="upfile1" name="board_file1"> <span
+					id="filevalue1"></span> <input type="file" id="upfile2"
+					name="board_file2"> <span id="filevalue2"></span><br>
+				<img src="image/add.JPG" width="20px" id="file_add"  style="" >
+				</label>
+			</div>
 
 
 
-   </form>
+
+		</div>
+		<div class="form-group">
+
+			<label for="board_pass">Password : </label> <input
+				name="board_passward" id="board_passward" type="text"
+				maxlength="100" class="form-input" placeholder="Enter passward">
+
+		</div>
+
+
+		<div class="form-button">
+
+			<button type=submit class="btn btn-primary">등록</button>
+
+			<button type=reset class="btn btn-danger">리셋</button>
+			
+			<input type="button" class="btn btn-warning" value="목록" onclick="location.href='BoardList.bo'">
+		</div>
+
+
+
+	</form>
+
 </div>
 
 
