@@ -23,11 +23,15 @@ for(var i = 1; i < 4; i++) {
 }
 
 
-	var check0 = 0;
+	var check0 = 0; //파일 수정 변화 여부 (없으면 0, 있으면 1)
 	var check1 = 0;
 	var check2 = 0;
 	var check3 = 0;
 	var check4 = 0;
+	
+
+	
+
 
 
 $('#board_thumbnail').change(function(event) {
@@ -56,12 +60,13 @@ $('#board_thumbnail').change(function(event) {
 		});
 		
 		$('#board_file1').change(function(event1) {
-				check1++;
+		check1++;
 		var board_file1 = $(this).val().split('\\');
 		var board_filename1 = board_file1[board_file1.length - 1];
 		var pattern = /(gif|jpg|jpeg|png)$/i;
+		
 		if(pattern.test(board_filename1)) {
-			$('#board_file1Name1').text(board_filename1); //inputfile.length - 1 = 2
+			$('#board_fileName1').text(board_filename1); //inputfile.length - 1 = 2
 			var reader1 = new FileReader(); //파일을 읽기 위한 개체 생성
 			
 			//DataURL 형식으로 파일을 읽어옵니다.
@@ -74,7 +79,12 @@ $('#board_thumbnail').change(function(event) {
 				$('#board_fileView1').attr('src', event1.target.result);
 			};
 		} else {
+			board_file1 = "";
+			board_filename1 = "";
+			$('#board_fileName1').text(board_filename1); //inputfile.length - 1 = 2
+			$('#board_fileView1').attr('src', 'image/mainadd.jpg');
 			alert('확장자는 gif, jpg, jpeg, png가 가능합니다.');
+			
 		}
 			
 		});
@@ -85,7 +95,7 @@ $('#board_thumbnail').change(function(event) {
 		var board_filename2 = board_file2[board_file2.length - 1];
 		var pattern = /(gif|jpg|jpeg|png)$/i;
 		if(pattern.test(board_filename2)) {
-			$('#board_file1Name2').text(board_filename2); //inputfile.length - 1 = 2
+			$('#board_fileName2').text(board_filename2); //inputfile.length - 1 = 2
 			var reader2 = new FileReader(); //파일을 읽기 위한 개체 생성
 			
 			//DataURL 형식으로 파일을 읽어옵니다.
@@ -98,6 +108,10 @@ $('#board_thumbnail').change(function(event) {
 				$('#board_fileView2').attr('src', event2.target.result);
 			};
 		} else {
+			board_file2 = "";
+			board_filename2 = "";
+			$('#board_fileName2').text(board_filename2); //inputfile.length - 1 = 2
+			$('#board_fileView2').attr('src', 'image/mainadd.jpg');
 			alert('확장자는 gif, jpg, jpeg, png가 가능합니다.');
 		}
 			
@@ -110,7 +124,7 @@ $('#board_thumbnail').change(function(event) {
 		var board_filename3 = board_file3[board_file3.length - 1];
 		var pattern = /(gif|jpg|jpeg|png)$/i;
 		if(pattern.test(board_filename3)) {
-			$('#board_file1Name3').text(board_filename3); //inputfile.length - 1 = 2
+			$('#board_fileName3').text(board_filename3); //inputfile.length - 1 = 2
 			var reader3 = new FileReader(); //파일을 읽기 위한 개체 생성
 			
 			//DataURL 형식으로 파일을 읽어옵니다.
@@ -123,6 +137,10 @@ $('#board_thumbnail').change(function(event) {
 				$('#board_fileView3').attr('src', event3.target.result);
 			};
 		} else {
+			board_file3 = "";
+			board_filename3 = "";
+			$('#board_fileName3').text(board_filename3); //inputfile.length - 1 = 2
+			$('#board_fileView3').attr('src', 'image/mainadd.jpg');
 			alert('확장자는 gif, jpg, jpeg, png가 가능합니다.');
 		}
 			
@@ -135,7 +153,7 @@ $('#board_thumbnail').change(function(event) {
 		var board_filename4 = board_file4[board_file4.length - 1];
 		var pattern = /(gif|jpg|jpeg|png)$/i;
 		if(pattern.test(board_filename4)) {
-			$('#board_file1Name4').text(board_filename4); //inputfile.length - 1 = 2
+			$('#board_fileName4').text(board_filename4); //inputfile.length - 1 = 2
 			var reader4 = new FileReader(); //파일을 읽기 위한 개체 생성
 			
 			//DataURL 형식으로 파일을 읽어옵니다.
@@ -148,11 +166,64 @@ $('#board_thumbnail').change(function(event) {
 				$('#board_fileView4').attr('src', event4.target.result);
 			};
 		} else {
+			board_file4 = "";
+			board_filename4 = "";
+			$('#board_fileName4').text(board_filename4); //inputfile.length - 1 = 2
+			$('#board_fileView4').attr('src', 'image/mainadd.jpg');
 			alert('확장자는 gif, jpg, jpeg, png가 가능합니다.');
 		}
 			
 		});
+		
+	
+					   
+					   
+	$("#board_price").change(function() {
+				if ($.isNumeric($("#board_price").val())) {
+					$("#board_bank").focus();
 
+				} else {
+					alert("가격 정보는 숫자로 입력해주세요")
+					$("#board_price").val('')
+					$("#board_price").focus();
+				}
+			})
+			
+			$("#board_account").change(function() {
+				if ($.isNumeric($("#board_account").val())) {
+					$("#board_tel").focus();
+
+				} else {
+					alert("계좌 번호는 숫자로 입력해주세요")
+					$("#board_account").val('')
+					$("#board_account").focus();
+				}
+			})	
+			$("#board_deliverycost").change(function() {
+				if ($.isNumeric($("#board_deliverycost").val())) {
+					$("#board_bank").focus();
+
+				} else {
+					alert("배송비 정보는 숫자로 입력해주세요")
+					$("#board_deliverycost").val('')
+					$("#board_deliverycost").focus();
+				}
+			})
+			
+			$("#board_tel").change(function() {
+				pattern = /^\d{2,3}-\d{3,4}-\d{3,4}$/;
+				if (pattern.test($("#board_tel").val())) {
+					$("#board_delivery").focus();
+
+				} else {
+					alert("전화번호를 확인하세요(000-0000-0000)")
+					$("#board_tel").val('')
+					$("#board_tel").focus();
+				}
+
+			}); 
+			
+			
 
 	
 	$("form").submit(function() {
@@ -250,12 +321,8 @@ $('#board_thumbnail').change(function(event) {
 
 						}
 						
-						if ($.trim($("#board_fileName1").text()) == "" || 
-						$.trim($("#board_fileName2").text()) == "") {
-							alert("파일은 최소 2개이상 업로드필수입니다.")
-		
-							return false;
-						}
+					
+			
 		
 						if ($.trim($("#board_pass").val()) == "") {
 							alert("게시물 비밀번호를 입력해주세요")
@@ -266,81 +333,52 @@ $('#board_thumbnail').change(function(event) {
 						
 			if(check0 == 0) {
 			value = $('#board_thumbnailname').text();
-			html = "<input type='text' value='" + value + "'name='check0'>";
+			html = "<input type='hidden' value='" + value + "'name='check0'>";
 			$(this).append(html);
 		}
 		
-			if(check1 == 0) {
+		
+			 			if(check1 == 0) {
 			value = $('#board_fileName1').text();
-			html = "<input type='text' value='" + value + "'name='check1'>";
+			html = "<input type='hidden' value='" + value + "'name='check1'>";
 			$(this).append(html);
 		}
 		
 				if(check2 == 0) {
 			value = $('#board_fileName2').text();
-			html = "<input type='text' value='" + value + "'name='check2'>";
+			html = "<input type='hidden' value='" + value + "'name='check2'>";
 			$(this).append(html);
 		}
 		
 				if(check3 == 0) {
 			value = $('#board_fileName3').text();
-			html = "<input type='text' value='" + value + "'name='check3'>";
+			html = "<input type='hidden' value='" + value + "'name='check3'>";
 			$(this).append(html);
 		}
 		
 				if(check4 == 0) {
 			value = $('#board_fileName4').text();
-			html = "<input type='text' value='" + value + "'name='check4'>";
+			html = "<input type='hidden' value='" + value + "'name='check4'>";
 			$(this).append(html);
 		}
+				var valueCheck = 0;
+				 for(var i = 1; i < 5; i++){
+					  if($.trim($('#board_fileName'+i).text()) == ""){
+					    		valueCheck++;
+					    	}
+					    }
+						if (valueCheck > 2){
+							alert("파일은 최소 2개이상 업로드필수입니다.")
+		
+							return false;
+						}
+	
 		
 		
 	}); // submit end
 	
-		$("#board_price").change(function() {
-				if ($.isNumeric($("#board_price").val())) {
-					$("#board_bank").focus();
+	
 
-				} else {
-					alert("가격 정보는 숫자로 입력해주세요")
-					$("#board_price").val('')
-					$("#board_price").focus();
-				}
-			})
-			
-			$("#board_account").change(function() {
-				if ($.isNumeric($("#board_account").val())) {
-					$("#board_tel").focus();
-
-				} else {
-					alert("계좌 번호는 숫자로 입력해주세요")
-					$("#board_account").val('')
-					$("#board_account").focus();
-				}
-			})	
-			$("#board_deliverycost").change(function() {
-				if ($.isNumeric($("#board_deliverycost").val())) {
-					$("#board_bank").focus();
-
-				} else {
-					alert("배송비 정보는 숫자로 입력해주세요")
-					$("#board_deliverycost").val('')
-					$("#board_deliverycost").focus();
-				}
-			})
-			
-			$("#board_tel").change(function() {
-				pattern = /^\d{2,3}-\d{3,4}-\d{3,4}$/;
-				if (pattern.test($("#board_tel").val())) {
-					$("#board_delivery").focus();
-
-				} else {
-					alert("전화번호를 확인하세요(000-0000-0000)")
-					$("#board_tel").val('')
-					$("#board_tel").focus();
-				}
-
-			}); 
 			
 
 	

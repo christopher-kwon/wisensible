@@ -24,7 +24,7 @@
 			
 			<label for="board_subject">&nbsp; 제 &nbsp;&nbsp;목&nbsp; :&emsp;</label>
 			 <input type="text" name="board_subject"  value="${boardBean.board_subject }"
-				id="board_subject" maxlength="30" class="form-input">
+				id="board_subject"  class="form-input">
 <input name="board_num" type="text" value="${boardBean.board_num}"
 					style="display:none">
 		</div>
