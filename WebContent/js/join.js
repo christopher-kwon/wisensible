@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	var checkid=false;
 	var checkpass=false;
+	var check=0;
 	
 	$('form').submit(function(){
 		
@@ -10,8 +11,17 @@ $(document).ready(function(){
 			return false;
 		}
 		
+		
+		
+		if(check==0){
+			value=$("#filevalue").text();
+			html="<input type = 'text' value = '" + value + "'name = 'check'>";
+			$(this).append(html);
+		}		
+		
 	});// submit
 
+	
 	$("input[name=id]").on('keyup', function(){
 		checkid=true;
 		$("#message").empty();// 처음에 pattern에 적합하지 않은 경우 메세지 출력 후 적합한 데이터를
@@ -117,7 +127,60 @@ $(document).ready(function(){
 			};
 		}else{
 			alert('확장자는 gif, jpg, jpeg, png가 가능합니다.');
+			//document.getElementById("memberfile").select();
+			//document.selection.clear();
+			$(this).val('');
 		}
 	
+	})
+	
+	//email 인증
+	$("#btemail").click(function(){
+		var email = $(".email").val();
+		var domain = $(".domain").val();
+		
+		var key;//인증키
+		var bool = true;
+		
+		if(bool){
+			$.ajax({
+				url: "chkemail.com",
+				type: "post",
+				dataType: "json",
+				data: {"email" : email, "domain" : domain},
+				success: function(result){
+					alert("인증번호 발송");
+					key = result;
+					bool = false;
+				},
+				error: function(xhr, status, error){
+					alert("Error : " + status + "==>" + error);
+				}
+			});//ajax end
+			
+			$(".writechk").show();//이메일 인증 입력란
+			$(".btemail").val("인증번호 확인");//이메일 인증버튼 내용 변경
+			
+			$(".writechk").keyup(function(){
+				if($(".writechk").val() >= 6){
+					var userContent = $(".writechk").val();
+					
+					if(userContent == key){
+						alert("인증 성공");
+						$("#emailchk").val("Y");//디비 저장용
+						$("#btemail").val("인증완료");
+						$("#btemail").attr("disabled", true);//읽기 전용으로 변환
+						$(".writechk").attr("disabled", true);
+					}else{
+						$("#emailchk").val("N");
+						$("btemail").val("인증번호 재발송");
+						event.preventDefault();
+					}
+				}
+			});//keyup end
+		}else{//Y
+			alert("이메일 인증 구현 실패");
+			event.preventDefault();
+		}
 	})
 });

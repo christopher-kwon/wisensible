@@ -13,7 +13,11 @@ $(function(){
 $(".cancelbtn").click(function(){
 	history.back();
 });
-
+	
+var hobbys = '${member_info.member_interest}'.split(',');
+for(var i =0; i<hobbys.length;i++){
+	$("input[value=" + hobbys[i] + "]").prop("checked", true);
+}
 
 $('form').submit(function(){
 	if(!checkid){
@@ -21,6 +25,7 @@ $('form').submit(function(){
 		$("input:eq(0)").val('').focus();
 		return false;
 	}
+	
 });//submit
 
 $('input[type=file]').change(function(event){
@@ -41,6 +46,7 @@ $('input[type=file]').change(function(event){
 		};
 	}else{
 		alert('확장자는 gif, jpg, jpeg, png가 가능합니다.');
+		$(this).val('');
 	}
 })
 })
@@ -74,7 +80,7 @@ input[type=file]{display: none;}
 	<label for="email"><b> E-Mail </b></label><br>
       <input type="text" name="email"	id="email" value="${member_info.member_email.split('@')[0]}">@
       <input type="text" name="domain" id="domain" value="${member_info.member_email.split('@')[1]}">
-      <select name="sel" id="sel" >
+      <select name="domain" id="sel" >
        	<option value="">직접입력</option>
        	<option value="naver.com">naver.com</option>
         <option value="daum.net">daum.net</option>
@@ -119,7 +125,7 @@ input[type=file]{display: none;}
 	
 	<b>프로필 사진</b>
 	<label>
-		<img src="image/attach.png" width="10px">
+		<img src="image/attach.png" width="20px">
 		<span id="filename">${member_info.member_file}</span>
 		<span id="showImage">
 			<c:if test='${empty member_info.member_file}'>
@@ -128,7 +134,7 @@ input[type=file]{display: none;}
 			<c:if test='${!empty member_info.member_file}'>
 				<c:set var='src' value='${"memberupload/"}${member_info.member_file}'/>
 			</c:if>
-			<img src="${src}" width="20px" alt="profile">
+			<img src="${src}" width="30px" alt="profile">
 		</span>
 		<input type="file" name="memberfile" accept="image/*">
 	</label>
