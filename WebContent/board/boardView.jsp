@@ -185,9 +185,6 @@
    </c:when>
    
    <c:otherwise>
-  <button type="button" class="btn btn-primary" onclick="location.href='BoardModifyView.bo?board_num=${boardBean.board_num}'" id="Modify">Modify</button>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="Delete">Delete</button>
-  <button type="button" class="btn btn-primary" onclick="location.href='BoardList.bo'">List</button>
 
   <button type="button" class="btn btn-primary">Previous</button>
   <button type="button" class="btn btn-primary">List</button>

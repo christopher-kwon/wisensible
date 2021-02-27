@@ -188,10 +188,10 @@
 					<tr>
 						<th>보 관 방 법</th>
 						<td><input name="board_storage" id="board_storage"
-							type="checkbox" value="상온보관">상온 보관 <input
+							type="checkbox" value="상온">상온<input
 							name="board_storage" id="board_storage" type="checkbox"
-							value="냉장 보관">냉장 보관 <input name="board_storage"
-							id="board_storage" type="checkbox" value="냉동 보관">냉동 보관</td>
+							value="냉장">냉장<input name="board_storage"
+							id="board_storage" type="checkbox" value="냉동">냉동</td>
 					</tr>
 					
 				</table>
