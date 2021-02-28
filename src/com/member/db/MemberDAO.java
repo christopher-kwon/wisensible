@@ -530,5 +530,104 @@ public class MemberDAO {
 		}
 		return list;
 	}
+
+	public int isFindName(String member_name, String member_tel, String member_id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = -1;//아이디가 존재하지 않습니다.
+		try {
+			con = ds.getConnection();
+			
+			String sql = "select member_name, member_tel, member_id from member where member_name = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, member_name);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				System.out.println(rs.getString(2));
+				System.out.println(member_tel);
+				if(rs.getString(2).equals(member_tel)) {
+					result= 1;//아이디와 비밀번호가 일치하는 경우
+				}else {
+					result = 0; //비밀번호가 일치하지 않는 경우
+				}
+			}
+			while(rs.next()) {
+				member_id = rs.getString("id");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs !=null)
+				try {
+					rs.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			if(pstmt !=null)
+				try {
+					pstmt.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			if(con !=null)
+				try {
+					con.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+		}
+		return result;
+	}
+
+	public int isFindId(String member_id, String member_email) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = -1;//아이디가 존재하지 않습니다.
+		try {
+			con = ds.getConnection();
+			
+			String sql = "select member_id, member_email from member where member_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, member_id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				System.out.println(rs.getString(2));
+				System.out.println(member_email);
+				if(rs.getString(2).equals(member_email)) {
+					result= 1;//아이디와 비밀번호가 일치하는 경우
+				}else {
+					result = 0; //비밀번호가 일치하지 않는 경우
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs !=null)
+				try {
+					rs.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			if(pstmt !=null)
+				try {
+					pstmt.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			if(con !=null)
+				try {
+					con.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+		}
+		return result;
+	}
+
 	
 }
