@@ -16,7 +16,7 @@ public class BoardBean {
 	private String board_thumbnail;
 	private int board_read;
 	private String board_bank;
-	private int board_account;
+	private String board_account;
 	private String board_tel;
 	private String board_storage;
 	private String board_delivery;
@@ -147,11 +147,11 @@ public class BoardBean {
 		this.board_bank = board_bank;
 	}
 
-	public int getBoard_account() {
+	public String getBoard_account() {
 		return board_account;
 	}
 
-	public void setBoard_account(int board_account) {
+	public void setBoard_account(String board_account) {
 		this.board_account = board_account;
 	}
 

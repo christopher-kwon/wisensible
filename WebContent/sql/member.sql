@@ -16,5 +16,5 @@ create table member (
 );
 
 select * from member;
-
+truncate table member;
 delete from member;

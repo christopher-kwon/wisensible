@@ -11,7 +11,7 @@ comment_re_ref number(5),
 comment_re_lev number(1) check(comment_re_lev in(0,1,2)),
 comment_re_seq number(5)
 );
-
+truncate table comm;
 insert into comm values(
 1, 1, 'master', '테스트중입니다', SYSDATE, 0, 0, 1
 );

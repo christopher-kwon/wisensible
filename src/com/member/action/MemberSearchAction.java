@@ -43,7 +43,7 @@ public class MemberSearchAction implements Action {
 			list = mdao.getList(page, limit);
 		}else {//검색을 클릭한 경우
 			index = Integer.parseInt(request.getParameter("search_field"));
-			String[] search_field = new String[] {"id", "name", "email"};
+			String[] search_field = new String[] {"member_id", "member_name", "member_email"};
 			search_word = request.getParameter("search_word");
 			listcount = mdao.getListCount(search_field[index], search_word);
 			list = mdao.getList(search_field[index], search_word, page, limit);

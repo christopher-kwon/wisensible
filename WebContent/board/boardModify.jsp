@@ -10,7 +10,6 @@
 
 		<h2>판매 글 수정</h2>
 
-
 <hr>
 		<div class="form-group">
 			<label for="board_title"> Category : </label> <select
@@ -21,18 +20,22 @@
 				<option value="곡물">곡물</option>
 				<option value="축산물">축산물</option>
 				<option value="해산물">해산물</option>
-			</select> &emsp;Subject : <input type="text" name="board_subject"  value="${boardBean.board_subject }"
-				id="board_subject" maxlength="30" class="form-input">
+			</select> 
+			
+			<label for="board_subject">&nbsp; 제 &nbsp;&nbsp;목&nbsp; :&emsp;</label>
+			 <input type="text" name="board_subject"  value="${boardBean.board_subject }"
+				id="board_subject"  class="form-input">
 <input name="board_num" type="text" value="${boardBean.board_num}"
 					style="display:none">
 		</div>
 		<hr>
 			
 
-				<label for="board_file"></label> <label for="main_file"> <img
-					src="image/mainadd.jpg" width="300px" height="300px">
+				<label for="board_file"></label> 
+				<label for="board_thumbnail"> 
+				<img id="thumbnailView" src="boardupload/${boardBean.board_thumbnail }" width="400px" height="400px">
 
-				</label> <input type="file" id="main_file" name="board_file"
+				</label> <input type="file" id="board_thumbnail" name="board_thumbnail"
 					style="display: none">
 
 		
@@ -49,23 +52,26 @@
 
 
 
-			<div class="form-group">
+			   <div class="form-group">
 
-				<label for="board_account"> 은 행 정 보&emsp;:&emsp; </label> <select name="board_bank" id="board_bank">
+               <label for="board_account"> 은 행 정 보&emsp;:&emsp; </label> 
+               <select name="board_bank" id="board_bank">
 
-					<option>----</option>
+                  <option>${boardBean.board_bank}</option>
 
-					<option value="신 한">신한</option>
+                  <option>신한은행</option>
 
-					<option value="국 민">국민</option>
+                  <option>국민은행</option>
 
-					<option value="농 협">농협</option>
+                  <option>농협</option>
 
-					<option value="하 나">하나</option>
+                  <option>하나은행</option>
 
-					<option value="카 카 오 뱅 크">카카오뱅크</option>
+                  <option>우리은행</option>
 
-					<option value="케 이 뱅 크">케이뱅크</option>
+                  <option>카카오뱅크</option>
+
+                  <option>케이뱅크</option>
 
 				</select> <br>
 				계 좌 번 호&emsp;:&emsp; <input name="board_account" id="board_account" type="text"
@@ -95,13 +101,18 @@
 
 			<div class="form-group">
 
-				<label for="board_delivery">배 송 방 법&emsp; :&emsp;</label> <input
-					name="board_delivery" id="board_delivery" type="text"
-					maxlength="100" class="form-input" value="${boardBean.board_delivery }">
+				<label for="board_delivery">배 송 방 법&emsp; :&emsp;</label>      
+				<input  name="board_delivery" id="board_delivery1" type="checkbox" value="택배">택배
+				<input  id="board_del1" type="hidden" value="${boardBean.board_delivery.split('  ')[0]}">
+               <input  name="board_delivery" id="board_delivery2" type="checkbox" value="직거래">직거래
+               <input  id="board_del2" type="hidden" value="${boardBean.board_delivery.split('  ')[1]}">
+              <input  name="board_delivery" id="board_delivery3" type="checkbox" value="퀵서비스">퀵서비스
+              <input  id="board_del3" type="hidden" value="${boardBean.board_delivery.split('  ')[2]}">
 
 
 			</div>
 		</div>
+		<div>사진을 수정하려면 사진을 클릭하세요. <span id="board_thumbnailname">${boardBean.board_thumbnail }</span></div>
 <hr>
 
 		
@@ -123,7 +134,7 @@
 					</tr>
 					<tr>
 						<th>유 통 기 한</th>
-						<td><input type="text" name="board_epirydate" id="board_epirydate" value="${boardBean.board_expirydate }" required></td>
+						<td><input type="text" name="board_expirydate" id="board_expirydate" value="${boardBean.board_expirydate }" required></td>
 					</tr>
 					<tr>
 						<th>원 산 지</th>
@@ -131,7 +142,13 @@
 					</tr>
 					<tr>
 						<th>보 관 방 법</th>
-						<td><input type="text" name="board_storage" id="board_storage"  value="${boardBean.board_storage }" required></td>
+						<td><input name="board_storage" id="board_storage1" type="checkbox" value="상온">상온
+						<input  id="board_sto1" type="hidden" value="${boardBean.board_storage.split('  ')[0]}">
+               <input name="board_storage" id="board_storage2" type="checkbox" value="냉장">냉장
+               			<input  id="board_sto2" type="hidden" value="${boardBean.board_storage.split('  ')[1]}">
+              <input name="board_storage" id="board_storage3" type="checkbox" value="냉동">냉동</td>
+            			<input  id="board_sto3" type="hidden" value="${boardBean.board_storage.split('  ')[2]}">
+              
 					</tr>
 					<tr>
 						<th>배 송 비 용</th>
@@ -146,16 +163,42 @@
 
 
 			</div>
+			
+							<label for="board_file1"></label> 
+				<label for="board_file1"> 
+				<input type="file" id="board_file1" name="board_file1"
+					style="display: none">
+				<img id="board_fileView1" src="boardupload/${boardBean.board_file1 }" width="795px" height="500px">
+				</label>  
+				<br> 사진을 수정하려면 사진을 클릭하세요. 
+				<span id="board_fileName1">${boardBean.board_file1 }</span><br>
 
-			<div class="form-group read">
-				<label for="board_file">파일첨부</label> 
-				<label for="upfile"><img src="../image/attach.png" alt="파일첨부" width="20px"> </label> 
-				<input
-					type="file" multiple id="upfile" name="board_file"> <span
-					id="filevalue">${boarddata.board_file1 }</span>
-					<img src="../image/remove.png" alt="파일삭제" width="10px" class="remove">
-
-			</div>
+							<label for="board_file2"></label> 
+				<label for="board_file2"> 
+				<input type="file" id="board_file2" name="board_file2"
+					style="display: none">
+				<img id="board_fileView2" src="boardupload/${boardBean.board_file2 }" width="795px" height="500px">
+				</label>  
+				<br> 사진을 수정하려면 사진을 클릭하세요. 
+				<span id="board_fileName2">${boardBean.board_file2 }</span><br>
+				
+											<label for="board_file3"></label> 
+				<label for="board_file3"> 
+				<input type="file" id="board_file3" name="board_file3"
+					style="display: none">
+				<img id="board_fileView3" src="boardupload/${boardBean.board_file3 }" width="795px" height="500px">
+				</label>  
+				<br> 사진을 수정하려면 사진을 클릭하세요. 
+				<span id="board_fileName3">${boardBean.board_file3 }</span><br>
+				
+											<label for="board_file4"></label> 
+				<label for="board_file4"> 
+				<input type="file" id="board_file4" name="board_file4"
+					style="display: none">
+				<img id="board_fileView4" src="boardupload/${boardBean.board_file4 }" width="795px" height="500px">
+				</label>  
+				<br> 사진을 수정하려면 사진을 클릭하세요.
+				<span id="board_fileName4">${boardBean.board_file4 }</span> <br>
 			
 			<div class="form-group">
 				<label for="board_pass">Password : </label> <input name="board_pass"
@@ -168,14 +211,13 @@
 		<div class="form-group">
 
 			<button type=submit class="btn btn-info">수정</button>
-			<button type=reset class="btn btn-danger">취소</button>
+			<button type=reset class="btn btn-danger" onClick="history.go(-1)">취소</button>
 
 		</div>
 
 
 
 	</form>
-
 
 
 </div>

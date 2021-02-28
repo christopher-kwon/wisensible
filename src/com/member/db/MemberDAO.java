@@ -256,6 +256,9 @@ public class MemberDAO {
 		return memberbean;
 	}
 
+
+	
+
 	public int update(MemberBean memberbean) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -282,6 +285,7 @@ public class MemberDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("Member_update()에러");
 		}finally {
 			if(pstmt !=null)
 				try {
@@ -297,6 +301,7 @@ public class MemberDAO {
 				}
 		}
 		return result;
+
 	}
 
 	public int getListCount() {
@@ -385,7 +390,7 @@ public class MemberDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("getList() 에러: " + e);
+			System.out.println("getList_2개() 에러: " + e);
 		}finally {
 			if(rs !=null)
 				try {
@@ -430,7 +435,7 @@ public class MemberDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("getListCount() 에러: " + e);
+			System.out.println("getListCount_2() 에러: " + e);
 		}finally {
 			if(rs !=null)
 				try {
@@ -485,7 +490,7 @@ public class MemberDAO {
 			
 			while(rs.next()){
 				MemberBean memberbean = new MemberBean();
-				memberbean.setMember_id(rs.getString("id"));
+				memberbean.setMember_id(rs.getString(1));
 				memberbean.setMember_name(rs.getString(2));
 				//memberbean.setMember_password(rs.getString(3));
 				//memberbean.setMember_birth(rs.getString(4));
@@ -502,7 +507,7 @@ public class MemberDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("getList() 에러: " + e);
+			System.out.println("getList_4개() 에러: " + e);
 		}finally {
 			if(rs !=null)
 				try {

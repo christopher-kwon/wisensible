@@ -1,6 +1,6 @@
 drop table board;
 
---Å×ÀÌºí »ý¼º
+--ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½
 create table board(
 board_category varchar2(20) not null,
 board_num number(10) primary key,
@@ -9,15 +9,15 @@ board_name varchar2(30) not null,
 board_pass varchar2(30) not null,
 board_content varchar2(3000) not null,
 board_date date not null,
-board_file1 varchar2(30) ,
-board_file2 varchar2(30) ,
+board_file1 varchar2(30) not null,
+board_file2 varchar2(30) not null ,
 board_file3 varchar2(30) ,
 board_file4 varchar2(30) ,
-board_thumbnail varchar2(30) ,
+board_thumbnail varchar2(30) not null ,
 board_read number(10),
 board_price number(10) not null,
 board_bank varchar2(20),
-board_account number(20),
+board_account varchar2(50),
 board_tel varchar2(20) not null,
 board_storage varchar2(50) not null,
 board_delivery varchar2(50) not null,
@@ -26,13 +26,14 @@ board_amount varchar2(30) not null,
 board_producer varchar2(30) not null,
 board_origin varchar2(30) not null,
 board_deliverycost number(10) not null,
-board_expirydate varchar2(30) not null
+board_expirydate varchar2(30) not null,
+board_evaluation number(10)
 );
 
 insert into board values(
-'¾ßÃ¤', 1, '¾ßÃ¤Å×½ºÆ®', 'master', '1234', '¾ßÃ¤´Â ¸ÀÀÖ¾î', SYSDATE, 'a.png', 'b.png', 'c.png', 
-'d.png', 'e.png', 0, 1000, '½ÅÇÑ', 123456789, '010-2390-7250', '½Ç¿Â', 'Á÷¹è¼Û',
-'°ß°ú·ù', '1¹Ú½º', '(ÁÖ)¾÷µå¸²ÄÚ¸®¾Æ', '°­¿øµµ', 3000, '1ÁÖÀÏÀÌ³»'
+'ï¿½ï¿½Ã¤', 1, 'ï¿½ï¿½Ã¤ï¿½×½ï¿½Æ®', 'master', '1234', 'ï¿½ï¿½Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¾ï¿½', SYSDATE, 'a.png', 'b.png', 'c.png', 
+'d.png', 'e.png', 0, 1000, 'ï¿½ï¿½ï¿½ï¿½', 123456789, '010-2390-7250', 'ï¿½Ç¿ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½',
+'ï¿½ß°ï¿½ï¿½ï¿½', '1ï¿½Ú½ï¿½', '(ï¿½ï¿½)ï¿½ï¿½ï¿½å¸²ï¿½Ú¸ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 3000, '1ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½'
 
 );
 
@@ -41,11 +42,12 @@ select * from board;
 drop sequence board_seq;
 
 
---½ÃÄö½º »ý¼º
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 create sequence board_seq; 
 
-
+truncate table board;
 
 )
 
-
+update board set board_evaluation=0 where board_num=1;
+select 

@@ -1,5 +1,6 @@
 package com.board.action;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -27,7 +28,7 @@ public class BoardModifyAction implements Action {
 		String realFolder = "";
 		
 		String saveFolder = "boardupload";
-		int fileSize = 10 * 1024 * 1024;
+		int fileSize = 50 * 1024 * 1024;
 		
 		ServletContext servletContext = request.getServletContext();
 		realFolder = servletContext.getRealPath(saveFolder);
@@ -51,29 +52,117 @@ public class BoardModifyAction implements Action {
 			}
 			
 			boardBean.setBoard_num(board_num);
-			boardBean.setBoard_subject(multi.getParameter("board_subject"));
+			boardBean.setBoard_subject(multi.getParameter("board_subject").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
 			boardBean.setBoard_price(Integer.parseInt(multi.getParameter("board_price")));
 			boardBean.setBoard_bank(multi.getParameter("board_bank"));
-			boardBean.setBoard_account(Integer.parseInt(multi.getParameter("board_account")));
+			boardBean.setBoard_account(multi.getParameter("board_account"));
 			boardBean.setBoard_tel(multi.getParameter("board_tel"));
-			boardBean.setBoard_delivery(multi.getParameter("board_delivery"));
-			boardBean.setBoard_product(multi.getParameter("board_product"));
-			boardBean.setBoard_amount(multi.getParameter("board_amount"));
-			boardBean.setBoard_producer(multi.getParameter("board_producer"));
-			boardBean.setBoard_expirydate(multi.getParameter("board_epirydate"));
-			boardBean.setBoard_origin(multi.getParameter("board_origin"));
-			boardBean.setBoard_storage(multi.getParameter("board_storage"));
+			boardBean.setBoard_product(multi.getParameter("board_product").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
+			boardBean.setBoard_amount(multi.getParameter("board_amount").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
+			boardBean.setBoard_producer(multi.getParameter("board_producer").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
+			boardBean.setBoard_expirydate(multi.getParameter("board_expirydate").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
+			boardBean.setBoard_origin(multi.getParameter("board_origin").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
 			boardBean.setBoard_deliverycost(Integer.parseInt(multi.getParameter("board_deliverycost")));
-			boardBean.setBoard_content(multi.getParameter("board_content"));
+			boardBean.setBoard_content(multi.getParameter("board_content").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
 			
-			String check = multi.getParameter("check");
-			if (check != null) {
-				boardBean.setBoard_thumbnail("check");
-				System.out.println("check = " + check);
+			String[] board_storages = multi.getParameterValues("board_storage");
+			String storage_result="";
+			for(int i = 0; i < board_storages.length; i++){
+				storage_result += board_storages[i]+ "   ";
+			}
+			
+			boardBean.setBoard_storage(storage_result);
+		
+			String[] board_deliverys = multi.getParameterValues("board_delivery");
+			String delivery_result="";
+			for(int num = 0; num < board_deliverys.length; num++){
+				delivery_result += board_deliverys[num]+ "   ";
+			}
+			
+			
+			boardBean.setBoard_delivery(delivery_result);
+			
+			String check0 = multi.getParameter("check0");
+			if (check0 != null) {
+				boardBean.setBoard_thumbnail(check0);
+				System.out.println("check0 = " + check0);
 
 			} else {
-				String fileName = multi.getFilesystemName("board_file");
+				String fileName = multi.getFilesystemName("board_thumbnail");
+				if(!fileName.toUpperCase().endsWith(".JPG") && !fileName.toUpperCase().endsWith(".PNG") && !fileName.toUpperCase().endsWith(".GIF") && !fileName.toUpperCase().endsWith(".JPEG")) {
+					File file = new File(realFolder + "\\" + fileName);
+					file.delete();
+				} else {
 				boardBean.setBoard_thumbnail(fileName);
+			}
+			
+			}
+	
+			String check1 = multi.getParameter("check1");
+			if (check1 != null) {
+				boardBean.setBoard_file1(check1);
+
+			} else {
+				String fileName1 = multi.getFilesystemName("board_file1");
+				if(!fileName1.toUpperCase().endsWith(".JPG") && !fileName1.toUpperCase().endsWith(".PNG") && !fileName1.toUpperCase().endsWith(".GIF") && !fileName1.toUpperCase().endsWith(".JPEG")) {
+					File file = new File(realFolder + "\\" + fileName1);
+					file.delete();
+					System.out.println("업로드 불가 파일");
+					System.out.println(realFolder + "\\" +fileName1);
+					
+				} else {
+					
+				boardBean.setBoard_file1(fileName1);
+				}
+				
+			}
+			
+			String check2 = multi.getParameter("check2");
+			if (check2 != null) {
+				boardBean.setBoard_file2(check2);
+				System.out.println("check2 = " + check2);
+
+			} else {
+				String fileName2 = multi.getFilesystemName("board_file2");
+				if(!fileName2.toUpperCase().endsWith(".JPG") && !fileName2.toUpperCase().endsWith(".PNG") && !fileName2.toUpperCase().endsWith(".GIF") && !fileName2.toUpperCase().endsWith(".JPEG")) {
+					File file = new File(realFolder + "\\" + fileName2);
+					file.delete();
+				} else {
+				boardBean.setBoard_file2(fileName2);
+			}
+			
+			}
+			
+			String check3 = multi.getParameter("check3");
+			if (check3 != null) {
+				boardBean.setBoard_file3(check3);
+				System.out.println("check3 = " + check3);
+
+			} else {
+				String fileName3 = multi.getFilesystemName("board_file3");
+				if(!fileName3.toUpperCase().endsWith(".JPG") && !fileName3.toUpperCase().endsWith(".PNG") && !fileName3.toUpperCase().endsWith(".GIF") && !fileName3.toUpperCase().endsWith(".JPEG")) {
+					File file = new File(realFolder + "\\" + fileName3);
+					file.delete();
+				} else {
+				boardBean.setBoard_file3(fileName3);
+			}
+				
+			}
+			
+			String check4 = multi.getParameter("check4");
+			if (check4 != null) {
+				boardBean.setBoard_file4(check4);
+				System.out.println("check4 = " + check4);
+
+			} else {
+				String fileName4 = multi.getFilesystemName("board_file4");
+				if(!fileName4.toUpperCase().endsWith(".JPG") && !fileName4.toUpperCase().endsWith(".PNG") && !fileName4.toUpperCase().endsWith(".GIF") && !fileName4.toUpperCase().endsWith(".JPEG")) {
+					File file = new File(realFolder + "\\" + fileName4);
+					file.delete();
+				} else {
+				boardBean.setBoard_file4(fileName4);
+			}
+			
 			}
 			
 			result = boardDAO.boardModify(boardBean);
