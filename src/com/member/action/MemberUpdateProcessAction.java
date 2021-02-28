@@ -42,10 +42,10 @@ public class MemberUpdateProcessAction implements Action {
 			String member_birth = multi.getParameter("birth");
 			String member_gender = multi.getParameter("gender");
 			String member_email = multi.getParameter("email")+ "@"
-					+ multi.getParameter("domain");;
+					+ multi.getParameter("domain");
 			String tel1 = multi.getParameter("tel1");
 			String tel2 = multi.getParameter("tel2");
-			String tel3 = multi.getParameter("tel3");;
+			String tel3 = multi.getParameter("tel3");
 			String member_bank = multi.getParameter("account_name");
 			String member_account = multi.getParameter("account_num");
 			String member_address = multi.getParameter("address");

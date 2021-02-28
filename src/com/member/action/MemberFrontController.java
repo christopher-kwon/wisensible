@@ -1,4 +1,3 @@
-
 package com.member.action;
 
 import java.io.IOException;
@@ -90,10 +89,13 @@ public class MemberFrontController extends HttpServlet {
 			action = new MemberDeleteAction();
 			break;
 			
-		case "/chkemail.com" :
-			action = new MemberCheckEmailAction();
+		case "/memberFind.com" :
+			action = new MemberFindAction();
 			break;
 			
+		case "/memberFindProcess.com" :
+			action = new MemberFindProcessAction();
+			break;
 		} //switch end
 		forward = action.execute(request, response);
 		
