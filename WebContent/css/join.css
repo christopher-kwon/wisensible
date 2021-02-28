@@ -1,9 +1,16 @@
 body {
 	font-family: Arial, Helvetica, sans-serif;
+	margin-left: 10%
 }
 
 * {
 	box-sizing: border-box
+}
+
+.container3{
+	border: 1px solid gray;
+	padding: 5%;
+	width: 110%
 }
 
 input {
@@ -57,29 +64,27 @@ button:hover {
 	width: 29%;
 	background: orange;
 	line-height:10px;
-	height: 40px     
+	height: 45px;     
 }
 
 #email, #domain {
 	width: 30%;
-	height: 28%;
 	text-align: center
 }
 
 #account_num{
 	width: 65%;
-	height: 33%
 }
 
 #tel, #tel+input, #tel+input+input{
 	width: 28%;
-	height: 28%;
 	text-align: center
 }
 
 #sel {
 	width: 30%;
-	background: lightgray
+	background: lightgray;
+	height: 45px
 }
 
 b+span, b+span+span, b+span+span+span{
@@ -139,7 +144,8 @@ hr {
 
 h1 {
 	text-align: center;
-	padding-top: 5%; 
+	padding-top: 8%; 
+	padding-left: 3%
 }
 
 b {
