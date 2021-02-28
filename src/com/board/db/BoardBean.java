@@ -27,6 +27,16 @@ public class BoardBean {
 	private int board_deliverycost;
 	private String board_expirydate;
 
+	public int getBoard_evaluation() {
+		return board_evaluation;
+	}
+
+	public void setBoard_evaluation(int board_evaluation) {
+		this.board_evaluation = board_evaluation;
+	}
+
+	private int board_evaluation;
+
 	public String getBoard_category() {
 		return board_category;
 	}
