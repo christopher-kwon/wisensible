@@ -9,13 +9,14 @@
 <%@ include file="header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div class="input-group" style="margin: 20px;">
-    <input type="text" class="form-control" placeholder="검색어를 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
-    <button class="btn btn-secondary" type="button" id="button-addon2">검   색</button>
-</div>
+<form action="BoardSearchAction.bo?searchWord=${searchWord}" method="get" name="searchWord">
+    <div class="input-group" style="margin: 20px;">
+        <input type="text" name="searchWord" class="form-control" placeholder="아이디 입력하세요" value="${searchWord}">
+        <button class="btn btn-secondary" type="submit" id="button-addon2">검   색</button>
+    </div>
+</form>
 
 <div class="row" id="row">
-    <%--    <c:if test="${listCount > 0}">--%>
     <c:forEach var="board" items="${boardList}">
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
@@ -35,14 +36,15 @@
             </div>
         </div>
     </c:forEach>
-    <%--    </c:if>--%>
-
-
 </div>
+
 <div class="row" id="testAjax"></div>
+
+<c:if test="${searchWord == null}">
 <div class="d-grid gap-2 col-6 mx-auto">
     <button class="pageInc btn btn-dark btn-lg" style="width: 300px">더보기</button>
 </div>
+</c:if>
 
 <script>
     $(document).ready(function () {
