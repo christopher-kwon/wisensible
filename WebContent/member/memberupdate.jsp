@@ -28,6 +28,20 @@ $('form').submit(function(){
 	
 });//submit
 
+//비밀번호 확인
+$("input[name=passck]").on('keyup', function(){
+		checkpass=true;
+		$("#pass_message").empty();// 처음에 pattern에 적합하지 않은 경우 메세지 출력 후 적합한 데이터를
+								// 작성하면 사라짐
+		var pass = $("input[name=pass]").val();
+		var passck = $("input[name=passck]").val();
+		if(pass != passck){
+			$("#pass_message").css('color', 'red').html("비밀번호가 서로 일치하지 않습니다.");
+			checkpass=false;
+			return; 
+		}
+	});
+
 $('input[type=file]').change(function(event){
 	var inputfile = $(this).val().split('\\');
 	var filename = inputfile[inputfile.length - 1];
@@ -70,6 +84,10 @@ input[type=file]{display: none;}
 	<b>비밀번호</b>
 	<input type="password" name="pass" value="${member_info.member_password}">
 	
+	<b>비밀번호 확인</b>
+       	<input type="password" placeholder="Enter Password Check" 
+       		name="passck" required>
+       	<span id="pass_message"></span>
 	
 	<b>생년월일</b>
 	<input type="text" name="birth" value="${member_info.member_birth}" readOnly>
