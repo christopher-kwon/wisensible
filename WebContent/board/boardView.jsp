@@ -43,7 +43,7 @@
 <input type="hidden" value="${boardBean.board_num}">
 	<div class="star_result">
 	<label for="1">★</label><label for="2">★</label><label for="3">★</label><label for="4">★</label>
-	<label for="5">★</label>
+	<label for="5">★</label><label for="6" style=display:none>★</label>
 	<p id="res" style="text-align:;"></p>
 	</div>	<hr>
 
@@ -58,7 +58,7 @@
 
 	<button type=submit class="btn btn-info">평점등록</button>
 
-	<button type=reset class="btn btn-warning">초기화</button>
+	<button type=reset class="btn btn-warning" id="remstar">초기화</button>
 
 </div>
 </div>
