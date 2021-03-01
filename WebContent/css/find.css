@@ -1,0 +1,52 @@
+fieldset{
+	border: 1px solid gray;
+	margin-left:10px;
+	margin-top:50px;
+	padding: 15%;
+	width: 800px;
+	display: inline-block;
+}
+
+.mybtn {
+	border-radius: 50px;
+	height: 50px;
+	width: 45%;
+	padding: 10px;
+	display: inline-block;
+	margin-left: 15px;
+	font-size: 20px;
+	
+}
+
+button {
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer; /* 손가락 커서 모양 */
+	width: 100%;
+	opacity: 0.9;
+}
+
+button:hover {
+	opacity: 1;
+}
+
+input{
+	height: 30px
+}
+
+.input-group-text{
+	padding: 0.7rem 3rem;
+}
+
+.form-control{
+	height: calc(1.5em + 1.4rem + 2px);
+}
+
+@media screen and (max-width: 300px) {
+	.cancelbtn, .signupbtn {
+		width: 45%;
+	}
+}

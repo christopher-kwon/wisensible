@@ -6,8 +6,7 @@
 <html>
 <head>
 <title>회원 가입</title>
-
-<link href="css/join.css" type="text/css" rel="stylesheet">
+<link href="css/join.css?ver=1" type="text/css" rel="stylesheet">
 <script src="js/jquery-3.5.1.js"></script>
 <script src="js/join.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
