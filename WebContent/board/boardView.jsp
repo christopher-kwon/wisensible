@@ -5,7 +5,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-
+<link
+   href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo&display=swap&subset=korean"
+   rel="stylesheet">
 <link href="css/board/boardView.css" rel="stylesheet">
 <script src="js/board/boardView.js"></script>
 
@@ -16,35 +18,38 @@
 
 <!-- table -->
 <div class="board_view_table">
-  <h2>[${boardBean.board_category}]${boardBean.board_subject }</h2> 
+ <hr>
+      <h2> [${boardBean.board_category}]  ${boardBean.board_subject }</h2>
+    
+ 
   <table class="table">
 
       <tr><td rowspan="6">  <img src="boardupload/${boardBean.board_thumbnail }" class="view_thumbnail" alt="thumbnail" width="304" height="236"> 
       </td>
-        <td>가격 <strong>${boardBean.board_price}</strong>원 </td>
+        <td>가&emsp;&emsp;격 :</td><td><strong>${boardBean.board_price}</strong>&emsp;원 </td>
       </tr>
       <tr>
-        <td>은행 / 계좌번호 [${boardBean.board_bank} / ${boardBean.board_account}]</td>
+        <td>은행 / 계좌번호 :</td><td> [${boardBean.board_bank} / ${boardBean.board_account}]</td>
       </tr>
       <tr>
-        <td>연락처 ${boardBean.board_tel}</td>
+        <td>연락처 :</td><td> ${boardBean.board_tel}</td>
       </tr>
       <tr>
-        <td>보관방법 ${boardBean.board_storage}</td>
+        <td>보관방법 :</td><td> ${boardBean.board_storage}</td>
       </tr>
             <tr>
-        <td>배송구분 / 배송비 [${boardBean.board_delivery} / ${boardBean.board_deliverycost}원]</td>
+        <td>배송구분 / 배송비 :</td><td> [${boardBean.board_delivery} / ${boardBean.board_deliverycost}원]</td>
       </tr>
       
                   <tr>
-<td><strong>평점</strong> 
+<td colspan="2"><strong>평점 </strong> <p id="res" style="text-align:;"></p>
 <input type="hidden" id = "board_writer" value="${boardBean.board_name}">
 <input type="hidden" id= "loginsession" value="${id}">
 <input type="hidden" value="${boardBean.board_num}">
 	<div class="star_result">
 	<label for="1">★</label><label for="2">★</label><label for="3">★</label><label for="4">★</label>
 	<label for="5">★</label><label for="6" style=display:none>★</label>
-	<p id="res" style="text-align:;"></p>
+	
 	</div>	<hr>
 
 	<div class="star_box">
@@ -73,7 +78,8 @@
 </div>
 
 
-
+<hr>
+<h4>상품 상세정보</h4>
 <!-- content -->
 <div class="board_detail">
  <table class="table table-bordered">
@@ -108,10 +114,11 @@
   </table>
 </div>
 
-
+<h4>상품 설명</h4>
+<hr>
 <div class="board_content_view">
 <div class="board_content">${boardBean.board_content } </div>
-
+<hr>
  <c:if test="${not empty boardBean.board_file1}">
 <div class="board_view_image1">
   <img src="boardupload/${boardBean.board_file1 }" class="board_file1" alt="상품이미지1" width="795" height="500"> 
@@ -186,9 +193,9 @@
    
    <c:otherwise>
 
-  <button type="button" class="btn btn-primary">Previous</button>
-  <button type="button" class="btn btn-primary">List</button>
-  <button type="button" class="btn btn-primary">Next</button>
+  <button type="button" class="btn btn-primary" id ="previous">Previous</button>
+  <button type="button" class="btn btn-primary" onClick="location.href='BoardList.bo'">List</button>
+  <button type="button" class="btn btn-primary"  id ="nextp">>Next</button>
 </c:otherwise>
 </c:choose>
 </div>

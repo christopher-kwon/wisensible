@@ -1,6 +1,5 @@
 drop table board;
 
---���̺� ����
 create table board(
 board_category varchar2(20) not null,
 board_num number(10) primary key,
@@ -30,24 +29,11 @@ board_expirydate varchar2(30) not null,
 board_evaluation number(10)
 );
 
-insert into board values(
-'��ä', 1, '��ä�׽�Ʈ', 'master', '1234', '��ä�� ���־�', SYSDATE, 'a.png', 'b.png', 'c.png', 
-'d.png', 'e.png', 0, 1000, '����', 123456789, '010-2390-7250', '�ǿ�', '�����',
-'�߰���', '1�ڽ�', '(��)���帲�ڸ���', '������', 3000, '1�����̳�'
-
-);
-
 select * from board;
 
 drop sequence board_seq;
-
-
---������ ����
 create sequence board_seq; 
 
 truncate table board;
 
-)
 
-update board set board_evaluation=0 where board_num=1;
-select 

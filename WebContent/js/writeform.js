@@ -123,6 +123,12 @@ $(document).ready(
 							$('input:eq(0)').focus();
 							return false;
 						}
+					
+						
+						
+						
+						
+						
 						if ($.trim($("#board_price").val()) == "") {
 							alert("가격을 입력해주세요")
 							$("#board_price").focus();
@@ -156,16 +162,22 @@ $(document).ready(
 						
 							return false;
 						}
+						if ($.trim($("#board_deliverycost").val()) == "") {
+							alert("배송비용을 입력해주세요")
+							$("#board_deliverycost").focus();
+							return false;
+
+						}
 
 						if ($.trim($("#board_product").val()) == "") {
 							alert("상품명을 입력해주세요")
-							$("#board_ptoduct").focus();
+							$("#board_product").focus();
 							return false;
 
 						}
 						if ($.trim($("#board_amount").val()) == "") {
 							alert("수량을 입력해주세요")
-							$("#board_mount").focus();
+							$("#board_amount").focus();
 							return false;
 
 						}
@@ -196,13 +208,6 @@ $(document).ready(
 						
 
 						}
-						if ($.trim($("#board_deliverycost").val()) == "") {
-							alert("배송비용을 입력해주세요")
-							$("#board_deliverycost").focus();
-							return false;
-
-						}
-						
 						if ($.trim($("#upfile1").val()) == "") {
 							alert("파일은 최소 2개이상 업로드필수입니다. 1번파일을 업로드해주세요")
 						

@@ -1,4 +1,31 @@
-td{width:50%}
+body{
+	font-family: "Nanum Gothic", sans-serif;
+
+
+}
+ strong{
+	font-size:1.3em
+}
+
+div.board_detail > table > tbody{
+	text-align:center;
+}
+h4{
+text-align:center;
+padding:10px 0 30px 0
+}
+div.board_view_table > table > tbody > tr:nth-child(1) > td:nth-child(3),
+div.board_view_table > table > tbody > tr:nth-child(2) > td:nth-child(2),
+div > div.board_view_table > table > tbody > tr:nth-child(3) > td:nth-child(2),
+div > div.board_view_table > table > tbody > tr:nth-child(4) > td:nth-child(2),
+div > div.board_view_table > table > tbody > tr:nth-child(5) > td:nth-child(2){
+	text-align:center
+}
+td{
+width:25%;
+
+
+}
 
 .btn-group{float:right; margin:20px;}
 
@@ -88,8 +115,11 @@ button {
 	background: none;
 }
 
-img {
-	vertical-align: middle;
+div > img {
+width: 600;
+    height: 600;
+    margin: 0 auto;
+    display: block;
 }
 
 fieldset, img {
@@ -410,3 +440,39 @@ a:hover {
 	font-size: 3em;
 		text-align:center;
 }
+
+
+body > div > div > div > div.col-lg-9 > div > div.board_view_table > h2{
+		
+text-align:center;
+padding:20px 0 25px 0
+}
+
+div.board_view_table > table > tbody > tr:nth-child(1) > td:nth-child(1) > img{
+
+width:400px; height:400px;
+
+}
+div.board_view_table > table > tbody > tr:nth-child(6) > td{
+	padding:20px 0 20px 0;
+	text-align:center;
+}
+
+#res{
+	margin: 20px 0 0 0
+}
+div.board_detail > table > tbody > tr:nth-child(n) > td:nth-child(1){
+	
+	color:#666
+}
+div.board_detail > table > tbody > tr:nth-child(n) {
+	font-weight:bold;
+
+}
+
+.board_content{
+	padding:20px
+}
+
+
+

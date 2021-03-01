@@ -38,21 +38,22 @@ public class EvaluationAdd implements Action {
 		
 		if(idcheck == 0) {
 			
-			int ok = edao.insert(evaluationbean);
-			response.getWriter().print(ok);
-			System.out.println("idcheck = " + idcheck +"평정등록완료");
+			System.out.println("idcheck = " + idcheck +"이미평점등록");
 			out.println("<script>");
-			out.println("alert('평점 등록이 완료되었습니다.')");
-			out.println("location.href=history.back()");
+			out.println("alert('이미 평점등록을 완료한 게시물입니다.');");
+	
 			out.println("</script>");
 		
 			
 		}else {
-			System.out.println("idcheck = " + idcheck +"이미평점등록");
+			
+			int ok = edao.insert(evaluationbean);
+			response.getWriter().print(ok);
+			System.out.println("idcheck = " + idcheck +"평점등록완료");
 			out.println("<script>");
-			out.println("alert('이미 평점등록을 완료한 게시물입니다.');");
-			out.println("location.href=history.back()");
+			out.println("alert('평점 등록이 완료되었습니다.')");
 			out.println("</script>");
+			
 			
 			
 		}
