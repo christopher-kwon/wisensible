@@ -38,7 +38,7 @@ $("input[name=passck]").on('keyup', function(){
 		if(pass != passck){
 			$("#pass_message").css('color', 'red').html("비밀번호가 서로 일치하지 않습니다.");
 			checkpass=false;
-			return;
+			return; 
 		}
 	});
 
