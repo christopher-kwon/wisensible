@@ -29,9 +29,9 @@ public class MemberLoginProcessAction implements Action {
 
 		// 로그인 성공
 		if (result == 1) {
+			int auction = memberdao.auction(member_id);
 			HttpSession session = request.getSession();
 			session.setAttribute("id", member_id);
-
 			forward.setRedirect(true);
 			//forward.setPath("memberInfo.com");
 			forward.setPath("BoardList.bo");

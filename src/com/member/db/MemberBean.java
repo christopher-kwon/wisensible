@@ -6,6 +6,8 @@ public class MemberBean {
 	private String member_password;
 	private String member_birth;
 	private String member_email;
+	private String member_emailhash;
+	private String member_emailchecked;
 	private String member_domain;
 	private String member_gender;
 	private String member_tel;
@@ -93,6 +95,17 @@ public class MemberBean {
 	public void setMember_file(String member_file) {
 		this.member_file = member_file;
 	}
-	
+	public String getMember_emailhash() {
+		return member_emailhash;
+	}
+	public void setMember_emailhash(String member_emailhash) {
+		this.member_emailhash = member_emailhash;
+	}
+	public String getMember_emailchecked() {
+		return member_emailchecked;
+	}
+	public void setMember_emailchecked(String member_emailchecked) {
+		this.member_emailchecked = member_emailchecked;
+	}
 	
 }

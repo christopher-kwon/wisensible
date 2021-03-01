@@ -30,12 +30,13 @@
 					break;
 
 				
-				} 
+				} //switch
+				
 				$("#res").text(rdata+ " 점 / 5 점");
 
-			}
-		})
-	}
+			} //success
+		}) //ajax
+	} //function
 
 
 function getList(state) {
@@ -212,6 +213,7 @@ function replyform(comment_num, lev, seq, ref){
 	
 } //function(replyform) end
 
+
 $(function() {
 	getListev();
 	option=1;
@@ -345,7 +347,7 @@ $(function() {
 		console.log(ind);
 		$("#lev").text(ind + " 점 / 5 점");
 
-	})
+	}) //.star_box
 
 	$("body > div > div > div > div.col-lg-9 > div > div.board_view_table > table > tbody > tr:nth-child(6) > td > div.star_box > div > button.btn.btn-info").click(function() {
 		if (ind == -1) {
@@ -363,7 +365,6 @@ $(function() {
 			type : "post",
 			success : function(rdata) {
 				if (rdata.length > 0) {
-					
 					$("star_box > a").text("")
 					$(".on").removeClass("on")
 					$("#lev").text("");
@@ -376,13 +377,13 @@ $(function() {
 	                    +"error status :" +status +"<br>"
 	                    +"error 메시지 : " + error +"</div>");
 	           },
-	           complete :function(){//요청의 실패, 성공과 상관없이 완료될 경우 호출
+	           complete :function(){ //요청의 실패, 성공과 상관없이 완료될 경우 호출
 	              $("body").append("<div id='com'>Ajax가 완료되었습니다.</div>");
 	           }
 
-		})
+		}) //ajax
 
-	})
+	}) //function();
 	if($("#board_writer").val() == $("#loginsession").val()){
 		$("body > div > div > div > div.col-lg-9 > div > div.board_view_table > table > tbody > tr:nth-child(6) > td > div.star_box").html("")
 		
