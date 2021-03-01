@@ -350,6 +350,14 @@ $(function() {
 	}) //.star_box
 
 	$("body > div > div > div > div.col-lg-9 > div > div.board_view_table > table > tbody > tr:nth-child(6) > td > div.star_box > div > button.btn.btn-info").click(function() {
+		if($("#loginid").val()==""){
+			alert("로그인후에 평점을 등록해주세요")
+			return;
+		}
+		
+		
+		
+		
 		if (ind == -1) {
 			alert("평점을 선택해주세요")
 			return;
@@ -377,8 +385,10 @@ $(function() {
 	                    +"error status :" +status +"<br>"
 	                    +"error 메시지 : " + error +"</div>");
 	           },
-	           complete :function(){ //요청의 실패, 성공과 상관없이 완료될 경우 호출
-	              $("body").append("<div id='com'>Ajax가 완료되었습니다.</div>");
+
+	           complete :function(){//요청의 실패, 성공과 상관없이 완료될 경우 호출
+	              $("body").append("");
+
 	           }
 
 		}) //ajax
@@ -391,6 +401,20 @@ $(function() {
 	$("body > div > div > div > div.col-lg-9 > div > div.board_view_table > table > tbody > tr:nth-child(6) > td > div.star_box > div > button.btn.btn-warning").click(function(){
 		$("div.star_box > .on").removeClass("on")
 		$("#lev").text("");
+	})
+	
+	$('#previous').click(function(){
+		var g = $("#board_num").val()-1
+		if(g==0){
+			alert("첫번째 게시글입니다.")
+		}
+		location.href='BoardDetailAction.bo?board_num='+ g
+	})
+		$('#nextp').click(function(){
+		var g = Number($("#board_num").val())+1
+		
+		
+		location.href='BoardDetailAction.bo?board_num='+ g
 	})
 
 }) //function 

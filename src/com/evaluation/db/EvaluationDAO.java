@@ -148,27 +148,23 @@ public class EvaluationDAO {
 		 Connection conn = null;
 	     PreparedStatement pstmt = null;
 	     ResultSet rs = null;
-	     int x = 0;
+	    
 	     int result = 0;
 	     
-	      String idcheck_sql = "select count(?) from evaluation where board_num = ? ";
+	      String idcheck_sql = "select evaluation_name from evaluation where board_num = ? AND evaluation_name = ? ";
 	      try {
 
 	         conn = ds.getConnection();
 	         pstmt = conn.prepareStatement(idcheck_sql);
-	         pstmt.setString(1, evaluationbean.getEvalueation_name() );
-	         pstmt.setInt(2,  evaluationbean.getBoard_num());
+	         pstmt.setString(2, evaluationbean.getEvalueation_name() );
+	         pstmt.setInt(1,  evaluationbean.getBoard_num());
 	         
 	         rs= pstmt.executeQuery();
 	         
 	         if(rs.next()) {
-	        	 x =rs.getInt(1);
-	        	 System.out.println(x);
-	        	 if(x>=1) {
-	        		 result = 1;
-	        	 }else {
-	        		 result = 0;
-	        	 }
+	        	 result = 0;//DB에 해당 id가 있습니다.
+	         }else {
+	        	 result = 1;
 	         }
 	         
 	

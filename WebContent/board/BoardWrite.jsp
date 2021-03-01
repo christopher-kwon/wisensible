@@ -160,9 +160,10 @@
 		<div class="section_content">
 			<div class="section_info">
 			
-				<h4>상품 상세정보</h4>
+			
 				
 				<table class="table table-borderd">
+					<caption>상품 상세정보</caption>
 					<tr>
 						<th>상 품 명</th>
 						<td><input type="text" name="board_product"
@@ -190,7 +191,7 @@
 					</tr>
 					<tr>
 				
-
+						<th>보 관 방 법</th>
 						<td><input name="board_storage" id="board_storage"
 							type="checkbox" value="상온">상온<input
 							name="board_storage" id="board_storage" type="checkbox"
