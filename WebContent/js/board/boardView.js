@@ -349,7 +349,7 @@ $(function() {
 
 	}) //.star_box
 
-	$("body > div > div > div > div.col-lg-9 > div > div.board_view_table > table > tbody > tr:nth-child(6) > td > div.star_box > div > button.btn.btn-info").click(function() {
+	$("#starsub").click(function() {
 		if($("#loginid").val()==""){
 			alert("로그인후에 평점을 등록해주세요")
 			return;
@@ -398,7 +398,7 @@ $(function() {
 		$("body > div > div > div > div.col-lg-9 > div > div.board_view_table > table > tbody > tr:nth-child(6) > td > div.star_box").html("")
 		
 	}
-	$("body > div > div > div > div.col-lg-9 > div > div.board_view_table > table > tbody > tr:nth-child(6) > td > div.star_box > div > button.btn.btn-warning").click(function(){
+	$("#remstar").click(function(){
 		$("div.star_box > .on").removeClass("on")
 		$("#lev").text("");
 	})
