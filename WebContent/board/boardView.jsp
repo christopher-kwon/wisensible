@@ -52,7 +52,7 @@
 	
 	</div>	<hr>
 
-	<div class="star_box">
+	<div class="star_box" id="star_box">
 		<a id="1">★</a> <a id="1">★</a> <a id="1">★</a> <a id="1">★</a>
 		<a id="1">★</a>
 
@@ -61,8 +61,8 @@
 
 <div class="register_box2">
 
-	<button type=submit class="btn btn-info" id="starsub">평점등록</button>
 
+	<button type=submit class="btn btn-info" id="starsub">평점등록</button>
 	<button type=reset class="btn btn-warning" id="remstar">초기화</button>
 
 </div>

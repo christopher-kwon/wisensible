@@ -363,6 +363,7 @@ ind = -1;
          return;
       }
 
+
       $.ajax({
          url : "EvaluationAdd.ev",
          data : {
@@ -416,6 +417,7 @@ ind = -1;
       
       location.href='BoardDetailAction.bo?board_num='+ g
    })
+
 
 }) //function 
 

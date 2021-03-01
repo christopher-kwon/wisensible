@@ -26,7 +26,7 @@ $(document).ready(
 					output +="<input type='file' id='upfile4' name='board_file4'>"
 					output += "<span id='filevalue4'></span><br>"	
 					output += "사진 업로드는 최대 4개까지 가능합니다."
-				$("body > div > div > div > div.col-lg-9 > div > form > div.section_content > div.form-file > label").append(output+"<br>");
+				$("#picinfo").append(output+"<br>");
 				$("#file_add").attr("style","display:none")
 				
 			})
@@ -156,7 +156,7 @@ $(document).ready(
 						}
 
 					
-						var cnt =  $("body > div > div > div > div.col-lg-9 > div > form > div.section_view > div > div:nth-child(8) > div >  input:checkbox:checked").length;
+						var cnt =  $("#form-delivery  input:checkbox:checked").length;
 						if (cnt<1) {
 							alert("배송방법을 선택해주세요")
 						
@@ -199,7 +199,7 @@ $(document).ready(
 							return false;
 
 						}
-						var cnt =  $(".section_content input:checkbox:checked").length;
+						var cnt =  $("#board_storage input:checkbox:checked").length;
 						if (cnt<1) {
 							alert("보관방법을 선택해주세요")
 						
