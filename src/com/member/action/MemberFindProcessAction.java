@@ -19,7 +19,7 @@ public class MemberFindProcessAction implements Action {
 			throws ServletException, IOException {
 		ActionForward forward = new ActionForward();
 		String member_name = request.getParameter("name");
-		String member_tel = request.getParameter("tel1") + " - " + request.getParameter("tel2") + " - " + request.getParameter("tel3");
+		String member_tel = request.getParameter("tel1") + "-" + request.getParameter("tel2") + "-" + request.getParameter("tel3");
 		String member_id = request.getParameter("id");
 		String member_email = request.getParameter("email");
 		String member_password = request.getParameter("pass");

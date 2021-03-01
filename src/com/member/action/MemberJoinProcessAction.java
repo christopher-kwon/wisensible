@@ -2,7 +2,15 @@ package com.member.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Properties;
 
+import javax.mail.Address;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.Action;
 import com.ActionForward;
+import com.Gmail;
+import com.SHA256;
 import com.member.db.MemberBean;
 import com.member.db.MemberDAO;
 import com.oreilly.servlet.MultipartRequest;
@@ -72,13 +82,14 @@ public class MemberJoinProcessAction implements Action {
 			memberbean.setMember_birth(birth);
 			memberbean.setMember_email(member_email);
 			memberbean.setMember_gender(member_gender);
-			memberbean.setMember_tel(tel1 + " - " + tel2 + " - " +  tel3);
+			memberbean.setMember_tel(tel1 + "-" + tel2 + "-" +  tel3);
 			memberbean.setMember_address(address);
 			memberbean.setMember_interest(member_interests);
 			memberbean.setMember_account(member_account);
 			memberbean.setMember_bank(member_bank);
 			memberbean.setMember_file(member_file);
-			
+			memberbean.setMember_emailhash(SHA256.getSHA256(member_email));
+			memberbean.setMember_emailchecked("0");
 			response.setContentType("text/html; charset=utf-8"); 
 			PrintWriter out = response.getWriter();
 			
@@ -88,6 +99,43 @@ public class MemberJoinProcessAction implements Action {
 			out.println("<script>");
 			if(result ==1) {//삽입이 된 경우
 				out.println("alert('회원 가입을 축하합니다.');");
+				
+				String host = "http://localhost:8088/wisensible/";
+				String from = "projectkwonhta@gmail.com";
+				String to = member_email;
+				String subject = "Wisensible 이메일 인증 메일입니다.";
+				String content = "다음 링크에 접속하여 이메일 인증을 진행하세요." +
+									"<a href='" + host + "chkemail.com?code=" + new SHA256().getSHA256(to) + "'> 이메일 인증하기 </a>";
+				
+				Properties p = new Properties();
+				p.put("mail.smtp.user", from);
+				p.put("mail.smtp.host", "smtp.googlemail.com");
+				p.put("mail.smtp.port", "465");
+				p.put("mail.smtp.starttls.enable", "true");
+				p.put("mail.smtp.auth", "true");
+				p.put("mail.smtp.debug", "true");
+				p.put("mail.smtp.socketFactory.port", "465");
+				p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+				p.put("mail.smtp.socketFactory.fallback", "false");
+				
+				try {
+					Authenticator auth = new Gmail();
+					Session ses = Session.getInstance(p, auth);
+					ses.setDebug(true);
+					MimeMessage msg = new MimeMessage(ses);
+					msg.setSubject(subject);
+					Address fromAddr = new InternetAddress(from);
+					msg.setFrom(fromAddr);
+					Address toAddr = new InternetAddress(to);
+					msg.addRecipient(Message.RecipientType.TO, toAddr);
+					msg.setContent(content, "text/html;charset=UTF-8");
+					Transport.send(msg);
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+				
+				
+				out.println("alert('가입하신 이메일로 인증 메일이 전송되었습니다. 메일 인증을 하시면 경매 시스템을 이용할 수 있습니다.');");
 				out.println("location.href='login.com';");
 			}else if(result == -1) {
 				out.println("alert('아이디가 중복되었습니다. 다시 입력하세요.');");

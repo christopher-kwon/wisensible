@@ -89,16 +89,22 @@
                     <button class="list-group-item" style="background-color: gray; color: white">카테고리</button>
                     <a href="BoardCategoryListAction.bo?category=과일" class="list-group-item">과일</a>
 
-                    <a href="BoardCategoryListAction.bo?category=채소" class="list-group-item">채소</a>
-                    <a href="BoardCategoryListAction.bo?category=곡물" class="list-group-item">곡물</a>
-                    <a href="BoardCategoryListAction.bo?category=축산물" class="list-group-item">축산물</a>
-                    <a href="BoardCategoryListAction.bo?category=해산물" class="list-group-item">해산물</a>
 
-                    <div>&nbsp</div>
-                    <c:if test="${!empty id}">
-                    <button type="button" class="btn btn-dark" onclick="location.href='BoardWrite.bo'">글 쓰 기</button>
-                    </c:if>
-                </div>
+                <a href="BoardCategoryListAction.bo?category=채소" class="list-group-item">채소</a>
+                <a href="BoardCategoryListAction.bo?category=곡물" class="list-group-item">곡물</a>
+                <a href="BoardCategoryListAction.bo?category=축산물" class="list-group-item">축산물</a>
+                <a href="BoardCategoryListAction.bo?category=해산물" class="list-group-item">해산물</a>
+                <a href="BoardCategoryListAction.bom?category=경매글" class="list-group-item">경매글</a>
+
+                <div>&nbsp</div>
+                <button type="button" class="btn btn-dark" onclick="location.href='BoardWrite.bo'">글 쓰 기</button>
+
+            </div>
+            
+                            <div>&nbsp</div>
+                <button type="button" class="btn btn-dark" onclick="location.href='BoardWrite.bom'">경 매 글</button>
+
+            </div>
 
 
             </div>
