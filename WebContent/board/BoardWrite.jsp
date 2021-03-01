@@ -126,12 +126,14 @@
             
 
             <div class="form-group">
-
+				<div class="form-delivery">
                <label for="board_delivery">배 송 방 법&emsp; :&emsp;</label> <input
                   name="board_delivery" id="board_delivery" type="checkbox"
-                  value="택배">택배 <input name="board_delivery"
-                  id="board_delivery" type="checkbox" value="직거래">직거래 <input
-                  name="board_delivery" id="board_delivery" type="checkbox"
+                  value="택배">택배 
+                  
+                  <input name="board_delivery"
+                  id="board_delivery" type="checkbox" value="직거래">직거래 
+                  <input name="board_delivery" id="board_delivery" type="checkbox"
                   value="퀵서비스">퀵서비스
                      <div class="form-group">
 
@@ -141,6 +143,7 @@
 							id="board_deliverycost" placeholder="Enter 배송비용">원
 					
 					 </label>
+					 </div>
 
 
 
@@ -186,12 +189,14 @@
 							placeholder="Enter Origin"></td>
 					</tr>
 					<tr>
-						<th>보 관 방 법</th>
+				
+
 						<td><input name="board_storage" id="board_storage"
 							type="checkbox" value="상온">상온<input
 							name="board_storage" id="board_storage" type="checkbox"
 							value="냉장">냉장<input name="board_storage"
 							id="board_storage" type="checkbox" value="냉동">냉동</td>
+
 					</tr>
 					
 				</table>
