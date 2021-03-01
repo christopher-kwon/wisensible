@@ -82,9 +82,9 @@ public class MemberDAO {
 
 			String insert_sql = "INSERT INTO member"
 					+ "(MEMBER_NAME, MEMBER_ID, MEMBER_PASS, MEMBER_BIRTH, MEMBER_GENDER, "
-					+ " MEMBER_EMAIL, MEMBER_TEL, MEMBER_BANK, MEMBER_ACCOUNT,"
+					+ " MEMBER_EMAIL, MEMBER_EMAILHASH, MEMBER_EMAILCHECKED, MEMBER_TEL, MEMBER_BANK, MEMBER_ACCOUNT,"
 					+ " MEMBER_ADDRESS, MEMBER_INTEREST, MEMBER_FILE) "
-					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			pstmt = con.prepareStatement(insert_sql);
 
@@ -94,12 +94,14 @@ public class MemberDAO {
 			pstmt.setString(4, m.getMember_birth());
 			pstmt.setString(5, m.getMember_gender());
 			pstmt.setString(6, m.getMember_email());
-			pstmt.setString(7, m.getMember_tel());
-			pstmt.setString(8, m.getMember_bank());
-			pstmt.setString(9, m.getMember_account());
-			pstmt.setString(10, m.getMember_address());
-			pstmt.setString(11, m.getMember_interest());
-			pstmt.setString(12, m.getMember_file());
+			pstmt.setString(7, m.getMember_emailhash());
+			pstmt.setString(8, m.getMember_emailchecked());
+			pstmt.setString(9, m.getMember_tel());
+			pstmt.setString(10, m.getMember_bank());
+			pstmt.setString(11, m.getMember_account());
+			pstmt.setString(12, m.getMember_address());
+			pstmt.setString(13, m.getMember_interest());
+			pstmt.setString(14, m.getMember_file());
 			
 			result = pstmt.executeUpdate();
 
@@ -217,18 +219,20 @@ public class MemberDAO {
 			
 			if(rs.next()) {
 				memberbean = new MemberBean();
-				memberbean.setMember_id(rs.getString(1));
-				memberbean.setMember_name(rs.getString(2));
-				memberbean.setMember_password(rs.getString(3));
-				memberbean.setMember_birth(rs.getString(4));
-				memberbean.setMember_email(rs.getString(5));
-				memberbean.setMember_gender(rs.getString(6));
-				memberbean.setMember_tel(rs.getString(7));
-				memberbean.setMember_address(rs.getString(8));
-				memberbean.setMember_interest(rs.getString(9));
-				memberbean.setMember_account(rs.getString(10));
-				memberbean.setMember_bank(rs.getString(11));
-				memberbean.setMember_file(rs.getString(12));
+				memberbean.setMember_id(rs.getString("member_id"));
+				memberbean.setMember_name(rs.getString("member_name"));
+				memberbean.setMember_password(rs.getString("member_pass"));
+				memberbean.setMember_birth(rs.getString("member_birth"));
+				memberbean.setMember_email(rs.getString("member_email"));
+				memberbean.setMember_email(rs.getString("member_emailhash"));
+				memberbean.setMember_email(rs.getString("member_emailchecked"));
+				memberbean.setMember_gender(rs.getString("member_gender"));
+				memberbean.setMember_tel(rs.getString("member_tel"));
+				memberbean.setMember_address(rs.getString("member_address"));
+				memberbean.setMember_interest(rs.getString("member_interest"));
+				memberbean.setMember_account(rs.getString("member_account"));
+				memberbean.setMember_bank(rs.getString("member_bank"));
+				memberbean.setMember_file(rs.getString("member_file"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -373,18 +377,18 @@ public class MemberDAO {
 			
 			while(rs.next()){
 				MemberBean memberbean = new MemberBean();
-				memberbean.setMember_id(rs.getString(1));
-				memberbean.setMember_name(rs.getString(2));
-				memberbean.setMember_password(rs.getString(3));
-				memberbean.setMember_birth(rs.getString(4));
-				memberbean.setMember_email(rs.getString(5));
-				memberbean.setMember_gender(rs.getString(6));
-				memberbean.setMember_tel(rs.getString(7));
-				memberbean.setMember_address(rs.getString(8));
-				memberbean.setMember_interest(rs.getString(9));
-				memberbean.setMember_account(rs.getString(10));
-				memberbean.setMember_bank(rs.getString(11));
-				memberbean.setMember_file(rs.getString(12));
+				memberbean.setMember_id(rs.getString("member_id"));
+				memberbean.setMember_name(rs.getString("member_name"));
+				memberbean.setMember_password(rs.getString("member_password"));
+				memberbean.setMember_birth(rs.getString("member_birth"));
+				memberbean.setMember_email(rs.getString("member_email"));
+				memberbean.setMember_gender(rs.getString("member_gender"));
+				memberbean.setMember_tel(rs.getString("member_tel"));
+				memberbean.setMember_address(rs.getString("member_address"));
+				memberbean.setMember_interest(rs.getString("member_interest"));
+				memberbean.setMember_account(rs.getString("member_account"));
+				memberbean.setMember_bank(rs.getString("member_bank"));
+				memberbean.setMember_file(rs.getString("member_file"));
 				list.add(memberbean);
 			}
 			
@@ -490,11 +494,11 @@ public class MemberDAO {
 			
 			while(rs.next()){
 				MemberBean memberbean = new MemberBean();
-				memberbean.setMember_id(rs.getString(1));
-				memberbean.setMember_name(rs.getString(2));
+				memberbean.setMember_id(rs.getString("member_id"));
+				memberbean.setMember_name(rs.getString("member_name"));
 				//memberbean.setMember_password(rs.getString(3));
 				//memberbean.setMember_birth(rs.getString(4));
-				memberbean.setMember_email(rs.getString(5));
+				memberbean.setMember_email(rs.getString("member_email"));
 				//memberbean.setMember_gender(rs.getString(6));
 				//memberbean.setMember_tel(rs.getString(7));
 				//memberbean.setMember_address(rs.getString(8));
@@ -529,6 +533,123 @@ public class MemberDAO {
 				}
 		}
 		return list;
+	}
+	
+	public int isHash(String code) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = -1; 
+		try {
+			con = ds.getConnection();
+			
+			String sql = "select member_id from member where member_emailhash = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, code);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs !=null)
+				try {
+					rs.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			if(pstmt !=null)
+				try {
+					pstmt.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			if(con !=null)
+				try {
+					con.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+		}
+		return result;
+	}
+	
+	public int checkedUp(String code) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			con = ds.getConnection();
+			
+			String sql = "update member set member_emailchecked = 1 where member_emailhash = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, code);
+		
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Member_update()¿¡·¯");
+		}finally {
+			if(pstmt !=null)
+				try {
+					pstmt.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			if(con !=null)
+				try {
+					con.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+		}
+		return result;
+
+	}
+	
+	public int auction(String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = -1; 
+		try {
+			con = ds.getConnection();
+			
+			String sql = "select * from member where member_id = ? and member_emailchecked = 1";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs !=null)
+				try {
+					rs.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			if(pstmt !=null)
+				try {
+					pstmt.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			if(con !=null)
+				try {
+					con.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+		}
+		return result;
 	}
 	
 }
