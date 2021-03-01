@@ -52,7 +52,7 @@
 	
 	</div>	<hr>
 
-	<div class="star_box">
+	<div class="star_box" id="star_box">
 		<a id="1">★</a> <a id="1">★</a> <a id="1">★</a> <a id="1">★</a>
 		<a id="1">★</a>
 
