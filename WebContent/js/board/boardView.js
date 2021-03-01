@@ -388,7 +388,10 @@ $(function() {
 		$("body > div > div > div > div.col-lg-9 > div > div.board_view_table > table > tbody > tr:nth-child(6) > td > div.star_box").html("")
 		
 	}
-
+	$("body > div > div > div > div.col-lg-9 > div > div.board_view_table > table > tbody > tr:nth-child(6) > td > div.star_box > div > button.btn.btn-warning").click(function(){
+		$("div.star_box > .on").removeClass("on")
+		$("#lev").text("");
+	})
 
 }) //function 
 

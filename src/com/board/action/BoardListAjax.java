@@ -33,9 +33,18 @@ public class BoardListAjax implements Action {
         }
         System.out.println("넘어온 limit = " + limit);
 
-        int listCount = boardDAO.getListcount();
+        int listCount = 0;
+        boardList = null;
 
-        boardList = boardDAO.getBoardList(page, limit);
+        String searchWord = request.getParameter("searchWord");
+
+        if (searchWord != null) {
+            listCount = boardDAO.getListcount(searchWord);
+            boardList = boardDAO.getBoardList(page, limit, searchWord);
+        } else {
+            listCount = boardDAO.getListcount();
+            boardList = boardDAO.getBoardList(page, limit);
+        }
 
         int maxPage = (listCount + limit -1) / limit;
         System.out.println("총 페이지 수 = " + maxPage);

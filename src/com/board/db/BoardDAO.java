@@ -27,7 +27,7 @@ public class BoardDAO {
 			ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
 		} catch (Exception e) {
 
-			System.out.println("DB ¿¡·¯: " + e);
+			System.out.println("DB ï¿½ï¿½ï¿½ï¿½: " + e);
 			return;
 		}
 	}
@@ -48,7 +48,7 @@ public class BoardDAO {
                 result = resultSet.getInt(1);
             }
         } catch (Exception ex) {
-            System.out.println("getListcount() ¿¡·¯ : " + ex);
+            System.out.println("getListcount() ï¿½ï¿½ï¿½ï¿½ : " + ex);
         } finally {
             if (resultSet != null) {
                 try {
@@ -76,14 +76,58 @@ public class BoardDAO {
         return result;
     }
 
+    public int getListcount(String searchWord) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        int result = 0;
+
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement("select count(*) from BOARD where board_subject like '%" + searchWord + "%'");
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                result = resultSet.getInt(1);
+            }
+        } catch (Exception ex) {
+            System.out.println("getListcount() ï¿½ï¿½ï¿½ï¿½ : " + ex);
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return result;
+    }
 
     public List<BoardBean> getBoardList(int page, int limit) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
-        String board_list_sql = "select * from (select rownum rn, board_num, board_name, board_subject, board_content, board_price, board_thumbnail from (select * from board order by board_num desc)) where rn between ? and ?";
-//        String board_list_sql = "select * from BOARD order by board_num desc";
+        String board_list_sql = "select * from " +
+                "(select rownum rn, board_num, board_name, board_subject, board_content, board_price, board_thumbnail, board_evaluation from " +
+                "(select * from board order by board_num desc)) " +
+                "where rn between ? and ?";
 
         List<BoardBean> list = new ArrayList<BoardBean>();
         int startRow = (page - 1) * limit + 1;
@@ -104,11 +148,69 @@ public class BoardDAO {
                 boardBean.setBoard_content(resultSet.getString("board_content"));
                 boardBean.setBoard_price(resultSet.getInt("board_price"));
                 boardBean.setBoard_thumbnail(resultSet.getString("Board_thumbnail"));
+                boardBean.setBoard_evaluation(resultSet.getInt("Board_evaluation"));
                 list.add(boardBean);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
             System.out.println("getBoardList() : " + ex);
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return list;
+    }
+
+    public List<BoardBean> getBoardList(int page, int limit, String searchWord) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        String board_list_sql = "select * from " +
+                "(select rownum rn, board_num, board_name, board_subject, board_content, board_price, board_thumbnail from " +
+                "(select * from board where board_subject like '%" + searchWord + "%' order by board_num desc)) ";
+
+        List<BoardBean> list = new ArrayList<BoardBean>();
+        int startRow = (page - 1) * limit + 1;
+        int endRow = startRow + limit - 1;
+
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(board_list_sql);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                BoardBean boardBean = new BoardBean();
+                boardBean.setBoard_num(resultSet.getInt("board_num"));
+                boardBean.setBoard_name(resultSet.getString("board_name"));
+                boardBean.setBoard_subject(resultSet.getString("board_subject"));
+                boardBean.setBoard_content(resultSet.getString("board_content"));
+                boardBean.setBoard_price(resultSet.getInt("board_price"));
+                boardBean.setBoard_thumbnail(resultSet.getString("Board_thumbnail"));
+                list.add(boardBean);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("getBoardList() ï¿½ï¿½ï¿½ï¿½ : " + ex);
         } finally {
             if (resultSet != null) {
                 try {
@@ -207,7 +309,7 @@ public class BoardDAO {
             }
             
 		} catch (Exception e) {
-			System.out.println("getDetail() ¿¡·¯ : " + e);
+			System.out.println("getDetail() ï¿½ï¿½ï¿½ï¿½ : " + e);
 			e.printStackTrace();
             
         } finally {
@@ -275,7 +377,7 @@ public class BoardDAO {
             int result = pstmt.executeUpdate();
 
             if (result == 1) {
-                System.out.println("°Ô½ÃÆÇ ¼öÁ¤ ¼º°ø");
+                System.out.println("ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
                 return true;
             }
 
@@ -438,12 +540,12 @@ public class BoardDAO {
 			pstmt.setInt(24, 0);
 			result = pstmt.executeUpdate();
 			if (result == 1) {
-				System.out.println("°Ô½ÃÆÇ ÀÛ¼º ¼º°ø.");
+				System.out.println("ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ ï¿½ï¿½ï¿½ï¿½.");
 				return true;
 			}
 
 		} catch (Exception se) {
-			System.out.println("Insert() ¿¡·¯ : " + se);
+			System.out.println("Insert() ï¿½ï¿½ï¿½ï¿½ : " + se);
 			se.printStackTrace();
 		} finally {
 
@@ -467,19 +569,74 @@ public class BoardDAO {
 
     }
 
-    public List<BoardBean> getBoardCategoryList(String categoryValue) {
+    public int getCategoryListCount(String categoryValue) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        int result = 0;
+
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement("select count(*) from BOARD where board_category =?");
+            preparedStatement.setString(1, categoryValue);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                result = resultSet.getInt(1);
+            }
+        } catch (Exception ex) {
+            System.out.println("getListcount() ï¿½ï¿½ï¿½ï¿½ : " + ex);
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return result;
+    }
+
+    public List<BoardBean> getBoardCategoryList(int page, int limit, String categoryValue) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 
-		String board_category_list_sql = "select * from BOARD where board_category = ? order by BOARD_NUM desc ";
+//		String board_category_list_sql = "select * from BOARD where board_category = ? order by BOARD_NUM desc ";
+        String board_category_list_sql = "select * from " +
+                "(select rownum rn, board_num, board_name, board_subject, board_content, board_price, board_thumbnail, board_evaluation from " +
+                "(select * from board  where board_category = ? order by board_num desc)) " +
+                "where rn between ? and ?";
 
 		List<BoardBean> list = new ArrayList<BoardBean>();
+
+        int startRow = (page - 1) * limit + 1;
+        int endRow = startRow + limit - 1;
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(board_category_list_sql);
-			preparedStatement.setString(1, categoryValue);
+            preparedStatement.setString(1, categoryValue);
+            preparedStatement.setInt(2, startRow);
+            preparedStatement.setInt(3, endRow);
+
 			resultSet = preparedStatement.executeQuery();
 
 			while (resultSet.next()) {
@@ -489,6 +646,7 @@ public class BoardDAO {
 				boardBean.setBoard_subject(resultSet.getString("board_subject"));
 				boardBean.setBoard_content(resultSet.getString("board_content"));
 				boardBean.setBoard_price(resultSet.getInt("board_price"));
+				boardBean.setBoard_evaluation(resultSet.getInt("board_evaluation"));
 				list.add(boardBean);
 			}
 		} catch (Exception ex) {

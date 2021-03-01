@@ -150,8 +150,8 @@ $(document).ready(
 						}
 
 					
-					
-						if ($("#board_delivery").is(":checked")==false) {
+						var cnt =  $("body > div > div > div > div.col-lg-9 > div > form > div.section_view > div > div:nth-child(8) > div >  input:checkbox:checked").length;
+						if (cnt<1) {
 							alert("배송방법을 선택해주세요")
 						
 							return false;
@@ -187,7 +187,8 @@ $(document).ready(
 							return false;
 
 						}
-						if ($("#board_storage").is(":checked")==false) {
+						var cnt =  $(".section_content input:checkbox:checked").length;
+						if (cnt<1) {
 							alert("보관방법을 선택해주세요")
 						
 							return false;

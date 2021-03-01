@@ -17,5 +17,7 @@ create table member (
 	MEMBER_FILE			VARCHAR2(50)
 );
 select * from member;
+
 truncate table member;
+
 delete from member;
