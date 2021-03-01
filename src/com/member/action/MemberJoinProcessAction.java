@@ -72,7 +72,7 @@ public class MemberJoinProcessAction implements Action {
 			memberbean.setMember_birth(birth);
 			memberbean.setMember_email(member_email);
 			memberbean.setMember_gender(member_gender);
-			memberbean.setMember_tel(tel1 + " - " + tel2 + " - " +  tel3);
+			memberbean.setMember_tel(tel1 + "-" + tel2 + "-" +  tel3);
 			memberbean.setMember_address(address);
 			memberbean.setMember_interest(member_interests);
 			memberbean.setMember_account(member_account);
