@@ -126,7 +126,7 @@
             
 
             <div class="form-group">
-				<div class="form-delivery">
+				<div class="form-delivery" id="form-delivery">
                <label for="board_delivery">배 송 방 법&emsp; :&emsp;</label> <input
                   name="board_delivery" id="board_delivery" type="checkbox"
                   value="택배">택배 
@@ -192,7 +192,7 @@
 					<tr>
 				
 						<th>보 관 방 법</th>
-						<td><input name="board_storage" id="board_storage"
+						<td id="board_storage"><input name="board_storage" id="board_storage"
 							type="checkbox" value="상온">상온<input
 							name="board_storage" id="board_storage" type="checkbox"
 							value="냉장">냉장<input name="board_storage"
@@ -214,7 +214,7 @@
 
 
 			<div class="form-file">
-				<label for="upfile">
+				<label for="upfile" id="picinfo">
 				 <input type="file" id="upfile1" name="board_file1"> <span
 					id="filevalue1"></span> <input type="file" id="upfile2"
 					name="board_file2"> <span id="filevalue2"></span><br>
