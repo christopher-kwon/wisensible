@@ -109,6 +109,16 @@ $(document).ready(function(){
 		Postcode();
 	});
 	
+	$("#sel").change(function(){
+		if($("#sel").val() == ""){// 직접 입력이 선택된 경우
+			$("#domain").val("").focus();
+			$("#domain").prop("readOnly", false);
+		}else{//도메인 선택한 경우
+			$("#domain").val($("#sel").val());
+			$("#domain").prop("readOnly", true);
+		}
+	});
+	
 	$('input[type=file]').change(function(event){
 		var inputfile = $(this).val().split('\\');
 		var filename = inputfile[inputfile.length - 1];
@@ -132,55 +142,6 @@ $(document).ready(function(){
 			$(this).val('');
 		}
 	
-	})
+	});
 	
-	//email 인증
-	$("#btemail").click(function(){
-		var email = $(".email").val();
-		var domain = $(".domain").val();
-		
-		var key;//인증키
-		var bool = true;
-		
-		if(bool){
-			$.ajax({
-				url: "chkemail.com",
-				type: "post",
-				dataType: "json",
-				data: {"email" : email, "domain" : domain},
-				success: function(result){
-					alert("인증번호 발송");
-					key = result;
-					bool = false;
-				},
-				error: function(xhr, status, error){
-					alert("Error : " + status + "==>" + error);
-				}
-			});//ajax end
-			
-			$(".writechk").show();//이메일 인증 입력란
-			$(".btemail").val("인증번호 확인");//이메일 인증버튼 내용 변경
-			
-			$(".writechk").keyup(function(){
-				if($(".writechk").val() >= 6){
-					var userContent = $(".writechk").val();
-					
-					if(userContent == key){
-						alert("인증 성공");
-						$("#emailchk").val("Y");//디비 저장용
-						$("#btemail").val("인증완료");
-						$("#btemail").attr("disabled", true);//읽기 전용으로 변환
-						$(".writechk").attr("disabled", true);
-					}else{
-						$("#emailchk").val("N");
-						$("btemail").val("인증번호 재발송");
-						event.preventDefault();
-					}
-				}
-			});//keyup end
-		}else{//Y
-			alert("이메일 인증 구현 실패");
-			event.preventDefault();
-		}
-	})
 });

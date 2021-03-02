@@ -18,7 +18,7 @@ public class MemberFindAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);//주소변경없이 jsp페이지의 내용을 보여준다.
-		forward.setPath("member/findform.jsp");
+		forward.setPath("/member/findform.jsp");
 		return forward;
 	}
 

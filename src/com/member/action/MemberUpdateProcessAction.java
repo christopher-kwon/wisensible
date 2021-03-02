@@ -66,7 +66,7 @@ public class MemberUpdateProcessAction implements Action {
 			memberbean.setMember_birth(member_birth);
 			memberbean.setMember_gender(member_gender);
 			memberbean.setMember_email(member_email);
-			memberbean.setMember_tel(tel1 + " - " + tel2 + " - " +  tel3);
+			memberbean.setMember_tel(tel1 + "-" + tel2 + "-" +  tel3);
 			memberbean.setMember_bank(member_bank);
 			memberbean.setMember_account(member_account);
 			memberbean.setMember_address(member_address);
