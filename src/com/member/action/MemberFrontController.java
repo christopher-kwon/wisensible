@@ -100,6 +100,10 @@ public class MemberFrontController extends HttpServlet {
 		case "/memberFindProcess1.com" :
 			action = new MemberFindProcess1Action();
 			break;
+			
+		case "/chkemail.com" :
+			action = new MemberCheckEmailAction();
+			break;
 		} //switch end
 		forward = action.execute(request, response);
 		
