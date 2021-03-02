@@ -41,8 +41,7 @@
 <hr>
 <div class="register_box2">
 
-	<button type=submit class="btn btn-register">평점등록</button>
-
+<button type=submit class="btn btn-info" id ="starsub">평점등록</button>
 	<button type=reset class="btn btn-cancel">초기화</button>
 
 </div>

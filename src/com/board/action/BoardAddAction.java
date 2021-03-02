@@ -1,5 +1,6 @@
 package com.board.action;
 
+import java.io.File;
 import java.io.IOException;
 
 
@@ -39,9 +40,9 @@ public class BoardAddAction implements Action {
 			multi = new MultipartRequest(request, realFolder, fileSize, "utf-8", new DefaultFileRenamePolicy());
 			boardbean.setBoard_name(multi.getParameter("board_name"));
 			boardbean.setBoard_pass(multi.getParameter("board_passward"));
-			boardbean.setBoard_subject(multi.getParameter("board_subject"));
+			boardbean.setBoard_subject(multi.getParameter("board_subject").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
 			boardbean.setBoard_category(multi.getParameter("board_category"));
-			boardbean.setBoard_content(multi.getParameter("board_content"));
+			boardbean.setBoard_content(multi.getParameter("board_content").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
 			boardbean.setBoard_price(Integer.parseInt(multi.getParameter("board_price")));
 			boardbean.setBoard_bank(multi.getParameter("board_bank"));
 			boardbean.setBoard_tel(multi.getParameter("board_tel"));
@@ -64,19 +65,58 @@ public class BoardAddAction implements Action {
 			
 			boardbean.setBoard_delivery(delivery_result);
 			
-			boardbean.setBoard_product(multi.getParameter("board_product"));
-			boardbean.setBoard_amount(multi.getParameter("board_amount"));
-			boardbean.setBoard_producer(multi.getParameter("board_producer"));
-			boardbean.setBoard_origin(multi.getParameter("board_origin"));
-			boardbean.setBoard_expirydate(multi.getParameter("board_expirydate"));
+			boardbean.setBoard_product(multi.getParameter("board_product").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
+			boardbean.setBoard_amount(multi.getParameter("board_amount").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
+			boardbean.setBoard_producer(multi.getParameter("board_producer").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
+			boardbean.setBoard_origin(multi.getParameter("board_origin").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
+			boardbean.setBoard_expirydate(multi.getParameter("board_expirydate").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
 			boardbean.setBoard_deliverycost(Integer.parseInt(multi.getParameter("board_deliverycost")));
-			boardbean.setBoard_thumbnail(multi.getFilesystemName("board_thumbnail"));
-			boardbean.setBoard_file1(multi.getFilesystemName("board_file1"));
-			boardbean.setBoard_file2(multi.getFilesystemName("board_file2"));
-			boardbean.setBoard_file3(multi.getFilesystemName("board_file3"));
-			boardbean.setBoard_file4(multi.getFilesystemName("board_file4"));
+			
+			String fileName = multi.getFilesystemName("board_thumbnail");
+			if(!fileName.toUpperCase().endsWith(".JPG") && !fileName.toUpperCase().endsWith(".PNG") && !fileName.toUpperCase().endsWith(".GIF") && !fileName.toUpperCase().endsWith(".JPEG")) {
+				File file = new File(realFolder + "\\" + fileName);
+				file.delete();
+			} else {
+			boardbean.setBoard_thumbnail(fileName);
+		}
+			
+			String fileName1 = multi.getFilesystemName("board_file1");
+			if(!fileName1.toUpperCase().endsWith(".JPG") && !fileName1.toUpperCase().endsWith(".PNG") && !fileName1.toUpperCase().endsWith(".GIF") && !fileName1.toUpperCase().endsWith(".JPEG")) {
+				File file = new File(realFolder + "\\" + fileName1);
+				file.delete();
+				
+			} else {
+				
+			boardbean.setBoard_file1(fileName1);
+			}			
+			
 
-			// 파일추가 1-4
+				String fileName2 = multi.getFilesystemName("board_file2");
+				if(!fileName2.toUpperCase().endsWith(".JPG") && !fileName2.toUpperCase().endsWith(".PNG") && !fileName2.toUpperCase().endsWith(".GIF") && !fileName2.toUpperCase().endsWith(".JPEG")) {
+					File file = new File(realFolder + "\\" + fileName2);
+					file.delete();
+				} else {
+				boardbean.setBoard_file2(fileName2);
+			}
+			
+
+				String fileName3 = multi.getFilesystemName("board_file3");
+				if(!fileName3.toUpperCase().endsWith(".JPG") && !fileName3.toUpperCase().endsWith(".PNG") && !fileName3.toUpperCase().endsWith(".GIF") && !fileName3.toUpperCase().endsWith(".JPEG")) {
+					File file = new File(realFolder + "\\" + fileName3);
+					file.delete();
+				} else {
+				boardbean.setBoard_file3(fileName3);
+			}
+				
+
+				String fileName4 = multi.getFilesystemName("board_file4");
+				if(!fileName4.toUpperCase().endsWith(".JPG") && !fileName4.toUpperCase().endsWith(".PNG") && !fileName4.toUpperCase().endsWith(".GIF") && !fileName4.toUpperCase().endsWith(".JPEG")) {
+					File file = new File(realFolder + "\\" + fileName4);
+					file.delete();
+				} else {
+				boardbean.setBoard_file4(fileName4);
+			}
+			
 
 			result = boarddao.boardInsert(boardbean);
 

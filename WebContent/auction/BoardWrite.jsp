@@ -27,8 +27,7 @@
       <div class="form-group">
          <label for="board_title"> Category :&nbsp; </label> <select
             name="board_category">
-            <option>----</option>
-            <option>경매글	</option>
+            <option>경매글</option>
 
          </select> <label for="board_subject">&nbsp; 제 &nbsp;&nbsp;목&nbsp;
             :&emsp; </label><input type="text" name="board_subject"
