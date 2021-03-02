@@ -396,7 +396,7 @@ ind = -1;
 
    }) //function();
    if($("#board_writer").val() == $("#loginsession").val()){
-      $("body > div > div > div > div.col-lg-9 > div > div.board_view_table > table > tbody > tr:nth-child(6) > td > div.star_box").html("")
+      $("#star_box").html("")
       
    }
    $("#remstar").click(function(){
@@ -406,10 +406,8 @@ ind = -1;
    
    $('#previous').click(function(){
       var g = $("#board_num").val()-1
-      if(g==0){
-         alert("첫번째 게시글입니다.")
-      }
       location.href='BoardDetailAction.bo?board_num='+ g
+      
    })
       $('#nextp').click(function(){
       var g = Number($("#board_num").val())+1

@@ -121,14 +121,6 @@
 			<span id="showImage"></span>
 		</label>
         
-        <!-- <div class="form-group">
-				<label for="board_file">파일 첨부</label>
-				<label for="upfile">
-					<img src="image/attach.png" alt="파일첨부">
-				</label>
-				<input type="file" id="upfile" name="board_file">
-				<span id="filevalue"></span>
-			</div> -->
          
 	<div class="clearfix">
 		<button type="reset" class="cancelbtn">다시작성</button>

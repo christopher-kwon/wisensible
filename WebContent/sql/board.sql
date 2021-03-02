@@ -36,7 +36,7 @@ select * from board;
 
 drop sequence board_seq;
 
-
+delete from board;
 create sequence board_seq; 
 
 truncate table board;

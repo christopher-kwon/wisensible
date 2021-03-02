@@ -21,26 +21,26 @@ public class MemberFrontController extends HttpServlet {
 	throws ServletException, IOException {
 		
 		/*
-		 * ¿äÃ»µÈ ÀüÃ¼ URL Áß¿¡¼­ Æ÷Æ® ¹øÈ£ ´ÙÀ½ ºÎÅÍ ¸¶Áö¸· ¹®ÀÚ¿­±îÁö ¹İÈ¯µË´Ï´Ù.
-		 * ¿¹) http://localhost:8088/Jsp/login.comÀÎ °æ¿ì
-		 * "/Jsp/login.com" ¹İÈ¯µË´Ï´Ù.
+		 * ï¿½ìŠ‚ï§£ï¿½ï¿½ë§‚ ï¿½ìŸ¾ï§£ï¿½ URL ä»¥ë¬’ë¿‰ï¿½ê½Œ ï¿½ë£·ï¿½ë“ƒ è¸°ëŠìƒ‡ ï¿½ë–ï¿½ì“¬ éºï¿½ï¿½ê½£ ï§ë‰ï¿½ï§ï¿½ è‡¾ëª„ì˜„ï¿½ë¿´æºëš¯ï¿½ è«›ì„‘ì†šï¿½ë§—ï¿½ë•²ï¿½ë–.
+		 * ï¿½ì‚) http://localhost:8088/Jsp/login.comï¿½ì”¤ å¯ƒìŒìŠ¦
+		 * "/Jsp/login.com" è«›ì„‘ì†šï¿½ë§—ï¿½ë•²ï¿½ë–.
 		 */
 		
 		String RequestURI = request.getRequestURI();
 		System.out.println("RequestURI = " + RequestURI);
 		
-		//getContextPath() : ÄÁÅØ½ºÆ® °æ·Î°¡ ¹İÈ¯µË´Ï´Ù.
-		//contextPath()´Â "/Jsp"°¡ ¹İÈ¯µË´Ï´Ù. 
+		//getContextPath() : è€Œâ‘¦ë€“ï¿½ë’ªï¿½ë“ƒ å¯ƒìˆì¤ˆåª›ï¿½ è«›ì„‘ì†šï¿½ë§—ï¿½ë•²ï¿½ë–.
+		//contextPath()ï¿½ë’— "/Jsp"åª›ï¿½ è«›ì„‘ì†šï¿½ë§—ï¿½ë•²ï¿½ë–. 
 		String contextPath = request.getContextPath();
 		System.out.println("contextPath = " + contextPath);
 		
-		//RequestURI¿¡¼­ ÄÁÅØ½ºÆ® °æ·Î ±æÀÌ °ªÀÇ ÀÎµ¦½º À§Ä¡ÀÇ ¹®ÀÚºÎÅÍ
-		//¸¶Áö¸· À§Ä¡ ¹®ÀÚ±îÁö ÃßÃâÇÕ´Ï´Ù.
-		//command´Â "/login.com" ¹İÈ¯µË´Ï´Ù.
+		//RequestURIï¿½ë¿‰ï¿½ê½Œ è€Œâ‘¦ë€“ï¿½ë’ªï¿½ë“ƒ å¯ƒìˆì¤ˆ æ¹²ëª„ì”  åª›ë¯ªì“½ ï¿½ì”¤ï¿½ëœ³ï¿½ë’ª ï¿½ìç§»ì„ì“½ è‡¾ëª„ì˜„éºï¿½ï¿½ê½£
+		//ï§ë‰ï¿½ï§ï¿½ ï¿½ìç§»ï¿½ è‡¾ëª„ì˜„æºëš¯ï¿½ ç•°ë¶¿í…§ï¿½ë¹€ï¿½ë•²ï¿½ë–.
+		//commandï¿½ë’— "/login.com" è«›ì„‘ì†šï¿½ë§—ï¿½ë•²ï¿½ë–.
 		String command = RequestURI.substring(contextPath.length());
 		System.out.println("command = " + command);
 		
-		//ÃÊ±âÈ­
+		//ç¥ë‡ë¦°ï¿½ì†•
 		ActionForward forward = null;
 		Action action = null;
 		
@@ -89,6 +89,10 @@ public class MemberFrontController extends HttpServlet {
 			action = new MemberDeleteAction();
 			break;
 			
+		case "/memberDelete1.com" :
+			action = new MemberDelete1Action();
+			break;
+			
 		case "/memberFind.com" :
 			action = new MemberFindAction();
 			break;
@@ -97,17 +101,23 @@ public class MemberFrontController extends HttpServlet {
 			action = new MemberFindProcessAction();
 			break;
 			
-		case "/chkemail.com" :
+
+		case "/memberFindProcess1.com" :
+			action = new MemberFindProcess1Action();
+			break;
+		
+    case "/chkemail.com" :
 			action = new MemberCheckEmailAction();
 			break;
 			
+
 		} //switch end
 		forward = action.execute(request, response);
 		
 		if(forward != null) {
-			if(forward.isRedirect()) { //¸®´ÙÀÌ·ºÆ® µË´Ï´Ù.
+			if(forward.isRedirect()) { //ç”±Ñ‰ë–ï¿½ì” ï¿½ì †ï¿½ë“ƒ ï¿½ë§—ï¿½ë•²ï¿½ë–.
 				response.sendRedirect(forward.getPath());
-			} else { //Æ÷¿öµù µË´Ï´Ù.
+			} else { //ï¿½ë£·ï¿½ì™ï¿½ëµ« ï¿½ë§—ï¿½ë•²ï¿½ë–.
 				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
 				dispatcher.forward(request, response);
 			}
@@ -116,8 +126,8 @@ public class MemberFrontController extends HttpServlet {
 	
        
 
-    // doProcess(request, response) ¸Ş¼­µå¸¦ ±¸ÇöÇÏ¿© ¿äÃ»ÀÌ GET¹æ½ÄÀÌµç
-    //POST ¹æ½ÄÀ¸·Î Àü¼ÛµÇ¾î ¿Àµç °°Àº ¸Ş¼­µå¿¡¼­ ¿äÃ»À» Ã³¸®ÇÒ ¼ö ÀÖµµ·Ï ÇÏ¿´½À´Ï´Ù. 
+    // doProcess(request, response) ï§ë¶¿ê½Œï¿½ë±¶ç‘œï¿½ æ´Ñ‹ì½ï¿½ë¸¯ï¿½ë¿¬ ï¿½ìŠ‚ï§£ï¿½ï¿½ì”  GETè«›â‘¹ë–‡ï¿½ì” ï¿½ë±º
+    //POST è«›â‘¹ë–‡ï¿½ì‘æ¿¡ï¿½ ï¿½ìŸ¾ï¿½ë„šï¿½ë¦ºï¿½ë¼± ï¿½ì‚¤ï¿½ë±º åª›ìˆˆï¿½ ï§ë¶¿ê½Œï¿½ë±¶ï¿½ë¿‰ï¿½ê½Œ ï¿½ìŠ‚ï§£ï¿½ï¿½ì“£ ï§£ì„â”ï¿½ë¸· ï¿½ë‹” ï¿½ì—³ï¿½ë£„æ¿¡ï¿½ ï¿½ë¸¯ï¿½ï¿½ï¿½ë’¿ï¿½ë•²ï¿½ë–. 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		doProcess(request, response);
