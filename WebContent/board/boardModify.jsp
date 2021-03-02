@@ -7,7 +7,7 @@
 
 	<form action="BoardModifyAction.bo" method="post"
 		enctype="multipart/form-data" name=board-form>
-
+<hr>
 		<h2>판매 글 수정</h2>
 
 <hr>
@@ -46,10 +46,10 @@
 			
 				<label for="board_ price">가&emsp; &nbsp;&emsp;격 &emsp;:&emsp; </label> <input name="board_price"
 					id="board_price" type="text" maxlength="100" class="form-input"
-					value="${boardBean.board_price }">
+					value="${boardBean.board_price }"> 원
 
 			</div>
-
+<hr>
 
 
 			   <div class="form-group">
@@ -79,7 +79,7 @@
 
 			</div>
 
-
+<hr>
 
 			<div class="form-group">
 
@@ -89,13 +89,9 @@
 
 			</div>
 
+<hr>
 
-
-			<div class="form-group">
-
-				<label for="board_storage">결 제 방 법 &emsp;:&emsp;&emsp;계 좌 이 체 </label> 
-
-			</div>
+			
 
 
 
@@ -108,8 +104,11 @@
                <input  id="board_del2" type="hidden" value="${boardBean.board_delivery.split('  ')[1]}">
               <input  name="board_delivery" id="board_delivery3" type="checkbox" value="퀵서비스">퀵서비스
               <input  id="board_del3" type="hidden" value="${boardBean.board_delivery.split('  ')[2]}">
-
-
+				 <div class="form-group">
+					<label for="board_storage">배 송 비 용 &emsp;:&emsp;
+					<input type="text" name="board_deliverycost" id="board_deliverycost"  value="${boardBean.board_deliverycost }" > 원
+					</label>
+					</div>
 			</div>
 		</div>
 		<div>사진을 수정하려면 사진을 클릭하세요. <span id="board_thumbnailname">${boardBean.board_thumbnail }</span></div>
@@ -117,9 +116,10 @@
 
 		
 
-		<h4>상품 상세정보</h4>
+	
 			<div>
 				<table class="table table-borderd">
+				<caption>상품 상세정보</caption>
 					<tr>
 						<th>상 품 명</th>
 						<td><input type="text" name="board_product" id="board_product" required value="${boardBean.board_product }"></td>
@@ -150,10 +150,7 @@
             			<input  id="board_sto3" type="hidden" value="${boardBean.board_storage.split('  ')[2]}">
               
 					</tr>
-					<tr>
-						<th>배 송 비 용</th>
-						<td><input type="text" name="board_deliverycost" id="board_deliverycost"  value="${boardBean.board_deliverycost }" required></td>
-					</tr>
+					
 				</table>
 			</div>
 			<hr>
