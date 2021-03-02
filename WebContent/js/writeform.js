@@ -1,6 +1,5 @@
 
 $(document).ready(
-
       function() {
            $('.section_view > label > input[type=file]').change(function(event){
                var inputfile =$(this).val().split('\\');
@@ -345,6 +344,8 @@ $(document).ready(
                   
                }) //end form.submit
 
+
+                function show() {
         
          if($('#filevalue').text() == '') {
             $(".remove").css('display', 'none');
