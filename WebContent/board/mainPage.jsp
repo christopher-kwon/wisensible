@@ -25,10 +25,10 @@
                 </a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a href="BoardDetailAction.bo?board_num=${board.board_num}">${board.board_num}. ${board.board_subject}</a>
+                        <a href="BoardDetailAction.bo?board_num=${board.board_num}">${board.board_subject}</a>
                     </h4>
-                    <h5>${board.board_price} <strong>원</strong></h5>
-                    <p class="card-text">${board.board_content}</p>
+                    <h5 style="text-align: right">${board.board_price} <strong>원</strong></h5>
+                    <p class="card-text" style="overflow: hidden; line-height: 1.2; height: 3.6em; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">&nbsp&nbsp${board.board_content}</p>
                 </div>
                 <div class="card-footer">
                     <c:if test="${board.board_evaluation == 0}">

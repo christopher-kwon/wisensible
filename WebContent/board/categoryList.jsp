@@ -31,10 +31,10 @@
             </a>
         </td>
         <td>
-            <h4 class=".col-4"><a href="BoardDetailAction.bo?board_num=${board.board_num}">${board.board_num}. ${board.board_subject}</a></h4>
+            <h4 class=".col-4"><a href="BoardDetailAction.bo?board_num=${board.board_num}">${board.board_subject}</a></h4>
         </td>
         <td>
-            <h5>${board.board_price}</h5>
+            <h5>${board.board_price} 원</h5>
         </td>
         <td>
             <c:if test="${board.board_evaluation == 0}">
