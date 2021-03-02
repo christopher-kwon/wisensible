@@ -584,26 +584,36 @@ public class MemberDAO {
 		return result;
 	}
 
-	public int isFindId(String member_id, String member_email) {
+	public String isFindId(String member_id, String member_email) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int result = -1;//아이디가 존재하지 않습니다.
+		String result = "";//아이디가 존재하지 않습니다.
 		try {
 			con = ds.getConnection();
 			
-			String sql = "select member_id, member_email from member where member_id = ?";
+			String sql = "select member_id, member_email, member_pass from member where member_id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, member_id);
+
 			rs = pstmt.executeQuery();
+			/*
 			
 			if(rs.next()) {
+				System.out.println("member_id=" + rs.getString(3));
 				System.out.println(rs.getString(2));
-				System.out.println(member_email);
-				if(rs.getString(2).equals(member_email)) {
-					result= 1;//아이디와 비밀번호가 일치하는 경우
-				}else {
-					result = 0; //비밀번호가 일치하지 않는 경우
+				System.out.println("member_name=" + rs.getString(1));
+				if(rs.getString(2).equals(member_tel)) {
+					result = rs.getString(3);
+				}
+			}
+			 */
+			if(rs.next()) {
+				System.out.println("member_id=" + rs.getString(1));
+				System.out.println("member_email=" + rs.getString(2));
+				System.out.println("member_pass=" + rs.getString(3));
+				if(rs.getString(1).equals(member_id)) {
+					result= rs.getString(3);//아이디와 비밀번호가 일치하는 경우
 				}
 			}
 		} catch (Exception e) {

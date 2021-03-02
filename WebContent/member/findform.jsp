@@ -51,7 +51,7 @@
 					</fieldset>
 				</form>
 
-				<form>
+				<form action="memberFindProcess1.com" method="post" name="find">
 					<fieldset>
 						<legend align="center">비밀번호 찾기</legend>
 						<div class="input-group mt-3 mb-1">
@@ -72,7 +72,8 @@
 
 						<!-- 로그인 버튼 -->
 						<button type="submit" class="btn btn-success btn-sm btn-block mybtn">찾기</button>
-						<button type="button" class="btn btn-danger btn-sm btn-block my-1 mybtn">취소</button>
+						<button type="button" class="btn btn-danger btn-sm btn-block my-1 mybtn"
+							onclick="location.href='login.com'">취소</button>
 					</fieldset>
 				</form>
 		</div>
