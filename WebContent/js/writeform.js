@@ -6,6 +6,7 @@ $(document).ready(
 			      var filename=inputfile[inputfile.length -1];
 			      var pattern = /(gif|jpg|jpeg|png)$/i;
 			      if(pattern.test(filename)){
+			      	$('#board_thumbnailname').text(filename); //inputfile.length - 1 = 2
 			         $('#filename').text(filename);
 			         
 			         var reader =new FileReader();
@@ -16,15 +17,19 @@ $(document).ready(
 			            
 			         };
 			      }else{
-			         alser('확장자는 gif, jpg, jpeg, png 가능합니다.');
+			      			  	inputfile = "";
+			      			    filename = "";
+			      				$('#board_thumbnailname').text(filename); //inputfile.length - 1 = 2
+			      				$("#showImage").html('<img width="400px" height="400px" src="image/mainadd.jpg">');
+			         alert('확장자는 gif, jpg, jpeg, png 가능합니다.');
 			      }
 			   })
 			
 			$("#file_add").click(function(){
-				var output ="<input type='file' id='upfile3' name='board_file3'>"
-					output += "<span id='filevalue3'></span>&nbsp;"
-					output +="<input type='file' id='upfile4' name='board_file4'>"
-					output += "<span id='filevalue4'></span><br>"	
+				var output ="<input type='file' id='upfile3' name='board_file3' accept='image/*'>"
+					output += "<span id='filevalue3' style='display:none;'></span>&nbsp;"
+					output +="<input type='file' id='upfile4' name='board_file4' accept='image/*'>"
+					output += "<span id='filevalue4' style='display:none;'></span><br>"	
 					output += "사진 업로드는 최대 4개까지 가능합니다."
 				$("#picinfo").append(output+"<br>");
 				$("#file_add").attr("style","display:none")
@@ -52,6 +57,107 @@ $(document).ready(
 			if($("#board_bankt").val() == "케이뱅크" ){
 				$("#board_bank").val("케이뱅크").prop("selected",true);
 			}
+			
+			
+				$('#upfile1').change(function(event1) {
+		var board_file1 = $(this).val().split('\\');
+		var board_filename1 = board_file1[board_file1.length - 1];
+		var pattern = /(gif|jpg|jpeg|png)$/i;
+		
+		if(pattern.test(board_filename1)) {
+			$('#filevalue1').text(board_filename1); //inputfile.length - 1 = 2
+			var reader1 = new FileReader(); //파일을 읽기 위한 개체 생성
+			
+			//DataURL 형식으로 파일을 읽어옵니다.
+			//읽어온 결과는 reader 개체의 result 속성에 저장됩니다.
+			//event1.target.files[0] : 선택한 그림의 파일개체에서 첫번째 개체를 가져옵니다.
+			
+			reader1.readAsDataURL(event1.target.files[0]);
+	
+		} else {
+			board_file1 = "";
+			board_filename1 = "";
+			$('#filevalue1').text(board_filename1); //inputfile.length - 1 = 2
+			alert('확장자는 gif, jpg, jpeg, png가 가능합니다.');
+			
+		}
+			
+		});
+		
+				$('#upfile2').change(function(event2) {
+		var board_file2 = $(this).val().split('\\');
+		var board_filename2 = board_file2[board_file2.length - 1];
+		var pattern = /(gif|jpg|jpeg|png)$/i;
+		
+		if(pattern.test(board_filename2)) {
+			$('#filevalue2').text(board_filename2); //inputfile.length - 1 = 2
+			var reader2 = new FileReader(); //파일을 읽기 위한 개체 생성
+			
+			//DataURL 형식으로 파일을 읽어옵니다.
+			//읽어온 결과는 reader 개체의 result 속성에 저장됩니다.
+			//event2.target.files[0] : 선택한 그림의 파일개체에서 첫번째 개체를 가져옵니다.
+			
+			reader2.readAsDataURL(event2.target.files[0]);
+	
+		} else {
+			board_file2 = "";
+			board_filename2 = "";
+			$('#filevalue2').text(board_filename2); //inputfile.length - 1 = 2
+			alert('확장자는 gif, jpg, jpeg, png가 가능합니다.');
+			
+		}
+			
+		});
+			
+					$('#upfile3').change(function(event3) {
+		var board_file3 = $(this).val().split('\\');
+		var board_filename3 = board_file3[board_file3.length - 1];
+		var pattern = /(gif|jpg|jpeg|png)$/i;
+		
+		if(pattern.test(board_filename3)) {
+			$('#filevalue3').text(board_filename3); //inputfile.length - 1 = 2
+			var reader3 = new FileReader(); //파일을 읽기 위한 개체 생성
+			
+			//DataURL 형식으로 파일을 읽어옵니다.
+			//읽어온 결과는 reader 개체의 result 속성에 저장됩니다.
+			//event3.target.files[0] : 선택한 그림의 파일개체에서 첫번째 개체를 가져옵니다.
+			
+			reader3.readAsDataURL(event3.target.files[0]);
+	
+		} else {
+			board_file3 = "";
+			board_filename3 = "";
+			$('#filevalue3').text(board_filename3); //inputfile.length - 1 = 2
+			alert('확장자는 gif, jpg, jpeg, png가 가능합니다.');
+			
+		}
+			
+		});
+		
+				$('#upfile4').change(function(event4) {
+		var board_file4 = $(this).val().split('\\');
+		var board_filename4 = board_file4[board_file4.length - 1];
+		var pattern = /(gif|jpg|jpeg|png)$/i;
+		
+		if(pattern.test(board_filename4)) {
+			$('#filevalue4').text(board_filename4); //inputfile.length - 1 = 2
+			var reader4 = new FileReader(); //파일을 읽기 위한 개체 생성
+			
+			//DataURL 형식으로 파일을 읽어옵니다.
+			//읽어온 결과는 reader 개체의 result 속성에 저장됩니다.
+			//event4.target.files[0] : 선택한 그림의 파일개체에서 첫번째 개체를 가져옵니다.
+			
+			reader4.readAsDataURL(event4.target.files[0]);
+	
+		} else {
+			board_file4 = "";
+			board_filename4 = "";
+			$('#filevalue4').text(board_filename4); //inputfile.length - 1 = 2
+			alert('확장자는 gif, jpg, jpeg, png가 가능합니다.');
+			
+		}
+			
+		});
 			
 			
 				
@@ -204,17 +310,29 @@ $(document).ready(
 							alert("보관방법을 선택해주세요")
 						
 							return false;
-						
-						
 
 						}
-						if ($.trim($("#upfile1").val()) == "") {
+						
+								if ($.trim($("#board_content").val()) == "") {
+							alert("내용을 입력해주세요")
+							$("#board_deliverycost").focus();
+							return false;
+
+						}
+						
+						if($("#board_thumbnailname").text() == "") {
+						alert("대표사진은 필수로 등록해야 합니다.");
+						return false;
+						}
+						
+						
+						if ($.trim($("#filevalue1").text()) == "") {
 							alert("파일은 최소 2개이상 업로드필수입니다. 1번파일을 업로드해주세요")
 						
 							return false;
 
 						}
-						if ($.trim($("#upfile2").val()) == "") {
+						if ($.trim($("#filevalue2").text()) == "") {
 							alert("파일은 최소 2개이상 업로드필수입니다. 2번파일을 업로드해주세요")
 						
 							return false;

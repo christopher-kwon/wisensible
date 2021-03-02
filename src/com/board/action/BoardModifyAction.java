@@ -52,18 +52,18 @@ public class BoardModifyAction implements Action {
 			}
 			
 			boardBean.setBoard_num(board_num);
-			boardBean.setBoard_subject(multi.getParameter("board_subject").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
+			boardBean.setBoard_subject(multi.getParameter("board_subject").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
 			boardBean.setBoard_price(Integer.parseInt(multi.getParameter("board_price")));
 			boardBean.setBoard_bank(multi.getParameter("board_bank"));
 			boardBean.setBoard_account(multi.getParameter("board_account"));
 			boardBean.setBoard_tel(multi.getParameter("board_tel"));
-			boardBean.setBoard_product(multi.getParameter("board_product").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
-			boardBean.setBoard_amount(multi.getParameter("board_amount").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
-			boardBean.setBoard_producer(multi.getParameter("board_producer").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
-			boardBean.setBoard_expirydate(multi.getParameter("board_expirydate").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
-			boardBean.setBoard_origin(multi.getParameter("board_origin").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
+			boardBean.setBoard_product(multi.getParameter("board_product").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
+			boardBean.setBoard_amount(multi.getParameter("board_amount").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
+			boardBean.setBoard_producer(multi.getParameter("board_producer").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
+			boardBean.setBoard_expirydate(multi.getParameter("board_expirydate").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
+			boardBean.setBoard_origin(multi.getParameter("board_origin").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
 			boardBean.setBoard_deliverycost(Integer.parseInt(multi.getParameter("board_deliverycost")));
-			boardBean.setBoard_content(multi.getParameter("board_content").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
+			boardBean.setBoard_content(multi.getParameter("board_content").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
 			
 			String[] board_storages = multi.getParameterValues("board_storage");
 			String storage_result="";
