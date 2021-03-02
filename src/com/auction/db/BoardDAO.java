@@ -1,8 +1,5 @@
 package com.auction.db;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -409,7 +406,7 @@ public class BoardDAO {
 
 			String max_sql = "(select nvl(max(board_num),0)+1 from auction)";
 
-			String sql = "insert into auction " + " values( ? ," + max_sql + ",?,?,?,?,sysdate, sysdate+10/(24*60), ?,?,?,?,?,?,?, "
+			String sql = "insert into auction " + " values( ? ," + max_sql + ",?,?,?,?,sysdate, sysdate+2/(24*60), ?,?,?,?,?,?,?, "
 					+ " ?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			pstmt = conn.prepareStatement(sql);

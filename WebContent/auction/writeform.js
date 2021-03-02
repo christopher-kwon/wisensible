@@ -292,7 +292,7 @@ alert('경매글은 한 번 작성하면 수정/삭제 할 수 없습니다. 신
 						
 							if ($.trim($("#board_content").val()) == "") {
 							alert("내용을 입력해주세요")
-							$("#board_deliverycost").focus();
+							$("#board_content").focus();
 							return false;
 
 						}

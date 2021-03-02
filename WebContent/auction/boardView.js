@@ -56,7 +56,7 @@ countDownTimer('sample01', $('#end_time').val()) // 시간 셋팅
 			},
 			
 			success : function(rdata) {
-			 $('#end_text').text('최고가 : ' + rdata);
+			 $('#end_text').text(rdata);
 				console.log(rdata)
 
 			} //success
@@ -75,6 +75,13 @@ countDownTimer('sample01', $('#end_time').val()) // 시간 셋팅
       alert("시작 가격보다 높은 금액을 입력해 주세요.")
       return;
    }
+   
+         if($("#hope_price").val() <= $("#end_text").text()){
+      alert("현재 최고가 보다 높은 금액을 입력해 주세요.")
+      return;
+   }
+   
+   
    
 
    $.ajax({

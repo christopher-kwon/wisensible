@@ -379,7 +379,7 @@ public class MemberDAO {
 				MemberBean memberbean = new MemberBean();
 				memberbean.setMember_id(rs.getString("member_id"));
 				memberbean.setMember_name(rs.getString("member_name"));
-				memberbean.setMember_password(rs.getString("member_password"));
+				memberbean.setMember_password(rs.getString("member_pass"));
 				memberbean.setMember_birth(rs.getString("member_birth"));
 				memberbean.setMember_email(rs.getString("member_email"));
 				memberbean.setMember_gender(rs.getString("member_gender"));

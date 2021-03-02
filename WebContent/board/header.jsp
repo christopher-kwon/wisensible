@@ -100,11 +100,10 @@
                 <button type="button" class="btn btn-dark" onclick="location.href='BoardWrite.bo'">글 쓰 기</button>
 
             </div>
-            
                             <div>&nbsp</div>
                 <button type="button" class="btn btn-dark" onclick="location.href='BoardWrite.bom'">경 매 글</button>
 
-            </div>
+            
 
 
             </div>

@@ -99,7 +99,7 @@ public class BoardAddAction implements Action {
 				boardbean.setBoard_file2(fileName2);
 			}
 			
-
+				if(multi.getFilesystemName("board_file3") != null) {
 				String fileName3 = multi.getFilesystemName("board_file3");
 				if(!fileName3.toUpperCase().endsWith(".JPG") && !fileName3.toUpperCase().endsWith(".PNG") && !fileName3.toUpperCase().endsWith(".GIF") && !fileName3.toUpperCase().endsWith(".JPEG")) {
 					File file = new File(realFolder + "\\" + fileName3);
@@ -107,8 +107,9 @@ public class BoardAddAction implements Action {
 				} else {
 				boardbean.setBoard_file3(fileName3);
 			}
+				}
 				
-
+				if(multi.getFilesystemName("board_file4") != null) {
 				String fileName4 = multi.getFilesystemName("board_file4");
 				if(!fileName4.toUpperCase().endsWith(".JPG") && !fileName4.toUpperCase().endsWith(".PNG") && !fileName4.toUpperCase().endsWith(".GIF") && !fileName4.toUpperCase().endsWith(".JPEG")) {
 					File file = new File(realFolder + "\\" + fileName4);
@@ -116,7 +117,7 @@ public class BoardAddAction implements Action {
 				} else {
 				boardbean.setBoard_file4(fileName4);
 			}
-			
+				}
 
 			result = boarddao.boardInsert(boardbean);
 

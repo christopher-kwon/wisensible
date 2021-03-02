@@ -19,7 +19,7 @@ board_max_price number(10),
 board_min_price number(10),
 board_bank varchar2(20),
 board_account varchar2(50),
-board_tel varchar2(20) not null,
+board_tel varchar2(30) not null,
 board_storage varchar2(50) not null,
 board_delivery varchar2(50) not null,
 board_product varchar2(30) not null,
@@ -42,6 +42,6 @@ create sequence auction_seq;
 truncate table board;
 
 )
-
+alter table auction modify(board_tel varchar2(30));
 update board set board_evaluation=0 where board_num=1;
 select 
