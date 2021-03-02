@@ -100,9 +100,17 @@
                 <button type="button" class="btn btn-dark" onclick="location.href='BoardWrite.bo'">글 쓰 기</button>
                 <div>&nbsp</div>
                 <button type="button" class="btn btn-dark" onclick="location.href='BoardWrite.bom'">경 매 글</button>
+                <div>&nbsp</div>
+                <button type="button" class="btn btn-dark" onclick="location.href='https://cyberbureau.police.go.kr/mobile/sub/nw/sub_02.jsp?accessType=4&fieldType=A&keyword='">사기예방조회</button>
+                <div>&nbsp</div>
+                <button type="button" class="btn btn-dark" onclick="location.href='MemberReport.com'">신 고 하 기</button>
+                
+                
             </div>
 
             </div>
             <!-- /.col-lg-3 -->
+            
+        
 
             <div class="col-lg-9">
