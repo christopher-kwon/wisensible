@@ -315,7 +315,7 @@ $(document).ready(
                   
                         if ($.trim($("#board_content").val()) == "") {
                      alert("내용을 입력해주세요")
-                     $("#board_deliverycost").focus();
+                     $("#board_content").focus();
                      return false;
 
                   }
