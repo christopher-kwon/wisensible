@@ -116,6 +116,17 @@ button {
 }
 
 
+.board_view_image1 > img,
+.board_view_image2 > img,
+.board_view_image3 > img,
+.board_view_image4 > img
+ {
+width: 60%;
+    height: 60%;
+    margin: 0 auto;
+    display: block;
+}
+
 
 fieldset, img {
 	border: 0;
@@ -437,14 +448,14 @@ a:hover {
 }
 
 
-body > div > div > div > div.col-lg-9 > div > div.board_view_table > h2{
+#sub{
 		
 text-align:center;
 padding:20px 0 25px 0
 }
 
 div.board_view_table > table > tbody > tr:nth-child(1) > td:nth-child(1) > img{
-
+ 
 width:400px; height:400px;
 
 }

@@ -19,7 +19,7 @@
 <!-- table -->
 <div class="board_view_table">
  <hr>
-      <h2> [${boardBean.board_category}]  ${boardBean.board_subject }</h2>
+      <h2 id="sub"> [${boardBean.board_category}]  ${boardBean.board_subject }</h2>
     
  
   <table class="table">
