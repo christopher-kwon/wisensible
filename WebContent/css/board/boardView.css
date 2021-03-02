@@ -121,8 +121,8 @@ button {
 .board_view_image3 > img,
 .board_view_image4 > img
  {
-width: 60%;
-    height: 60%;
+width: 500px;
+    height: 500px;
     margin: 0 auto;
     display: block;
 }
