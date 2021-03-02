@@ -17,7 +17,7 @@ var distDt = _vDate - now;
 if (distDt < 0) { 
 clearInterval(timer);
  document.getElementById(id).textContent = '경매가 종료 되었습니다!'; 
-           getmaxprice();
+	getmaxprice();
  $('#hope_submit').remove();
  $('#btn-warning').remove();
  $('.info_hope').remove();
@@ -56,12 +56,15 @@ countDownTimer('sample01', $('#end_time').val()) // 시간 셋팅
 			},
 			
 			success : function(rdata) {
-			 $('#end_text').text(rdata);
+			 $('.end_text').text(rdata);
 				console.log(rdata)
-
+					
 			} //success
 		}) //ajax
 	} //function
+	
+	
+
 
 
 	$("#hope_submit").click(function(){
@@ -76,7 +79,7 @@ countDownTimer('sample01', $('#end_time').val()) // 시간 셋팅
       return;
    }
    
-         if($("#hope_price").val() <= $("#end_text").text()){
+         if($("#hope_price").val() <= $(".end_text").text()){
       alert("현재 최고가 보다 높은 금액을 입력해 주세요.")
       return;
    }

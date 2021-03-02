@@ -3,6 +3,7 @@
 <%@ include file="header.jsp"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
 <link
@@ -26,7 +27,7 @@
 
       <tr><td rowspan="6">  <img src="boardupload/${boardBean.board_thumbnail }" class="view_thumbnail" alt="thumbnail" width="304" height="236"> 
       </td>
-        <td>가&emsp;&emsp;격 :</td><td><strong>${boardBean.board_price}</strong>&emsp;원 </td>
+        <td>가&emsp;&emsp;격 :</td><td><strong><fmt:formatNumber value="${boardBean.board_price}" pattern="###,###,###"/></strong>&emsp;원 </td>
       </tr>
       <tr>
         <td>은행 / 계좌번호 :</td><td> [${boardBean.board_bank} / ${boardBean.board_account}]</td>
@@ -38,7 +39,7 @@
         <td>보관방법 :</td><td> ${boardBean.board_storage}</td>
       </tr>
             <tr>
-        <td>배송구분 / 배송비 :</td><td> [${boardBean.board_delivery} / ${boardBean.board_deliverycost}원]</td>
+        <td>배송구분 / 배송비 :</td><td> [${boardBean.board_delivery} / <fmt:formatNumber value="${boardBean.board_deliverycost}" pattern="###,###,###"/>원]</td>
       </tr>
       
                   <tr>

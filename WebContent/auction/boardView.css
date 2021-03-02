@@ -470,4 +470,14 @@ div.board_detail > table > tbody > tr:nth-child(n) {
 }
 
 
+.now_price{
+	text-align:center;
+	font-size:25;
+}
+
+.end_text{
+		text-align:center;
+	font-size:25;
+	color:#ffa630;
+}
 

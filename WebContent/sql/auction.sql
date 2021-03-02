@@ -11,8 +11,8 @@ board_date date not null,
 board_end_date date not null,
 board_file1 varchar2(30) not null,
 board_file2 varchar2(30) not null ,
-board_file3 varchar2(30) ,
-board_file4 varchar2(30) ,
+board_file3 varchar2(30) not null ,
+board_file4 varchar2(30) not null ,
 board_thumbnail varchar2(30) not null ,
 board_read number(10),
 board_max_price number(10),
@@ -28,7 +28,8 @@ board_producer varchar2(30) not null,
 board_origin varchar2(30) not null,
 board_deliverycost number(10) not null,
 board_expirydate varchar2(30) not null,
-board_hopemax_price number(10)
+board_hopemax_price number(10),
+board_hope_id varchar2(30)
 );
 
 

@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <jsp:include page="header.jsp"/>
 
 <h1 style="margin: 20px;">${category}</h1>
@@ -34,7 +36,7 @@
             <h4 class=".col-4"><a href="BoardDetailAction.bo?board_num=${board.board_num}">${board.board_num}. ${board.board_subject}</a></h4>
         </td>
         <td>
-            <h5>${board.board_price}</h5>
+            <h5><fmt:formatNumber value="${board.board_price}" pattern="###,###,###"/></h5>
         </td>
         <td>
             <c:if test="${board.board_evaluation == 0}">
