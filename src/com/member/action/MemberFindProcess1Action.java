@@ -9,31 +9,30 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.Action;
 import com.ActionForward;
-import com.member.db.MemberBean;
 import com.member.db.MemberDAO;
 
-public class MemberFindProcessAction implements Action {
+public class MemberFindProcess1Action implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ActionForward forward = new ActionForward();
-		String member_name = request.getParameter("name");
-		String member_tel = request.getParameter("tel1") + "-" 
-					+ request.getParameter("tel2") + "-" + request.getParameter("tel3");
+		
+		String member_id = request.getParameter("id");
+		String member_email = request.getParameter("email");
 		
 		
 		MemberDAO memberdao = new MemberDAO();
-		String result1 = memberdao.isFindName(member_name, member_tel);
-		System.out.println("결과는" + result1);
+		String result2 = memberdao.isFindId(member_id, member_email);
+		System.out.println("결과는" + result2);
 		
 		//Name이 같은경우
-		if(!result1.equals("")) {
+		if(!result2.equals("")) {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('회원님의 아이디는  " + result1 + "  입니다.');");
-			out.println("location.href='memberFind.com';");
+			out.println("alert('회원님의 비밀번호는  " + result2 + "  입니다.');");
+			out.println("location.href='login.com';");
 			out.println("</script>");
 			out.close();			
 		}else {
@@ -48,7 +47,6 @@ public class MemberFindProcessAction implements Action {
 			
 		}
 		return null;
-		
 	}
 
 }
