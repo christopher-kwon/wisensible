@@ -55,6 +55,9 @@ public class MemberJoinProcessAction implements Action {
 						+ " / " + multi.getParameter("birth3");
 			String member_email = multi.getParameter("email") + "@"
 					+ multi.getParameter("domain");
+			
+			System.out.println("member_email = " + member_email);
+			
 			String member_gender = multi.getParameter("gender");
 			String tel1 = multi.getParameter("tel1");
 			String tel2 = multi.getParameter("tel2");

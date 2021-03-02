@@ -68,17 +68,13 @@
 	   <label for="email"><b> E-Mail </b></label><br>
         <input type="text" name="email"	id="email">@
         <input type="text" name="domain" id="domain">
-        <select name="domain" id="sel" >
+        <select name="sel" id="sel" >
         	<option value="">직접입력</option>
         	<option value="naver.com">naver.com</option>
         	<option value="daum.net">daum.net</option>
         	<option value="nate.com">nate.com</option>
         	<option value="gmail.com">gmail.com</option>
         </select>
-        <input type="button" name="btemail" id="btemail" class="btn btn-primary" value="인증번호 발송"><br>
-        <input type="text" name="writechk" class="writechk" id="writechk" placeholder="인증번호 입력">
-        <span id="explainsp">*메일로 보내드린 인증번호 6자리를 입력해 주세요</span>
-        <input type="hidden" name="emailChk" class="emailChk" id="emailChk" value="" style="background: yellow;">
         <br>
         
         <b> 휴대전화 번호 </b>

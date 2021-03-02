@@ -224,8 +224,8 @@ public class MemberDAO {
 				memberbean.setMember_password(rs.getString("member_pass"));
 				memberbean.setMember_birth(rs.getString("member_birth"));
 				memberbean.setMember_email(rs.getString("member_email"));
-				memberbean.setMember_email(rs.getString("member_emailhash"));
-				memberbean.setMember_email(rs.getString("member_emailchecked"));
+				memberbean.setMember_emailhash(rs.getString("member_emailhash"));
+				memberbean.setMember_emailchecked(rs.getString("member_emailchecked"));
 				memberbean.setMember_gender(rs.getString("member_gender"));
 				memberbean.setMember_tel(rs.getString("member_tel"));
 				memberbean.setMember_address(rs.getString("member_address"));
@@ -535,32 +535,30 @@ public class MemberDAO {
 		return list;
 	}
 
-	public int isFindName(String member_name, String member_tel, String member_id) {
+	public String isFindName(String member_name, String member_tel) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int result = -1;//아이디가 존재하지 않습니다.
+		String result = "";//아이디가 존재하지 않습니다.
 		try {
 			con = ds.getConnection();
 			
-			String sql = "select member_name, member_tel, member_id from member where member_name = ?";
+			String sql = "select member_name, member_tel, member_id from member where member_name = ? and member_tel = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, member_name);
+			pstmt.setString(2, member_tel);
 			
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
+				System.out.println("member_id=" + rs.getString(3));
 				System.out.println(rs.getString(2));
-				System.out.println(member_tel);
+				System.out.println("member_name=" + rs.getString(1));
 				if(rs.getString(2).equals(member_tel)) {
-					result= 1;//아이디와 비밀번호가 일치하는 경우
-				}else {
-					result = 0; //비밀번호가 일치하지 않는 경우
+					result = rs.getString(3);
 				}
 			}
-			while(rs.next()) {
-				member_id = rs.getString("id");
-			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

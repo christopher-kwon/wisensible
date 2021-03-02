@@ -46,7 +46,7 @@
 						<!-- 로그인 버튼 -->
 						<button type="submit" class="btn btn-success btn-sm btn-block mybtn">
 							찾기</button>
-						<button class="btn btn-danger btn-sm btn-block my-1 mybtn"
+						<button type="button" class="btn btn-danger btn-sm btn-block my-1 mybtn"
 							onclick="location.href='login.com'">취소</button>
 					</fieldset>
 				</form>

@@ -161,8 +161,10 @@
 			<div class="section_info">
 			
 			
+							<span id="board_thumbnailname" style="display:none;" ></span>
 				
 				<table class="table table-borderd">
+				
 					<caption>상품 상세정보</caption>
 					<tr>
 						<th>상 품 명</th>
@@ -214,10 +216,10 @@
 
 
 			<div class="form-file">
-				<label for="upfile" id="picinfo">
-				 <input type="file" id="upfile1" name="board_file1"> <span
-					id="filevalue1"></span> <input type="file" id="upfile2"
-					name="board_file2"> <span id="filevalue2"></span><br>
+				<label for="upfile1" id="picinfo">
+				 <input type="file" id="upfile1" name="board_file1" accept="image/*"> <span
+					id="filevalue1" style="display:none;"></span> <input type="file" id="upfile2"
+					name="board_file2" accept="image/*"> <span id="filevalue2" style="display:none;"></span><br>
 				<img src="image/add.JPG" width="20px" id="file_add"  style="" >
 				</label>
 			</div>

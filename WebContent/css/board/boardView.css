@@ -115,6 +115,7 @@ button {
 	background: none;
 }
 
+
 .board_view_image1 > img,
 .board_view_image2 > img,
 .board_view_image3 > img,
@@ -125,6 +126,7 @@ width: 60%;
     margin: 0 auto;
     display: block;
 }
+
 
 fieldset, img {
 	border: 0;

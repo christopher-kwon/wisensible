@@ -71,6 +71,11 @@ countDownTimer('sample01', $('#end_time').val()) // 시간 셋팅
       return;
    }
    
+      if($("#hope_price").val() <= $("#start_price").val()){
+      alert("시작 가격보다 높은 금액을 입력해 주세요.")
+      return;
+   }
+   
 
    $.ajax({
          url : "AuctionhopeAdd.ho",
