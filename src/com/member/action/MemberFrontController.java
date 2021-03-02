@@ -21,26 +21,26 @@ public class MemberFrontController extends HttpServlet {
 	throws ServletException, IOException {
 		
 		/*
-		 * 요청된 전체 URL 중에서 포트 번호 다음 부터 마지막 문자열까지 반환됩니다.
-		 * 예) http://localhost:8088/Jsp/login.com인 경우
-		 * "/Jsp/login.com" 반환됩니다.
+		 * �슂泥��맂 �쟾泥� URL 以묒뿉�꽌 �룷�듃 踰덊샇 �떎�쓬 遺��꽣 留덉�留� 臾몄옄�뿴源뚯� 諛섑솚�맗�땲�떎.
+		 * �삁) http://localhost:8088/Jsp/login.com�씤 寃쎌슦
+		 * "/Jsp/login.com" 諛섑솚�맗�땲�떎.
 		 */
 		
 		String RequestURI = request.getRequestURI();
 		System.out.println("RequestURI = " + RequestURI);
 		
-		//getContextPath() : 컨텍스트 경로가 반환됩니다.
-		//contextPath()는 "/Jsp"가 반환됩니다. 
+		//getContextPath() : 而⑦뀓�뒪�듃 寃쎈줈媛� 諛섑솚�맗�땲�떎.
+		//contextPath()�뒗 "/Jsp"媛� 諛섑솚�맗�땲�떎. 
 		String contextPath = request.getContextPath();
 		System.out.println("contextPath = " + contextPath);
 		
-		//RequestURI에서 컨텍스트 경로 길이 값의 인덱스 위치의 문자부터
-		//마지막 위치 문자까지 추출합니다.
-		//command는 "/login.com" 반환됩니다.
+		//RequestURI�뿉�꽌 而⑦뀓�뒪�듃 寃쎈줈 湲몄씠 媛믪쓽 �씤�뜳�뒪 �쐞移섏쓽 臾몄옄遺��꽣
+		//留덉�留� �쐞移� 臾몄옄源뚯� 異붿텧�빀�땲�떎.
+		//command�뒗 "/login.com" 諛섑솚�맗�땲�떎.
 		String command = RequestURI.substring(contextPath.length());
 		System.out.println("command = " + command);
 		
-		//초기화
+		//珥덇린�솕
 		ActionForward forward = null;
 		Action action = null;
 		
@@ -89,6 +89,10 @@ public class MemberFrontController extends HttpServlet {
 			action = new MemberDeleteAction();
 			break;
 			
+		case "/memberDelete1.com" :
+			action = new MemberDelete1Action();
+			break;
+			
 		case "/memberFind.com" :
 			action = new MemberFindAction();
 			break;
@@ -111,9 +115,9 @@ public class MemberFrontController extends HttpServlet {
 		forward = action.execute(request, response);
 		
 		if(forward != null) {
-			if(forward.isRedirect()) { //리다이렉트 됩니다.
+			if(forward.isRedirect()) { //由щ떎�씠�젆�듃 �맗�땲�떎.
 				response.sendRedirect(forward.getPath());
-			} else { //포워딩 됩니다.
+			} else { //�룷�썙�뵫 �맗�땲�떎.
 				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
 				dispatcher.forward(request, response);
 			}
@@ -122,8 +126,8 @@ public class MemberFrontController extends HttpServlet {
 	
        
 
-    // doProcess(request, response) 메서드를 구현하여 요청이 GET방식이든
-    //POST 방식으로 전송되어 오든 같은 메서드에서 요청을 처리할 수 있도록 하였습니다. 
+    // doProcess(request, response) 硫붿꽌�뱶瑜� 援ы쁽�븯�뿬 �슂泥��씠 GET諛⑹떇�씠�뱺
+    //POST 諛⑹떇�쑝濡� �쟾�넚�릺�뼱 �삤�뱺 媛숈� 硫붿꽌�뱶�뿉�꽌 �슂泥��쓣 泥섎━�븷 �닔 �엳�룄濡� �븯���뒿�땲�떎. 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		doProcess(request, response);

@@ -87,7 +87,7 @@
 						<td>${member_info.member_id}</td>
 						<td>${member_info.member_name}</td>
 						<td>
-							<a href="memberDelete.com?id=${member_info.member_id}">삭제</a>
+							<a href="memberDelete1.com?id=${member_info.member_id}">삭제</a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -146,4 +146,5 @@
 	<font>검색 결과가 없습니다.</font>
 </c:if>
 </body>
+<jsp:include page="/board/footer.jsp"/>
 </html>
