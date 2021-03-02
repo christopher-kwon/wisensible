@@ -1,6 +1,5 @@
 
 $(document).ready(
-
       function() {
            $('.section_view > label > input[type=file]').change(function(event){
                var inputfile =$(this).val().split('\\');
@@ -316,12 +315,15 @@ $(document).ready(
                   
                         if ($.trim($("#board_content").val()) == "") {
                      alert("내용을 입력해주세요")
-                     $("#board_content").focus();
+                     $("#board_deliverycost").focus();
                      return false;
 
                   }
                   
-                 
+                  if($("#board_thumbnailname").text() == "") {
+                  alert("대표사진은 필수로 등록해야 합니다.");
+                  return false;
+                  }
                   
                   
                   if ($.trim($("#filevalue1").text()) == "") {
@@ -345,6 +347,8 @@ $(document).ready(
                   
                }) //end form.submit
 
+
+                function show() {
         
          if($('#filevalue').text() == '') {
             $(".remove").css('display', 'none');
