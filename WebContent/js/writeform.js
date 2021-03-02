@@ -320,10 +320,7 @@ $(document).ready(
 
                   }
                   
-                  if($("#board_thumbnailname").text() == "") {
-                  alert("대표사진은 필수로 등록해야 합니다.");
-                  return false;
-                  }
+                 
                   
                   
                   if ($.trim($("#filevalue1").text()) == "") {
