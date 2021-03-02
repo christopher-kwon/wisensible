@@ -22,7 +22,6 @@ public class BoardWriteAction implements Action {
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
-		System.out.println(id);
 	
 		response.setContentType("text/html; charset=utf-8"); 
 

@@ -41,4 +41,4 @@ create sequence board_seq;
 
 truncate table board;
 
-
+alter table board modify(board_tel varchar2(30));

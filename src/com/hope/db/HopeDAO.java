@@ -100,11 +100,7 @@ public class HopeDAO {
 	      try {
 
 	         conn = ds.getConnection();
-	   
 
-	         
-
-	  
 	         pstmt = conn.prepareStatement(max_sql);
 	         pstmt.setInt(1, board_num);
 	         rs= pstmt.executeQuery();

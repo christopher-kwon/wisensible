@@ -30,13 +30,7 @@ public class AuctionhopeGet implements Action {
 		
 		response.getWriter().append(Integer.toString(max));
 		return null;
-		
-		
-		
-		
-		
-		
-		
+
 	}
 
 }
