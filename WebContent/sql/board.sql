@@ -1,6 +1,5 @@
 drop table board;
 
---���̺� ����
 create table board(
 board_category varchar2(20) not null,
 board_num number(10) primary key,
@@ -31,6 +30,8 @@ board_evaluation number(10)
 );
 
 
+
+
 select * from board;
 
 drop sequence board_seq;
@@ -40,7 +41,4 @@ create sequence board_seq;
 
 truncate table board;
 
-)
 
-update board set board_evaluation=0 where board_num=1;
-select 

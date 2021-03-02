@@ -126,7 +126,7 @@
             
 
             <div class="form-group">
-				<div class="form-delivery">
+				<div class="form-delivery" id="form-delivery">
                <label for="board_delivery">배 송 방 법&emsp; :&emsp;</label> <input
                   name="board_delivery" id="board_delivery" type="checkbox"
                   value="택배">택배 
@@ -160,9 +160,12 @@
 		<div class="section_content">
 			<div class="section_info">
 			
-				<h4>상품 상세정보</h4>
+			
+							<span id="board_thumbnailname" style="display:none;" ></span>
 				
 				<table class="table table-borderd">
+				
+					<caption>상품 상세정보</caption>
 					<tr>
 						<th>상 품 명</th>
 						<td><input type="text" name="board_product"
@@ -190,8 +193,8 @@
 					</tr>
 					<tr>
 				
-
-						<td><input name="board_storage" id="board_storage"
+						<th>보 관 방 법</th>
+						<td id="board_storage"><input name="board_storage" id="board_storage"
 							type="checkbox" value="상온">상온<input
 							name="board_storage" id="board_storage" type="checkbox"
 							value="냉장">냉장<input name="board_storage"
@@ -213,10 +216,10 @@
 
 
 			<div class="form-file">
-				<label for="upfile">
-				 <input type="file" id="upfile1" name="board_file1"> <span
-					id="filevalue1"></span> <input type="file" id="upfile2"
-					name="board_file2"> <span id="filevalue2"></span><br>
+				<label for="upfile1" id="picinfo">
+				 <input type="file" id="upfile1" name="board_file1" accept="image/*"> <span
+					id="filevalue1" style="display:none;"></span> <input type="file" id="upfile2"
+					name="board_file2" accept="image/*"> <span id="filevalue2" style="display:none;"></span><br>
 				<img src="image/add.JPG" width="20px" id="file_add"  style="" >
 				</label>
 			</div>

@@ -239,10 +239,8 @@ alert('경매글은 한 번 작성하면 수정/삭제 할 수 없습니다. 신
 						}
 
 					
-					
-						if ($("#board_delivery1").is(":checked")==false && 
-						$("#board_delivery2").is(":checked")==false && 
-						$("#board_delivery3").is(":checked")==false) {
+					var cnt =  $("#form-delivery  input:checkbox:checked").length;
+						if (cnt<1) {
 							alert("배송방법을 선택해주세요")
 						
 							return false;
@@ -278,11 +276,8 @@ alert('경매글은 한 번 작성하면 수정/삭제 할 수 없습니다. 신
 							return false;
 
 						}
-						if ( $("#board_storage1").is(":checked")==false &&
-						 $("#board_storage2").is(":checked")==false &&
-						 $("#board_storage3").is(":checked")==false
-						 ) 
-						{
+					var cnt =  $("#board_storage input:checkbox:checked").length;
+						if (cnt<1) {
 							alert("보관방법을 선택해주세요")
 						
 							return false;
@@ -294,6 +289,15 @@ alert('경매글은 한 번 작성하면 수정/삭제 할 수 없습니다. 신
 							return false;
 
 						}
+						
+							if ($.trim($("#board_content").val()) == "") {
+							alert("내용을 입력해주세요")
+							$("#board_deliverycost").focus();
+							return false;
+
+						}
+						
+						
 						
 						if($("#board_thumbnailname").text() == "") {
 						alert("대표사진은 필수로 등록해야 합니다.");

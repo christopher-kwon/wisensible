@@ -337,63 +337,92 @@ $(function() {
 		$(this).parent().parent().parent().remove();
 	})
 	
-	ind = -1;
-	$(".star_box > a").on('click', function() {
+ind = -1;
+   $(".star_box > a").on('click', function() {
 
-		$(this).parent().children("a").removeClass("on");
-		$(this).addClass("on").prevAll("a").addClass("on")
+      $(this).parent().children("a").removeClass("on");
+      $(this).addClass("on").prevAll("a").addClass("on")
 
-		ind = $(this).index() + 1
-		console.log(ind);
-		$("#lev").text(ind + " 점 / 5 점");
+      ind = $(this).index() + 1
+      console.log(ind);
+      $("#lev").text(ind + " 점 / 5 점");
 
-	}) //.star_box
+   }) //.star_box
 
-	$("body > div > div > div > div.col-lg-9 > div > div.board_view_table > table > tbody > tr:nth-child(6) > td > div.star_box > div > button.btn.btn-info").click(function() {
-		if (ind == -1) {
-			alert("평점을 선택해주세요")
-			return;
-		}
+   $("#starsub").click(function() {
+      if($("#loginid").val()==""){
+         alert("로그인후에 평점을 등록해주세요")
+         return;
+      }
+      
+      
+      
+      
+      if (ind == -1) {
+         alert("평점을 선택해주세요")
+         return;
+      }
 
-		$.ajax({
-			url : "EvaluationAdd.ev",
-			data : {
-				evaluation_name : $("#loginid").val(),
-				evaluation : ind ,
-				board_num : $("#board_num").val()
-			},
-			type : "post",
-			success : function(rdata) {
-				if (rdata.length > 0) {
-					$("star_box > a").text("")
-					$(".on").removeClass("on")
-					$("#lev").text("");
-					
-					getListev();
-				}
-			},
-			error :function(request, status, error){
-	            $("body").append("<div id ='error'>code : " + request.status + "<br>" +"받은데이터 : " + request.responseText + "<br>"
-	                    +"error status :" +status +"<br>"
-	                    +"error 메시지 : " + error +"</div>");
-	           },
-	           complete :function(){ //요청의 실패, 성공과 상관없이 완료될 경우 호출
-	              $("body").append("<div id='com'>Ajax가 완료되었습니다.</div>");
-	           }
 
-		}) //ajax
+      $.ajax({
+         url : "EvaluationAdd.ev",
+         data : {
+            evaluation_name : $("#loginid").val(),
+            evaluation : ind ,
+            board_num : $("#board_num").val()
+         },
+         type : "post",
+         success : function(rdata) {
+            if (rdata.length > 0) {
+               $("star_box > a").text("")
+               $(".on").removeClass("on")
+               $("#lev").text("");
+               
+               getListev();
+            }
+         },
+         error :function(request, status, error){
+               $("body").append("<div id ='error'>code : " + request.status + "<br>" +"받은데이터 : " + request.responseText + "<br>"
+                       +"error status :" +status +"<br>"
+                       +"error 메시지 : " + error +"</div>");
+              },
 
-	}) //function();
-	if($("#board_writer").val() == $("#loginsession").val()){
-		$("body > div > div > div > div.col-lg-9 > div > div.board_view_table > table > tbody > tr:nth-child(6) > td > div.star_box").html("")
-		
-	}
-	$("body > div > div > div > div.col-lg-9 > div > div.board_view_table > table > tbody > tr:nth-child(6) > td > div.star_box > div > button.btn.btn-warning").click(function(){
-		$("div.star_box > .on").removeClass("on")
-		$("#lev").text("");
-	})
+              complete :function(){//요청의 실패, 성공과 상관없이 완료될 경우 호출
+                 $("body").append("");
+
+              }
+
+      }) //ajax
+
+   }) //function();
+   if($("#board_writer").val() == $("#loginsession").val()){
+      $("#star_box").html("")
+      
+   }
+   $("#remstar").click(function(){
+      $("div.star_box > .on").removeClass("on")
+      $("#lev").text("");
+   })
+   
+   $('#previous').click(function(){
+      var g = $("#board_num").val()-1
+      if(g==0){
+         alert("첫번째 게시글입니다.")
+      }
+      location.href='BoardDetailAction.bo?board_num='+ g
+   })
+      $('#nextp').click(function(){
+      var g = Number($("#board_num").val())+1
+      
+      
+      location.href='BoardDetailAction.bo?board_num='+ g
+   })
+
 
 }) //function 
+
+
+   
 
 
 	
