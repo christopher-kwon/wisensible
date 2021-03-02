@@ -21,3 +21,8 @@ select * from member;
 truncate table member;
 
 delete from member;
+
+update member
+set MEMBER_EMAILCHECKED = 1
+where MEMBER_ID = 'admin';
+commit;
