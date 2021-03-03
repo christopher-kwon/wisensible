@@ -6,8 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:include page="header.jsp"/>
 
 <form action="BoardSearchAction.bo?searchWord=${searchWord}" method="get" name="searchWord">
     <div class="input-group" style="margin: 20px;">
@@ -59,9 +59,9 @@
 <div class="row" id="testAjax"></div>
 
 <c:if test="${searchWord == null}">
-<div class="d-grid gap-2 col-6 mx-auto">
-    <button class="pageInc btn btn-dark btn-lg" style="width: 300px">더보기</button>
-</div>
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="pageInc btn btn-dark btn-lg" style="width: 300px">더보기</button>
+    </div>
 </c:if>
 
 <script>
@@ -79,4 +79,4 @@
     )
 </script>
 
-<jsp:include page="footer.jsp"/>
+<%@ include file="footer.jsp" %>
