@@ -33,7 +33,7 @@
             </a>
         </td>
         <td>
-            <h4 class=".col-4"><a href="BoardDetailAction.bo?board_num=${board.board_num}">${board.board_num}. ${board.board_subject}</a></h4>
+            <h4 class=".col-4"><a href="BoardDetailAction.bo?board_num=${board.board_num}">${board.board_subject}</a></h4>
         </td>
         <td>
             <h5><fmt:formatNumber value="${board.board_price}" pattern="###,###,###"/></h5>
