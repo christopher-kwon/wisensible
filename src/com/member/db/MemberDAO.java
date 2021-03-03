@@ -175,12 +175,12 @@ public class MemberDAO {
 		PreparedStatement pstmt = null;
 		int result=0;
 		
+		
 		try {
 			con = ds.getConnection();
-			String sql = "delete from member where member_id = ? ";
+			String sql = "delete from member where member_id in(" + member_id +") ";
 			System.out.println(sql);
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, member_id);
+			pstmt = con.prepareStatement(sql);			
 			result = pstmt.executeUpdate();
 			
 		} catch (Exception e) {
