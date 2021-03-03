@@ -7,50 +7,13 @@
 <title>회원 리스트</title>
 <link href="css/memberlist.css" type="text/css" rel="stylesheet">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="js/list.js"></script>
 <script>
-	$(function(){
-		//검색 클릭 후 응답화면에는 검색시 선택한 필드가 선택되도록 한다.
-		var selectedValue = '${search_field}'
-		if(selectedValue != '-1')
+$(function(){
+	var selectedValue = '${search_field}'
+		
 			$("#viewcount").val(selectedValue);
-		
-		//검색 버튼 클릭
-		$("button").click(function(){
-			//검색어 공백 유효성 검사
-			if($("input").val()==''){
-				alert("검색어를 입력하세요");
-				$("input").focus();
-				return false;
-			}
-			
-			word=$(".input-group input").val();
-			if(selectedValue==2){
-				pattern = /^\w+@\w+[.]\w{3}$/;
-				if(!pattern.test(word)){
-					alert("이메일 형식에 맞게 입력하세요(@포함)");
-					return false;
-				}
-			}
-		});//button click end
-		
-		//검색어 입력창에 placeholder가 나타나도록 한다.
-		$("#viewcount").change(function(){
-			selectedValue= $(this).val();
-			$("input").val('');
-			message=["아이디", "이름", "이메일"]
-			$("input").attr("placeholder", message[selectedValue] + " 입력하세요");
-		})//$("#viewcount").change end
-		
-		//회원 목록의 삭제를 클릭한 경우
-		$("tr > td:nth-child(3) > a").click(function(event){
-			var answer = confirm("정말 삭제하시겠습니까?");
-			console.log(answer);//취소를 클릭한 경우-false
-			if(!answer){//취소를 클릭한 경우
-				event.preventDefault();//이동하지 않음
-			}
-		})//삭제클릭 end
-	});
-
+})
 </script>
 </head>
 <body>
@@ -68,31 +31,36 @@
 		</div>
 	</form>
 	<c:if test="${listcount > 0 }"><%-- 회원이 있는 경우 --%>
-		<table class="table table-striped">
+		<table class="table table-striped" id="checkboxTestTbl">
 			<caption>회원 목록</caption>
 			<thead>
 				<tr>
+					
 					<th colspan="2">회원 정보 list</th>
-					<th>
+					<th colspan="2">
 						<font size=3>회원 수 : ${listcount}</font>
 					</th>
 				</tr>
 				<tr class="id_table">
-					<td>아이디</td><td>이름</td><td>삭제</td>
+					<td><input type="checkbox"/></td><td>아이디</td><td>이름</td><td>삭제</td>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="sTable">
 				<c:forEach var="member_info" items="${totallist}">
 					<tr>
+						<td><input type="checkbox"/></td>
 						<td>${member_info.member_id}</td>
 						<td>${member_info.member_name}</td>
 						<td>
-							<a href="memberDelete1.com?id=${member_info.member_id}">삭제</a>
+							<a href="javascript:del('${member_info.member_id}')" style="color:red">삭제</a>
+						
 						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		<input type="button" id="removeButton_sel" name="removeButton_sel" 
+			value="삭제" class="btn btn-danger" style="float: right">
 	</c:if>
 </div>
 <div>
