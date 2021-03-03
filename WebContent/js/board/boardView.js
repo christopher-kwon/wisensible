@@ -373,13 +373,19 @@ ind = -1;
          },
          type : "post",
          success : function(rdata) {
-            if (rdata.length > 0) {
-               $("star_box > a").text("")
+        	 console.log("성공" +rdata)
+            if (rdata==0) {
+            	alert("이미 평점등록을 완료한 게시물입니다.");
+            }else if(rdata==1){
+            	alert("평점등록 완료.");
+            	$("star_box > a").text("")
                $(".on").removeClass("on")
                $("#lev").text("");
                
                getListev();
+              
             }
+            
          },
          error :function(request, status, error){
                $("body").append("<div id ='error'>code : " + request.status + "<br>" +"받은데이터 : " + request.responseText + "<br>"
