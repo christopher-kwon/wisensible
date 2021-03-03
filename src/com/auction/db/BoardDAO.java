@@ -489,6 +489,8 @@ public class BoardDAO {
 				boardBean.setBoard_subject(resultSet.getString("board_subject"));
 				boardBean.setBoard_content(resultSet.getString("board_content"));
 				boardBean.setBoard_min_price(resultSet.getInt("board_min_price"));
+				boardBean.setBoard_thumbnail(resultSet.getString("board_thumbnail"));
+
 				list.add(boardBean);
 			}
 		} catch (Exception ex) {

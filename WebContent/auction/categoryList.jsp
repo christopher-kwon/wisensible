@@ -25,7 +25,7 @@
     <tbody>
     <c:forEach var="board" items="${boardList}">
     <tr>
-        <th scope="row">1</th>
+        <th scope="row">${board.board_num}</th>
         <td>
             <a href="BoardDetailAction.bom?board_num=${board.board_num}"><img class="" src="boardupload/${board.board_thumbnail}" alt="" width="70px" height="70px"></a>
         </td>
