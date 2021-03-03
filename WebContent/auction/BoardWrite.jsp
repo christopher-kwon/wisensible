@@ -115,7 +115,7 @@
             
 
             <div class="form-group">
-
+				<div class="form-delivery" id="form-delivery">
             <label for="board_delivery">배 송 방 법&emsp; :&emsp;</label>      
 				<input  name="board_delivery" id="board_delivery1" type="checkbox" value="택배">택배
                <input  name="board_delivery" id="board_delivery2" type="checkbox" value="직거래">직거래
@@ -176,7 +176,7 @@
 					</tr>
 					<tr>
 					<th>보 관 방 법</th>
-						<td><input name="board_storage" id="board_storage1" type="checkbox" value="상온">상온
+						<td id="board_storage"><input name="board_storage" id="board_storage1" type="checkbox" value="상온">상온
                <input name="board_storage" id="board_storage2" type="checkbox" value="냉장">냉장
               <input name="board_storage" id="board_storage3" type="checkbox" value="냉동">냉동</td>
               

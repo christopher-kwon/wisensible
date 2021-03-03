@@ -1,6 +1,7 @@
 package com.board.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -23,15 +24,29 @@ public class BoardWriteAction implements Action {
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
-		MemberDAO memberdao = new MemberDAO();
-		MemberBean memberbean = memberdao.member_info(id);
-		request.setAttribute("memberinfo", memberbean);
+		response.setContentType("text/html; charset=utf-8"); 
+
+		if(id == null) {
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('로그인 후 사용 가능합니다.');");
+			out.println("history.back()");
+			out.println("</script>");
+			out.close();
+		} else {
+			
+			MemberDAO memberdao = new MemberDAO();
+			MemberBean memberbean = memberdao.member_info(id);
+			request.setAttribute("memberinfo", memberbean);
+			
+			ActionForward actionforward = new ActionForward();
+			actionforward.setRedirect(false);
+			actionforward.setPath("board/BoardWrite.jsp");
+			return actionforward;
+		}
 		
-		ActionForward actionforward = new ActionForward();
-		actionforward.setRedirect(false);
-		actionforward.setPath("board/BoardWrite.jsp");
-		return actionforward;
-		
+		return null;
+
 	}
 
 }

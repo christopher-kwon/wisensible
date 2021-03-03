@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <jsp:include page="header.jsp"/>
 
 <form action="BoardSearchAction.bo?searchWord=${searchWord}" method="get" name="searchWord">
@@ -27,7 +29,7 @@
                     <h4 class="card-title">
                         <a href="BoardDetailAction.bo?board_num=${board.board_num}">${board.board_subject}</a>
                     </h4>
-                    <h5 style="text-align: right">${board.board_price} <strong>원</strong></h5>
+                    <h5 style="text-align: right"><fmt:formatNumber value="${board.board_price}" pattern="###,###,###"/> <strong>원</strong></h5>
                     <p class="card-text" style="overflow: hidden; line-height: 1.2; height: 3.6em; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">&nbsp&nbsp${board.board_content}</p>
                 </div>
                 <div class="card-footer">
