@@ -1,4 +1,3 @@
-
 $(document).ready(
       function() {
            $('.section_view > label > input[type=file]').change(function(event){
@@ -369,4 +368,3 @@ $(document).ready(
          $(this).css('display', 'none')
       })
       });
-      

@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <c:forEach var="board" items="${boardList}">
     <div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100">

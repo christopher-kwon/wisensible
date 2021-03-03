@@ -117,3 +117,15 @@ text-align:center;
 padding:30px 0 40px 0
 }
 #board_delivery1, #board_delivery2, #board_delivery3, #board_storage1, #board_storage2,#board_storage3{width:20px}
+
+
+#board_fileView1,
+#board_fileView2,
+#board_fileView3,
+#board_fileView4{
+	width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    display: block;
+	
+}

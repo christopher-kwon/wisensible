@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>로그인</title>
+<jsp:include page="/board/header.jsp"/>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -29,7 +30,7 @@
 </script>
 </head>
 <body>
-	<div class="container">
+	<div class="container3">
 		<div class="row">
 			<div class="col-md-5 mx-auto">
 				<div id="first">
@@ -92,3 +93,5 @@
 		</div>
 	</div>
 </body>
+<jsp:include page="/board/footer.jsp"/>
+</html>

@@ -406,10 +406,8 @@ ind = -1;
    
    $('#previous').click(function(){
       var g = $("#board_num").val()-1
-      if(g==0){
-         alert("첫번째 게시글입니다.")
-      }
       location.href='BoardDetailAction.bo?board_num='+ g
+      
    })
       $('#nextp').click(function(){
       var g = Number($("#board_num").val())+1
