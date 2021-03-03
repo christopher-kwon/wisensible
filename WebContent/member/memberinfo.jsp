@@ -8,7 +8,27 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <link href="css/info.css" type="text/css" rel="stylesheet">
+<script>
+$(document).ready(function(){
+	$(".cancelbtn").click(function delALL(){
+			if(!confirm('정말 삭제하시겠습니까?2')){
+				return;
+			}
+		
 
+		$.ajax({
+			url: "memberDelete1.com",
+			data: {id:'${member_info.member_id}'},
+			success:function(rdata){
+				if(rdata == 1){
+					location.href = "BoardList.bo";
+				}
+			}
+		})
+	})
+})
+
+</script>
 </head>
 <body>
 	<div class="container2">
@@ -71,9 +91,9 @@
 
 		</table>
 		<div class="clearfix">
-			<a href="memberDelete.com?id=${member_info.member_id}">
+			
 				<button type="reset" class="cancelbtn">삭제</button>
-			</a> <a href="memberUpdate.com?id=${member_info.member_id}">
+			<a href="memberUpdate.com?id=${member_info.member_id}">
 				<button type="submit" class="submitbtn">정보 수정</button>
 			</a>
 		</div>
