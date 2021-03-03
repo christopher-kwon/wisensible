@@ -41,7 +41,7 @@
       </div>
       <hr>
 
-      <div class="section_view">
+      <div class="section_view" id="section_view">
          <label >
         
        
@@ -220,8 +220,9 @@
 				 <input type="file" id="upfile1" name="board_file1" accept="image/*"> <span
 					id="filevalue1" style="display:none;"></span> <input type="file" id="upfile2"
 					name="board_file2" accept="image/*"> <span id="filevalue2" style="display:none;"></span><br>
-				<img src="image/add.JPG" width="20px" id="file_add"  style="" >
+			
 				</label>
+					<img src="image/add.JPG" width="20px" id="file_add"  style="" >
 			</div>
 
 
