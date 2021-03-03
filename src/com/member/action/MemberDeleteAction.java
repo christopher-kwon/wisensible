@@ -18,26 +18,26 @@ public class MemberDeleteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		MemberDAO memberdao = new MemberDAO();
-		String member_id = request.getParameter("id");
+		String[] members = request.getParameterValues("member_id");
 		response.setContentType("text/html;charset=utf-8");
 		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter();
-		int result = memberdao.delete(member_id);
-		if (result == 1) {
-			out.println("<script>");
-			out.println("confirm('정말 삭제하시겠습니까?');");
-			out.println("alert('삭제 성공입니다.');");
-			out.println("location.href='BoardList.bo'");
-			out.println("</script>");
-			if(session != null) 
-				session.invalidate();
-		} else {
-			out.println("<script>");
-			out.println("alert('회원 삭제 실패입니다.');");
-			out.println("history.back()");
-			out.println("</script>");
+		//member_id=A1234&member_id=B1234&member_id=Q1234
+		// 'A1234', 'B1234','Q1234'
+		String member_id = "";
+		for(String member:members) {
+			member_id += "'" + member + "',"  ;
 		}
-		out.close();
+		if(member_id.length() > 0){
+			member_id = member_id.substring(0, member_id.length() - 1);	
+    	}
+		System.out.print(member_id);
+		int result = memberdao.delete(member_id);
+		out.print(result);
+		
+		if(session != null) 
+			session.invalidate();
+		
 		return null;
 	}
 }
