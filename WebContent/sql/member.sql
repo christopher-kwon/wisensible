@@ -18,6 +18,8 @@ create table member (
 );
 select * from member;
 
+commit;
+
 truncate table member;
 
 delete from member;
@@ -26,3 +28,11 @@ update member
 set MEMBER_EMAILCHECKED = 1
 where MEMBER_ID = 'admin';
 commit;
+
+conn enter by 1234;
+
+ctas
+
+create table member_copy as select * from member;
+insert into member
+select * from member_copy;
